@@ -3,12 +3,12 @@
 ## Source: https://github.com/hexojs/hexo/
 
 # Site
-title: '码上世界'
+title: '小狐狸の个人博客'
 subtitle: '自顶向下，逐步求精'
 description: ''
 keywords:
 author: sera
-language: en
+language: 'zh-CN'
 timezone: ''
 
 # URL
@@ -106,3 +106,4 @@ deploy:
   type: git
   repository: https://github.com/serahuli/serahuli.github.io
   branch: views
+
