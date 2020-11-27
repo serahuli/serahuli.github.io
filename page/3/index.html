@@ -1,0 +1,455 @@
+<!DOCTYPE html><html lang="zh-CN"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="format-detection" content="telephone=no"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-status-bar-style" content="black"><link rel="icon" href="/images/icons/favicon-16%C3%9716.png?v=2.1.1" type="image/png" sizes="16x16"><link rel="icon" href="/images/icons/favicon-32%C3%9732.png?v=2.1.1" type="image/png" sizes="32x32"><meta property="og:type" content="website">
+<meta property="og:title" content="小狐狸の个人博客">
+<meta property="og:url" content="http://example.com/page/3/index.html">
+<meta property="og:site_name" content="小狐狸の个人博客">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:author" content="sera">
+<meta name="twitter:card" content="summary"><title>小狐狸の个人博客</title><link ref="canonical" href="http://example.com/page/3/index.html"><link rel="dns-prefetch" href="https://cdn.jsdelivr.net"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.12.1/css/all.min.css" type="text/css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/social-share.js@1.0.16/dist/css/share.min.css" type="text/css"><link rel="stylesheet" href="/css/index.css?v=2.1.1"><script>var Stun = window.Stun || {};
+var CONFIG = {
+  root: '/',
+  algolia: undefined,
+  fontIcon: {"prompt":{"success":"fas fa-check-circle","info":"fas fa-arrow-circle-right","warning":"fas fa-exclamation-circle","error":"fas fa-times-circle"},"copyBtn":"fas fa-copy"},
+  sidebar: {"offsetTop":"20px","tocMaxDepth":6},
+  header: {"enable":true,"showOnPost":false,"scrollDownIcon":true},
+  postWidget: {"endText":true},
+  nightMode: {"enable":true},
+  back2top: {"enable":true},
+  codeblock: {"style":"carbon","highlight":"ocean","wordWrap":false},
+  reward: false,
+  fancybox: false,
+  zoomImage: {"gapAside":"20px"},
+  galleryWaterfall: undefined,
+  lazyload: false,
+  pjax: undefined,
+  externalLink: {"icon":{"enable":true,"name":"fas fa-external-link-alt"}},
+  shortcuts: undefined,
+  prompt: {"copyButton":"复制","copySuccess":"复制成功","copyError":"复制失败"},
+  sourcePath: {"js":"js","css":"css","images":"images"},
+};
+
+window.CONFIG = CONFIG;</script><meta name="generator" content="Hexo 5.2.0"></head><body><div class="container" id="container"><header class="header" id="header"><div class="header-inner"><nav class="header-nav header-nav--fixed"><div class="header-nav-inner"><div class="header-nav-menubtn"><i class="fas fa-bars"></i></div><div class="header-nav-menu"><div class="header-nav-menu-item"><a class="header-nav-menu-item__link" href="/"><span class="header-nav-menu-item__icon"><i class="fas fa-home"></i></span><span class="header-nav-menu-item__text">首页</span></a></div><div class="header-nav-menu-item"><a class="header-nav-menu-item__link" href="/archives/"><span class="header-nav-menu-item__icon"><i class="fas fa-folder-open"></i></span><span class="header-nav-menu-item__text">归档</span></a></div><div class="header-nav-menu-item"><a class="header-nav-menu-item__link" href="/categories/"><span class="header-nav-menu-item__icon"><i class="fas fa-layer-group"></i></span><span class="header-nav-menu-item__text">分类</span></a></div><div class="header-nav-menu-item"><a class="header-nav-menu-item__link" href="/tags/"><span class="header-nav-menu-item__icon"><i class="fas fa-tags"></i></span><span class="header-nav-menu-item__text">标签</span></a></div><div class="header-nav-menu-item"><a class="header-nav-menu-item__link" href="/about"><span class="header-nav-menu-item__icon"><i class="fas fa-address-card"></i></span><span class="header-nav-menu-item__text">关于</span></a></div></div><div class="header-nav-mode"><div class="mode"><div class="mode-track"><span class="mode-track-moon"></span><span class="mode-track-sun"></span></div><div class="mode-thumb"></div></div></div></div></nav><div class="header-banner"><div class="header-banner-info"><div class="header-banner-info__title">小狐狸の个人博客</div><div class="header-banner-info__subtitle">自顶向下，逐步求精</div></div><div class="header-banner-arrow"><div class="header-banner-arrow__icon"><i class="fas fa-angle-down"></i></div></div></div></div></header><main class="main" id="main"><div class="main-inner"><div class="content-wrap" id="content-wrap"><div class="content content-home" id="content"><section class="postlist"><article class="postlist-item post"><header class="post-header"><h1 class="post-title"><a class="post-title__link" href="/2020/10/29/%E6%B5%8F%E8%A7%88%E5%99%A8%E9%87%8D%E7%BB%98%E9%87%8D%E6%8E%92%EF%BC%88%E5%9B%9E%E6%B5%81%EF%BC%89/">浏览器重绘重排（回流）</a></h1><div class="post-meta"><span class="post-meta-item post-meta-item--createtime"><span class="post-meta-item__icon"><i class="far fa-calendar-plus"></i></span><span class="post-meta-item__info">发表于</span><span class="post-meta-item__value">2020-10-29</span></span><span class="post-meta-item post-meta-item--updatetime"><span class="post-meta-item__icon"><i class="far fa-calendar-check"></i></span><span class="post-meta-item__info">更新于</span><span class="post-meta-item__value">2020-11-23</span></span><span class="post-meta-item post-meta-item--wordcount"><span class="post-meta-item__icon"><i class="far fa-file-word"></i></span><span class="post-meta-item__info">字数统计</span><span class="post-meta-item__value">1.4k</span></span><span class="post-meta-item post-meta-item--readtime"><span class="post-meta-item__icon"><i class="far fa-clock"></i></span><span class="post-meta-item__info">阅读时长</span><span class="post-meta-item__value">8分</span></span></div></header><div class="post-body"><div class="post-excerpt"><p>浏览器的运行机制（页面生成过程）：</p>
+<ol>
+<li>HTML 被 HTML 解析器解析成 DOM 树</li>
+<li>CSS 被 CSS 解析器解析成 CSSOM 树</li>
+<li>结合 DOM 树和 CSSOM 树，生成一棵渲染树(Render Tree)，这一过程称为 Attachment</li>
+<li>生成布局(flow)，浏览器在屏幕上“画”出渲染树中的所有节点；</li>
+<li>将布局绘制(paint)在屏幕上，显示出整个页面</li>
+</ol>
+<p><img src="/2020/10/29/%E6%B5%8F%E8%A7%88%E5%99%A8%E9%87%8D%E7%BB%98%E9%87%8D%E6%8E%92%EF%BC%88%E5%9B%9E%E6%B5%81%EF%BC%89/%E6%B5%8F%E8%A7%88%E5%99%A8%E6%B8%B2%E6%9F%93%E6%9C%BA%E5%88%B6.png" alt="img"></p>
+<p>渲染就是 第4步 + 第 5 步</p>
+<blockquote>
+<p>在页面的生命周期中，**网页生成的时候，至少会渲染一次。在用户访问的过程中，还会不断触发重排(reflow)和重绘(repaint)**，不管页面发生了重绘还是重排，都会影响性能，重排的代价大于重绘。</p>
+</blockquote>
+<p>重绘：某些元素的外观被改变</p>
+<p>重排：重新生成布局，重新排列元素</p>
+<p><strong>重绘不一定导致重排，但重排一定会导致重绘</strong></p>
+
+        <h2 id="重排-reflow">
+          <a href="#重排-reflow" class="heading-link"><i class="fas fa-link"></i></a>重排(reflow)</h2>
+      <p>当DOM的变化影响了元素的几何信息(元素的的位置和尺寸大小)，浏览器需要重新计算元素的几何属性，将其安放在界面中的正确位置，这个过程叫做重排。重排也叫回流，简单的说就是重新生成布局，重新排列元素。</p>
+<p>下面情况会发生重排</p>
+<ul>
+<li>页面初始渲染（性能消耗最大）</li>
+<li>添加/删除可见的DOM元素</li>
+<li>改变元素位置</li>
+<li>改变元素尺寸，比如边距、填充、边框、宽度和高度等</li>
+<li>改变元素内容，比如文字数量，图片大小等</li>
+<li>改变元素字体大小</li>
+<li>改变浏览器窗口尺寸，比如resize事件发生时</li>
+<li>激活CSS伪类（例如：<code>:hover</code>）</li>
+<li>设置 style 属性的值，因为通过设置style属性改变结点样式的话，每一次设置都会触发一次reflow</li>
+<li>查询某些属性或调用某些计算方法：offsetWidth、offsetHeight等，除此之外，当我们调用 <code>getComputedStyle</code>方法，或者IE里的 <code>currentStyle</code> 时，也会触发重排，原理是一样的，都为求一个“即时性”和“准确性”。</li>
+</ul>
+<p>重排影响的范围：</p>
+<p>由于浏览器渲染界面是基于流失布局模型的，所以触发重排时会对周围DOM重新排列，影响的范围有两种：</p>
+<ul>
+<li><p>全局范围：从根节点html开始对整个渲染树进行重新布局。</p>
+<figure class="highlight html"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">body</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;hello&quot;</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">h4</span>&gt;</span>hello<span class="tag">&lt;/<span class="name">h4</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">p</span>&gt;</span><span class="tag">&lt;<span class="name">strong</span>&gt;</span>Name:<span class="tag">&lt;/<span class="name">strong</span>&gt;<span class="name">lulu</span></span><span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">h5</span>&gt;</span>male<span class="tag">&lt;/<span class="name">h5</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">ol</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">li</span>&gt;</span>coding<span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">li</span>&gt;</span>loving<span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">ol</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br></pre></td></tr></table></div></figure>
+
+<p>当p节点上发生reflow时，hello和body也会重新渲染，甚至h5和ol都会收到影响</p>
+</li>
+<li><p>局部范围：对渲染树的某部分或某一个渲染对象进行重新布局</p>
+<blockquote>
+<p>用局部布局来解释这种现象：把一个dom的宽高之类的几何信息定死，然后在dom内部触发重排，就只会重新渲染该dom内部的元素，而不会影响到外界。</p>
+</blockquote>
+</li>
+</ul>
+
+        <h2 id="重绘-Repaints">
+          <a href="#重绘-Repaints" class="heading-link"><i class="fas fa-link"></i></a>重绘(Repaints):</h2>
+      <p>当一个元素的外观发生改变，但没有改变布局,重新把元素外观绘制出来的过程，叫做重绘。</p>
+<p>引起重绘的属性：</p>
+<blockquote>
+<p>color、border-style、 visibility、background 、text-decoration、background-image、background-position 、background-repeat  、outline-color、outline 、outline-style 、border-radius  、outline-width 、box-shadow 、background-size</p>
+</blockquote>
+
+        <h2 id="重排优化建议">
+          <a href="#重排优化建议" class="heading-link"><i class="fas fa-link"></i></a>重排优化建议</h2>
+      <p>尽可能的减少重排次数，重排范围</p>
+<ul>
+<li><p>减少重排范围</p>
+<blockquote>
+<p>以局部布局的形式组织html结构，尽可能小的影响重排的范围</p>
+<ul>
+<li>尽可能在低层级的DOM节点上，而不是像上述全局范围的示例代码一样，如果你要改变p的样式，class就不要加在div上，通过父元素去影响子元素不好。</li>
+<li>不要使用 table 布局，可能很小的一个小改动会造成整个 table 的重新布局。那么在不得已使用table的场合，可以设置table-layout:auto;或者是table-layout:fixed这样可以让table一行一行的渲染，这种做法也是为了限制reflow的影响范围。</li>
+</ul>
+</blockquote>
+</li>
+<li><p>减少重排次数</p>
+<blockquote>
+<ol>
+<li><p>样式集中改变</p>
+<p>更改类名要好于更改样式</p>
+</li>
+<li><p>分离读写操作</p>
+<p>DOM 的多个读操作（或多个写操作），应该放在一起。不要两个读操作之间，加入一个写操作。缓存布局信息。</p>
+<blockquote>
+<p>当我们修改了元素的几何属性，导致浏览器触发重排或重绘时。它会把该操作放进渲染队列，等到队列中的操作到了一定的数量或者到了一定的时间间隔时，浏览器就会批量执行这些操作。</p>
+</blockquote>
+</li>
+<li><p>将 DOM 离线</p>
+<p>复制 DOM节点，在副本上进行操作， 一次性替换</p>
+</li>
+<li><p>使用 absolute 或 fixed 脱离文档流</p>
+</li>
+<li><p>优化动画</p>
+</li>
+</ol>
+</blockquote>
+</li>
+</ul>
+<p><img src="/2020/10/29/%E6%B5%8F%E8%A7%88%E5%99%A8%E9%87%8D%E7%BB%98%E9%87%8D%E6%8E%92%EF%BC%88%E5%9B%9E%E6%B5%81%EF%BC%89/%E5%BC%80%E5%8F%91%E8%80%85%E5%B7%A5%E5%85%B7.png" alt="img"></p>
+<blockquote>
+<ol>
+<li><p>打开开发者工具：点击 Performance 左侧有个小圆点 点击刷新页面会录制整个页面加载出来 时间的分配情况。</p>
+</li>
+<li><ul>
+<li><p>蓝色: 网络通信和HTML解析</p>
+</li>
+<li><p>黄色: JavaScript执行</p>
+</li>
+<li><p>紫色: 样式计算和布局，即重排</p>
+</li>
+<li><p>绿色: 重绘</p>
+<p>哪种色块比较多，就说明性能耗费在那里。色块越长，问题越大。</p>
+</li>
+</ul>
+</li>
+<li><p>点击 Event Log：单独勾选 Loading 项会显示 html 和 css 加载时间。</p>
+<p><img src="/2020/10/29/%E6%B5%8F%E8%A7%88%E5%99%A8%E9%87%8D%E7%BB%98%E9%87%8D%E6%8E%92%EF%BC%88%E5%9B%9E%E6%B5%81%EF%BC%89/Eventlogs.png" alt="img"></p>
+</li>
+</ol>
+</blockquote>
+<p>渲染的三个阶段 Layout，Paint，Composite Layers。 Layout：重排，又叫回流。 Paint:重绘，重排重绘这些步骤都是在 CPU 中发生的。 Compostite Layers：CPU 把生成的 BitMap（位图）传输到 GPU，渲染到屏幕。</p>
+<p>CSS3 就是在 GPU 发生的：Transform  Opacity。在 GPU 发生的属性比较高效。所以 CSS3 性能比较高。</p>
+<p>参考链接：<span class="exturl"><a class="exturl__link" target="_blank" rel="noopener" href="https://juejin.im/post/6844904083212468238">https://juejin.im/post/6844904083212468238</a><span class="exturl__icon"><i class="fas fa-external-link-alt"></i></span></span></p>
+</div></div></article><article class="postlist-item post"><header class="post-header"><h1 class="post-title"><a class="post-title__link" href="/2020/10/28/js-%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/">js 设计模式</a></h1><div class="post-meta"><span class="post-meta-item post-meta-item--createtime"><span class="post-meta-item__icon"><i class="far fa-calendar-plus"></i></span><span class="post-meta-item__info">发表于</span><span class="post-meta-item__value">2020-10-28</span></span><span class="post-meta-item post-meta-item--updatetime"><span class="post-meta-item__icon"><i class="far fa-calendar-check"></i></span><span class="post-meta-item__info">更新于</span><span class="post-meta-item__value">2020-11-23</span></span><span class="post-meta-item post-meta-item--wordcount"><span class="post-meta-item__icon"><i class="far fa-file-word"></i></span><span class="post-meta-item__info">字数统计</span><span class="post-meta-item__value">217</span></span><span class="post-meta-item post-meta-item--readtime"><span class="post-meta-item__icon"><i class="far fa-clock"></i></span><span class="post-meta-item__info">阅读时长</span><span class="post-meta-item__value">1分</span></span></div></header><div class="post-body"><div class="post-excerpt"><p>什么是设计模式？</p>
+<p>软件设计工程中，通用的解决方案。</p>
+
+        <h1 id="单例模式">
+          <a href="#单例模式" class="heading-link"><i class="fas fa-link"></i></a>单例模式</h1>
+      <p>定义：保证一个类仅有一个实例，并提供一个访问它的全局访问点。</p>
+<p>方法：实现方式是先判断实例是否存在，如果存在则直接返回，如果不存在就创建之后再返回, 确保多次使用构造函数都返回一个实例 ===&gt; 每次调用构造函数时，返回指向同一个对象的指针 ===&gt; 缓存初次创建的变量对象</p>
+<p>优点：</p>
+<ol>
+<li><strong>可以用来划分命名空间，减少全局变量的数量。</strong></li>
+<li><strong>使用单体模式可以使代码组织的更为一致，使代码容易阅读和维护。</strong></li>
+<li><strong>可以被实例化，且实例化一次。</strong></li>
+</ol>
+
+        <h1 id="工厂模式">
+          <a href="#工厂模式" class="heading-link"><i class="fas fa-link"></i></a>工厂模式</h1>
+      
+        <h1 id="发布订阅模式">
+          <a href="#发布订阅模式" class="heading-link"><i class="fas fa-link"></i></a>发布订阅模式</h1>
+      
+        <h1 id="装饰者模式">
+          <a href="#装饰者模式" class="heading-link"><i class="fas fa-link"></i></a>装饰者模式</h1>
+      </div></div></article><article class="postlist-item post"><header class="post-header"><h1 class="post-title"><a class="post-title__link" href="/2020/10/28/%E6%A8%A1%E6%8B%9F%E9%9D%A2%E8%AF%95/">个人总结</a></h1><div class="post-meta"><span class="post-meta-item post-meta-item--createtime"><span class="post-meta-item__icon"><i class="far fa-calendar-plus"></i></span><span class="post-meta-item__info">发表于</span><span class="post-meta-item__value">2020-10-28</span></span><span class="post-meta-item post-meta-item--updatetime"><span class="post-meta-item__icon"><i class="far fa-calendar-check"></i></span><span class="post-meta-item__info">更新于</span><span class="post-meta-item__value">2020-11-23</span></span><span class="post-meta-item post-meta-item--wordcount"><span class="post-meta-item__icon"><i class="far fa-file-word"></i></span><span class="post-meta-item__info">字数统计</span><span class="post-meta-item__value">9</span></span><span class="post-meta-item post-meta-item--readtime"><span class="post-meta-item__icon"><i class="far fa-clock"></i></span><span class="post-meta-item__info">阅读时长</span><span class="post-meta-item__value">1分</span></span></div></header><div class="post-body"><div class="post-excerpt">有东西被加密了, 请输入密码查看.</div><div class="post-readmore"><a class="post-readmore__link" href="/2020/10/28/%E6%A8%A1%E6%8B%9F%E9%9D%A2%E8%AF%95/"><span class="post-readmore__text">阅读全文</span><span class="post-readmore__icon"><i class="fas fa-long-arrow-alt-right"></i></span></a></div></div></article><article class="postlist-item post"><header class="post-header"><h1 class="post-title"><a class="post-title__link" href="/2020/10/27/%E5%8E%9F%E7%A0%81%E8%A1%A5%E7%A0%81%E4%B8%8E%E5%8F%8D%E7%A0%81/">原码补码与反码</a></h1><div class="post-meta"><span class="post-meta-item post-meta-item--createtime"><span class="post-meta-item__icon"><i class="far fa-calendar-plus"></i></span><span class="post-meta-item__info">发表于</span><span class="post-meta-item__value">2020-10-27</span></span><span class="post-meta-item post-meta-item--updatetime"><span class="post-meta-item__icon"><i class="far fa-calendar-check"></i></span><span class="post-meta-item__info">更新于</span><span class="post-meta-item__value">2020-11-23</span></span><span class="post-meta-item post-meta-item--wordcount"><span class="post-meta-item__icon"><i class="far fa-file-word"></i></span><span class="post-meta-item__info">字数统计</span><span class="post-meta-item__value">459</span></span><span class="post-meta-item post-meta-item--readtime"><span class="post-meta-item__icon"><i class="far fa-clock"></i></span><span class="post-meta-item__info">阅读时长</span><span class="post-meta-item__value">2分</span></span></div></header><div class="post-body"><div class="post-excerpt">
+        <h3 id="一-机器数和真值">
+          <a href="#一-机器数和真值" class="heading-link"><i class="fas fa-link"></i></a>一. 机器数和真值</h3>
+      <p>1、机器数</p>
+<blockquote>
+<p>一个数在计算机中的二进制表示形式,  叫做这个数的机器数。机器数是带符号的，计算机中，最高位存放符号, 称之为符号位，符号位非负数为0, 负数为1.</p>
+</blockquote>
+<p>2、真值</p>
+<blockquote>
+<p>带符号位的机器数对应的真正数值称为机器数的真值。</p>
+</blockquote>
+<p>十进制中的数 <code>+3</code>的机器数是<code>00000011</code>, 真值是<code>+0000011</code></p>
+<p>十进制中的数 <code>-3</code>的机器数是<code>10000011</code>, 真值是<code>-0000011</code></p>
+
+        <h3 id="二-原码-反码-补码">
+          <a href="#二-原码-反码-补码" class="heading-link"><i class="fas fa-link"></i></a>二. 原码, 反码, 补码</h3>
+      <blockquote>
+<p>计算机要使用一定的编码方式存储数据. 原码, 反码, 补码是机器存储一个具体数字的编码方式.</p>
+</blockquote>
+
+        <h4 id="1-原码">
+          <a href="#1-原码" class="heading-link"><i class="fas fa-link"></i></a>1. 原码</h4>
+      <blockquote>
+<p>原码就是符号位加上真值的绝对值, 最高位表示符号, 其余位表示值</p>
+</blockquote>
+<figure class="highlight plain"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">[+1]原 &#x3D; 0000 0001</span><br><span class="line">[-1]原 &#x3D; 1000 0001</span><br></pre></td></tr></table></div></figure>
+
+<blockquote>
+<p>8位二进制数的取值范围是<code>[1111 1111, 0111 1111]</code>, 十进制表示： <code>[-127, 127]</code></p>
+</blockquote>
+
+        <h4 id="2-反码">
+          <a href="#2-反码" class="heading-link"><i class="fas fa-link"></i></a>2. 反码</h4>
+      <blockquote>
+<ul>
+<li>正数的反码是其本身</li>
+<li>负数的反码是在其原码的基础上, 符号位不变，其余各个位取反.</li>
+</ul>
+</blockquote>
+<figure class="highlight plain"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">[+1] &#x3D; [0000 0001]原 &#x3D; [0000 0001]反</span><br><span class="line"></span><br><span class="line">[-1] &#x3D; [1000 0001]原 &#x3D; [1111 1110]反</span><br></pre></td></tr></table></div></figure>
+
+        <h4 id="3-补码">
+          <a href="#3-补码" class="heading-link"><i class="fas fa-link"></i></a>3. 补码</h4>
+      <blockquote>
+<ul>
+<li>正数的补码就是其本身</li>
+<li>负数的补码是在其原码的基础上, 符号位不变, 其余各位取反, 最后+1. (即在反码的基础上+1)</li>
+</ul>
+</blockquote>
+<figure class="highlight plain"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">[+1] &#x3D; [0000 0001]原 &#x3D; [0000 0001]反 &#x3D; [0000 0001]补</span><br><span class="line"></span><br><span class="line">[-1] &#x3D; [1000 0001]原 &#x3D; [1111 1110]反 &#x3D; [1111 1111]补</span><br></pre></td></tr></table></div></figure>
+
+<hr>
+<p>计算机进行加减乘除运算时会将符号位参与运算</p>
+<p>反码： 减法（存在 0 和最小位 -128问题）</p>
+<p>补码： 减法（perfect）</p>
+<blockquote>
+<p>原码或反码表示的范围为[-127, +127], 而使用补码表示的范围为[-128, 127].</p>
+</blockquote>
+<ul>
+<li>正数：补码=反码=原码</li>
+<li>负数：补码=负数反码+1。</li>
+</ul>
+</div></div></article><article class="postlist-item post"><header class="post-header"><h1 class="post-title"><a class="post-title__link" href="/2020/10/27/%E5%88%9D%E5%A7%8B%E5%8C%96React%E9%A1%B9%E7%9B%AE/">初始化React项目</a></h1><div class="post-meta"><span class="post-meta-item post-meta-item--createtime"><span class="post-meta-item__icon"><i class="far fa-calendar-plus"></i></span><span class="post-meta-item__info">发表于</span><span class="post-meta-item__value">2020-10-27</span></span><span class="post-meta-item post-meta-item--updatetime"><span class="post-meta-item__icon"><i class="far fa-calendar-check"></i></span><span class="post-meta-item__info">更新于</span><span class="post-meta-item__value">2020-11-23</span></span><span class="post-meta-item post-meta-item--wordcount"><span class="post-meta-item__icon"><i class="far fa-file-word"></i></span><span class="post-meta-item__info">字数统计</span><span class="post-meta-item__value">1.3k</span></span><span class="post-meta-item post-meta-item--readtime"><span class="post-meta-item__icon"><i class="far fa-clock"></i></span><span class="post-meta-item__info">阅读时长</span><span class="post-meta-item__value">14分</span></span></div></header><div class="post-body"><div class="post-excerpt"><blockquote>
+<p>记一个完整的 <code>react</code> + <code>antd-mobile</code> + <code>redux</code></p>
+</blockquote>
+<ol start="0">
+<li>下载脚手架工具 <code>npm install -g create-react-app</code></li>
+<li>初始化 react 项目:<br><code>create-react-app project-name</code></li>
+<li>测试运行:</li>
+</ol>
+<ul>
+<li>载入刚刚下载的目录：<code>cd project-name</code></li>
+<li>运行： <code>npm start</code></li>
+<li>查看结果： <code>localhost:3000</code></li>
+</ul>
+<ol start="3">
+<li>编码测试与打包发布项目</li>
+</ol>
+<ul>
+<li>编码测试：<blockquote>
+<ul>
+<li><code>npm start</code></li>
+<li>访问网址： <span class="exturl"><a class="exturl__link" target="_blank" rel="noopener" href="http://localhost:3000/">http://localhost:3000</a><span class="exturl__icon"><i class="fas fa-external-link-alt"></i></span></span></li>
+<li>自动编译打包刷新(live-reload)</li>
+</ul>
+</blockquote>
+</li>
+<li>打包发布<blockquote>
+<ul>
+<li><code>npm run build</code></li>
+<li>全局安装<code>npm install -g serve</code></li>
+<li><code>serve build</code></li>
+<li>访问网址： <span class="exturl"><a class="exturl__link" target="_blank" rel="noopener" href="http://localhost:5000/">http://localhost:5000</a><span class="exturl__icon"><i class="fas fa-external-link-alt"></i></span></span></li>
+<li>如果不想使用 <code>serve build</code> 启动打包好的项目，也可以自定义 <code>package.json</code>文件的<code>scripts</code>, 如：</li>
+</ul>
+</blockquote>
+</li>
+</ul>
+<figure class="highlight plain"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&quot;scripts&quot;: &#123;</span><br><span class="line">    &quot;prod&quot;: &quot;serve build&quot;</span><br><span class="line"> &#125;</span><br></pre></td></tr></table></div></figure>
+<p>这样子就可以通过 <code>npm prod</code>启动打包好的项目</p>
+<ol start="4">
+<li>项目目录设计</li>
+</ol>
+<figure class="highlight plain"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">- node_modules</span><br><span class="line">- public</span><br><span class="line">|-- favicon.icon</span><br><span class="line">|-- index.html</span><br><span class="line">- src</span><br><span class="line">|-- api</span><br><span class="line">|-- assets</span><br><span class="line">|-- components</span><br><span class="line">|-- containers</span><br><span class="line">|-- redux</span><br><span class="line">    |-- actions.js</span><br><span class="line">    |-- actions-type.js</span><br><span class="line">    |-- reducers.js</span><br><span class="line">    |-- store.js</span><br><span class="line">|-- utils</span><br><span class="line">- index.js</span><br><span class="line">- .gitignore</span><br><span class="line">- package.json</span><br><span class="line">- package-lock.json</span><br><span class="line">- README.md</span><br><span class="line">- yarn.lock</span><br></pre></td></tr></table></div></figure>
+
+<ol start="5">
+<li>引入<code>antd-mobile</code></li>
+</ol>
+<ul>
+<li>下载： <code>npm install antd-mobile --save</code></li>
+<li>页面处理: <code>index.html</code><figure class="highlight plain"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line">&lt;!DOCTYPE html&gt;</span><br><span class="line">&lt;html lang&#x3D;&quot;en&quot;&gt;</span><br><span class="line">  &lt;head&gt;</span><br><span class="line">    &lt;meta charset&#x3D;&quot;utf-8&quot; &#x2F;&gt;</span><br><span class="line">    &lt;link rel&#x3D;&quot;icon&quot; href&#x3D;&quot;%PUBLIC_URL%&#x2F;favicon.ico&quot; &#x2F;&gt;</span><br><span class="line">    &lt;meta name&#x3D;&quot;viewport&quot; content&#x3D;&quot;width&#x3D;device-width, initial-scale&#x3D;1, maximum-scale&#x3D;1, minimum-scale&#x3D;1, user-scalable&#x3D;no&quot; &#x2F;&gt;</span><br><span class="line">    &lt;meta name&#x3D;&quot;theme-color&quot; content&#x3D;&quot;#000000&quot; &#x2F;&gt;</span><br><span class="line">    &lt;meta</span><br><span class="line">      name&#x3D;&quot;description&quot;</span><br><span class="line">      content&#x3D;&quot;Web site created using create-react-app&quot;</span><br><span class="line">    &#x2F;&gt;</span><br><span class="line">    &lt;link rel&#x3D;&quot;apple-touch-icon&quot; href&#x3D;&quot;%PUBLIC_URL%&#x2F;logo192.png&quot; &#x2F;&gt;</span><br><span class="line">    &lt;link rel&#x3D;&quot;manifest&quot; href&#x3D;&quot;%PUBLIC_URL%&#x2F;manifest.json&quot; &#x2F;&gt;</span><br><span class="line">    &lt;title&gt;React App&lt;&#x2F;title&gt;</span><br><span class="line">    &lt;script src&#x3D;&quot;https:&#x2F;&#x2F;as.alipayobjects.com&#x2F;g&#x2F;component&#x2F;fastclick&#x2F;1.0.6&#x2F;fastclick.js&quot;&gt;&lt;&#x2F;script&gt;</span><br><span class="line">    &lt;script&gt;</span><br><span class="line">      if (&#39;addEventListener&#39; in document) &#123;</span><br><span class="line">        document.addEventListener(&#39;DOMContentLoaded&#39;, function() &#123;</span><br><span class="line">          FastClick.attach(document.body);</span><br><span class="line">        &#125;, false);</span><br><span class="line">      &#125;</span><br><span class="line">      if(!window.Promise) &#123;</span><br><span class="line">        document.writeln(&#39;&lt;script src&#x3D;&quot;https:&#x2F;&#x2F;as.alipayobjects.com&#x2F;g&#x2F;component&#x2F;es6-promise&#x2F;3.2.2&#x2F;es6-promise.min.js&quot;&#39;+&#39;&gt;&#39;+&#39;&lt;&#39;+&#39;&#x2F;&#39;+&#39;script&gt;&#39;);</span><br><span class="line">      &#125;</span><br><span class="line">    &lt;&#x2F;script&gt;</span><br><span class="line">  &lt;&#x2F;head&gt;</span><br><span class="line">  &lt;body&gt;</span><br><span class="line">    &lt;noscript&gt;You need to enable JavaScript to run this app.&lt;&#x2F;noscript&gt;</span><br><span class="line">    &lt;div id&#x3D;&quot;root&quot;&gt;&lt;&#x2F;div&gt;</span><br><span class="line">  &lt;&#x2F;body&gt;</span><br><span class="line">&lt;&#x2F;html&gt;</span><br></pre></td></tr></table></div></figure></li>
+<li>组件打包方式与组件样式定制参考：<span class="exturl"><a class="exturl__link" target="_blank" rel="noopener" href="https://www.cnblogs.com/serahuli/p/13569980.html">https://www.cnblogs.com/serahuli/p/13569980.html</a><span class="exturl__icon"><i class="fas fa-external-link-alt"></i></span></span></li>
+</ul>
+<ol start="6">
+<li><p>引入路由 <code>react-router-dom</code><br><code>npm install --save react-router-dom</code></p>
+</li>
+<li><p>引入<code>redux</code></p>
+</li>
+</ol>
+<p><code>npm install --save redux@3.7.2 react-redux redux-thunk</code></p>
+<p><code>npm install --save-dev redux-devtools-extension</code></p>
+<hr>
+<p>整合之后代码如下<br>创建路由组件：</p>
+
+        <h4 id="containers-Register-jsx">
+          <a href="#containers-Register-jsx" class="heading-link"><i class="fas fa-link"></i></a>containers/Register.jsx</h4>
+      <figure class="highlight plain"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">import React, &#123;Component&#125; from &#39;react&#39;</span><br><span class="line"></span><br><span class="line">export default class Register extends Component &#123;</span><br><span class="line">  render() &#123;</span><br><span class="line">    return (</span><br><span class="line">      &lt;div&gt;</span><br><span class="line">        Register</span><br><span class="line">      &lt;&#x2F;div&gt;</span><br><span class="line">    )</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></div></figure>
+
+        <h4 id="containers-Login-jsx">
+          <a href="#containers-Login-jsx" class="heading-link"><i class="fas fa-link"></i></a>containers/Login.jsx</h4>
+      <figure class="highlight plain"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">import React, &#123;Component&#125; from &#39;react&#39;</span><br><span class="line"></span><br><span class="line">export default class Login extends Component &#123;</span><br><span class="line">  render() &#123;</span><br><span class="line">    return (</span><br><span class="line">      &lt;div&gt;</span><br><span class="line">        Login</span><br><span class="line">      &lt;&#x2F;div&gt;</span><br><span class="line">    )</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></div></figure>
+
+        <h4 id="containers-main-js">
+          <a href="#containers-main-js" class="heading-link"><i class="fas fa-link"></i></a>containers/main.js</h4>
+      <figure class="highlight plain"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">import React, &#123;Component&#125; from &#39;react&#39;</span><br><span class="line"></span><br><span class="line">export default class Main extends Component &#123;</span><br><span class="line">  render() &#123;</span><br><span class="line">    return (</span><br><span class="line">      &lt;div&gt;</span><br><span class="line">        Main</span><br><span class="line">      &lt;&#x2F;div&gt;</span><br><span class="line">    )</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></div></figure>
+
+
+        <h4 id="redux-reducers-js">
+          <a href="#redux-reducers-js" class="heading-link"><i class="fas fa-link"></i></a>redux/reducers.js</h4>
+      <figure class="highlight plain"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;*</span><br><span class="line"> 包含多个 reducer 函数， 根据旧的 state 和指定的 action 返回一个 新的 state</span><br><span class="line"> *&#x2F;</span><br><span class="line"></span><br><span class="line">import &#123; combineReducers &#125; from &#39;redux&#39;</span><br><span class="line"></span><br><span class="line">function XXX(state &#x3D; 0, action) &#123;</span><br><span class="line">  return state</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">function YYY(state &#x3D; 0, action) &#123;</span><br><span class="line">  return state</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">export default combineReducers(&#123;</span><br><span class="line">  XXX,</span><br><span class="line">  YYY</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></div></figure>
+
+        <h4 id="redux-store-js">
+          <a href="#redux-store-js" class="heading-link"><i class="fas fa-link"></i></a>redux/store.js</h4>
+      <figure class="highlight plain"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;*</span><br><span class="line">  redux 最核心的管理对象模块</span><br><span class="line"> *&#x2F;</span><br><span class="line"></span><br><span class="line">import &#123; createStore, applyMiddleware &#125; from &#39;redux&#39;</span><br><span class="line">import thunk from &#39;redux-thunk&#39;</span><br><span class="line">import &#123; composeWithDevTools &#125; from &#39;redux-devtools-extension&#39;</span><br><span class="line"></span><br><span class="line">import reducers from &#39;.&#x2F;reducers&#39;</span><br><span class="line"></span><br><span class="line">&#x2F;&#x2F; 向外暴露 store</span><br><span class="line">export default createStore(reducers, composeWithDevTools(applyMiddleware(thunk)))</span><br><span class="line"></span><br></pre></td></tr></table></div></figure>
+
+
+        <h4 id="index-js">
+          <a href="#index-js" class="heading-link"><i class="fas fa-link"></i></a>index.js</h4>
+      <figure class="highlight plain"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line">import React from &#39;react&#39;</span><br><span class="line">import ReactDOM from  &#39;react-dom&#39;</span><br><span class="line"></span><br><span class="line">&#x2F;&#x2F; 路由</span><br><span class="line">import &#123; HashRouter, Route, Switch &#125; from &#39;react-router-dom&#39;</span><br><span class="line">import Register from &#39;.&#x2F;containers&#x2F;register&#x2F;register&#39;</span><br><span class="line">import Login from &#39;.&#x2F;containers&#x2F;login&#x2F;login&#39;;</span><br><span class="line"></span><br><span class="line">&#x2F;&#x2F; store</span><br><span class="line">import &#123; Provider &#125; from &#39;react-redux&#39;</span><br><span class="line">import store from &#39;.&#x2F;redux&#x2F;store&#39;;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">ReactDOM.render((</span><br><span class="line">  &lt;Provider store&#x3D;&#123; store &#125;&gt;</span><br><span class="line">    &lt;HashRouter&gt;</span><br><span class="line">      &lt;Switch&gt;</span><br><span class="line">        &lt;Route path&#x3D;&#39;&#x2F;register&#39; component&#x3D;&#123; Register &#125;&gt;&lt;&#x2F;Route&gt;</span><br><span class="line">        &lt;Route path&#x3D;&#39;&#x2F;login&#39; component&#x3D;&#123; Login &#125;&gt;&lt;&#x2F;Route&gt;</span><br><span class="line">        &lt;Route component&#x3D;&#123; Main &#125;&gt;&lt;&#x2F;Route&gt;</span><br><span class="line">      &lt;&#x2F;Switch&gt;</span><br><span class="line">    &lt;&#x2F;HashRouter&gt;</span><br><span class="line">  &lt;&#x2F;Provider&gt;</span><br><span class="line">), document.getElementById(&#39;root&#39;))</span><br><span class="line"></span><br></pre></td></tr></table></div></figure>
+
+
+        <h4 id="index-html">
+          <a href="#index-html" class="heading-link"><i class="fas fa-link"></i></a>index.html</h4>
+      <figure class="highlight plain"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line">&lt;!DOCTYPE html&gt;</span><br><span class="line">&lt;html lang&#x3D;&quot;en&quot;&gt;</span><br><span class="line">  &lt;head&gt;</span><br><span class="line">    &lt;meta charset&#x3D;&quot;utf-8&quot; &#x2F;&gt;</span><br><span class="line">    &lt;link rel&#x3D;&quot;icon&quot; href&#x3D;&quot;%PUBLIC_URL%&#x2F;favicon.ico&quot; &#x2F;&gt;</span><br><span class="line">    &lt;meta name&#x3D;&quot;viewport&quot; content&#x3D;&quot;width&#x3D;device-width, initial-scale&#x3D;1, maximum-scale&#x3D;1, minimum-scale&#x3D;1, user-scalable&#x3D;no&quot; &#x2F;&gt;</span><br><span class="line">    &lt;meta name&#x3D;&quot;theme-color&quot; content&#x3D;&quot;#000000&quot; &#x2F;&gt;</span><br><span class="line">    &lt;meta</span><br><span class="line">      name&#x3D;&quot;description&quot;</span><br><span class="line">      content&#x3D;&quot;Web site created using create-react-app&quot;</span><br><span class="line">    &#x2F;&gt;</span><br><span class="line">    &lt;link rel&#x3D;&quot;apple-touch-icon&quot; href&#x3D;&quot;%PUBLIC_URL%&#x2F;logo192.png&quot; &#x2F;&gt;</span><br><span class="line">    &lt;link rel&#x3D;&quot;manifest&quot; href&#x3D;&quot;%PUBLIC_URL%&#x2F;manifest.json&quot; &#x2F;&gt;</span><br><span class="line">    &lt;title&gt;React App&lt;&#x2F;title&gt;</span><br><span class="line">    &lt;script src&#x3D;&quot;https:&#x2F;&#x2F;as.alipayobjects.com&#x2F;g&#x2F;component&#x2F;fastclick&#x2F;1.0.6&#x2F;fastclick.js&quot;&gt;&lt;&#x2F;script&gt;</span><br><span class="line">    &lt;script&gt;</span><br><span class="line">      if (&#39;addEventListener&#39; in document) &#123;</span><br><span class="line">        document.addEventListener(&#39;DOMContentLoaded&#39;, function() &#123;</span><br><span class="line">          FastClick.attach(document.body);</span><br><span class="line">        &#125;, false);</span><br><span class="line">      &#125;</span><br><span class="line">      if(!window.Promise) &#123;</span><br><span class="line">        document.writeln(&#39;&lt;script src&#x3D;&quot;https:&#x2F;&#x2F;as.alipayobjects.com&#x2F;g&#x2F;component&#x2F;es6-promise&#x2F;3.2.2&#x2F;es6-promise.min.js&quot;&#39;+&#39;&gt;&#39;+&#39;&lt;&#39;+&#39;&#x2F;&#39;+&#39;script&gt;&#39;);</span><br><span class="line">      &#125;</span><br><span class="line">    &lt;&#x2F;script&gt;</span><br><span class="line">  &lt;&#x2F;head&gt;</span><br><span class="line">  &lt;body&gt;</span><br><span class="line">    &lt;noscript&gt;You need to enable JavaScript to run this app.&lt;&#x2F;noscript&gt;</span><br><span class="line">    &lt;div id&#x3D;&quot;root&quot;&gt;&lt;&#x2F;div&gt;</span><br><span class="line">  &lt;&#x2F;body&gt;</span><br><span class="line">&lt;&#x2F;html&gt;</span><br><span class="line"></span><br></pre></td></tr></table></div></figure></div></div></article><article class="postlist-item post"><header class="post-header"><h1 class="post-title"><a class="post-title__link" href="/2020/10/27/%E5%85%BC%E5%AE%B9IE%E6%B5%8F%E8%A7%88%E5%99%A8/">vue项目兼容IE浏览器</a></h1><div class="post-meta"><span class="post-meta-item post-meta-item--createtime"><span class="post-meta-item__icon"><i class="far fa-calendar-plus"></i></span><span class="post-meta-item__info">发表于</span><span class="post-meta-item__value">2020-10-27</span></span><span class="post-meta-item post-meta-item--updatetime"><span class="post-meta-item__icon"><i class="far fa-calendar-check"></i></span><span class="post-meta-item__info">更新于</span><span class="post-meta-item__value">2020-11-23</span></span><span class="post-meta-item post-meta-item--wordcount"><span class="post-meta-item__icon"><i class="far fa-file-word"></i></span><span class="post-meta-item__info">字数统计</span><span class="post-meta-item__value">152</span></span><span class="post-meta-item post-meta-item--readtime"><span class="post-meta-item__icon"><i class="far fa-clock"></i></span><span class="post-meta-item__info">阅读时长</span><span class="post-meta-item__value">1分</span></span></div></header><div class="post-body"><div class="post-excerpt"><p>我使用 vue-cli 搭建的项目，chorm浏览器一切正常，但是IE浏览器却是一片空白，出现这种问题，是因为缺少 <code>babel-polyfill</code> 处理器的缘故;</p>
+<p>1、安装 <code>babel-polyfill</code><br>     <code> npm install babel-polyfill --save-dev</code><br>2、在<code>main.js</code>文件中引入<code>babel-polyfill</code>；<br>      <code>import &#39;babel-polyfill&#39;</code><br>3、在 webpack配置文件 <code>webpack.base.config.js</code> 中将entry中的app: ‘./src/main.js’配置改为：app: [‘babel-polyfill’, ‘./src/main.js’]；<br><img src="/2020/10/27/%E5%85%BC%E5%AE%B9IE%E6%B5%8F%E8%A7%88%E5%99%A8/1879741-20200610212728544-2021199193.png"></p>
+<p>— 配置完之后重新打包刷新浏览器即可。</p>
+<p>——————2020.6.22更新<br>如果用到了第三方插件，即用到了 ‘babel-loader’解析的地方，也需要进行配置：<br><img src="/2020/10/27/%E5%85%BC%E5%AE%B9IE%E6%B5%8F%E8%A7%88%E5%99%A8/1879741-20200622120054186-240213618.png"></p>
+</div></div></article><article class="postlist-item post"><header class="post-header"><h1 class="post-title"><a class="post-title__link" href="/2020/10/27/%E5%9C%A8-vue-js-%E4%B8%AD%E6%B7%BB%E5%8A%A0%E7%BD%91%E7%AB%99-ico-%E5%9B%BE%E6%A0%87/">在 vue.js 中添加网站 ico 图标</a></h1><div class="post-meta"><span class="post-meta-item post-meta-item--createtime"><span class="post-meta-item__icon"><i class="far fa-calendar-plus"></i></span><span class="post-meta-item__info">发表于</span><span class="post-meta-item__value">2020-10-27</span></span><span class="post-meta-item post-meta-item--updatetime"><span class="post-meta-item__icon"><i class="far fa-calendar-check"></i></span><span class="post-meta-item__info">更新于</span><span class="post-meta-item__value">2020-11-23</span></span><span class="post-meta-item post-meta-item--wordcount"><span class="post-meta-item__icon"><i class="far fa-file-word"></i></span><span class="post-meta-item__info">字数统计</span><span class="post-meta-item__value">191</span></span><span class="post-meta-item post-meta-item--readtime"><span class="post-meta-item__icon"><i class="far fa-clock"></i></span><span class="post-meta-item__info">阅读时长</span><span class="post-meta-item__value">1分</span></span></div></header><div class="post-body"><div class="post-excerpt"><blockquote>
+<p>准备：添加 <code>ico</code>图标在与<code>index.html</code>同级的目录</p>
+</blockquote>
+<ol>
+<li><p>第一种方法：</p>
+<p>在<code>index.html</code>中引入：</p>
+<figure class="highlight html"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">link</span> <span class="attr">rel</span>=<span class="string">&quot;shortcuticon&quot;</span> <span class="attr">type</span>=<span class="string">&quot;image/x-icon&quot;</span> <span class="attr">href</span>=<span class="string">&quot;./favicon.ico&quot;</span> /&gt;</span> </span><br></pre></td></tr></table></div></figure>
+</li>
+<li><p>第二种方法</p>
+<p>在<code>webpack.dev.conf.js</code> 和 <code>webpack.prop.conf.js</code> 目录找到<code>plugins</code>的<code>new HtmlWebpackPlugin</code>中添加</p>
+<p><code>favicon: &#39;./favicon.ico&#39;</code></p>
+<p>效果如下：</p>
+<figure class="highlight javascript"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">new</span> HtmlWebpackPlugin(&#123;</span><br><span class="line">      filename: <span class="string">&#x27;index.html&#x27;</span>,</span><br><span class="line">      template: <span class="string">&#x27;index.html&#x27;</span>,</span><br><span class="line">      inject: <span class="literal">true</span>,</span><br><span class="line">      favicon: <span class="string">&#x27;./favicon.ico&#x27;</span></span><br><span class="line">    &#125;),</span><br></pre></td></tr></table></div></figure>
+<blockquote>
+<p> 第二种方法的基础上还是无法显示，可以在<code>webpack.prod.conf.js</code>的相同位置添加<code>favicon: &#39;./favicon.ico&#39;</code></p>
+</blockquote>
+<p>3 . 一般两种方法择其一就好，修改配置之后要重新run 一下，查看网页源代码有配置ico的代码就对了；如果一直不对的话，清缓存</p>
+<pre><code>重启电脑就好；</code></pre>
+</li>
+</ol>
+</div></div></article><article class="postlist-item post"><header class="post-header"><h1 class="post-title"><a class="post-title__link" href="/2020/10/22/js%E7%AE%97%E6%B3%95%E4%B9%8B%E6%8E%92%E5%BA%8F/">js算法之排序</a></h1><div class="post-meta"><span class="post-meta-item post-meta-item--createtime"><span class="post-meta-item__icon"><i class="far fa-calendar-plus"></i></span><span class="post-meta-item__info">发表于</span><span class="post-meta-item__value">2020-10-22</span></span><span class="post-meta-item post-meta-item--updatetime"><span class="post-meta-item__icon"><i class="far fa-calendar-check"></i></span><span class="post-meta-item__info">更新于</span><span class="post-meta-item__value">2020-11-23</span></span><span class="post-meta-item post-meta-item--wordcount"><span class="post-meta-item__icon"><i class="far fa-file-word"></i></span><span class="post-meta-item__info">字数统计</span><span class="post-meta-item__value">210</span></span><span class="post-meta-item post-meta-item--readtime"><span class="post-meta-item__icon"><i class="far fa-clock"></i></span><span class="post-meta-item__info">阅读时长</span><span class="post-meta-item__value">1分</span></span></div></header><div class="post-body"><div class="post-excerpt"><p>排序：9、3、4、2、6、7、5、1、8</p>
+<p>从小到大</p>
+
+        <h3 id="冒泡排序">
+          <a href="#冒泡排序" class="heading-link"><i class="fas fa-link"></i></a>冒泡排序</h3>
+      <p>每次比较两个相邻的元素，如果它们的顺序错误就把它们交换过来。</p>
+<blockquote>
+<p>9、3、4、2、6、7、5、1、8</p>
+<p>3、9、4、2、6、7、5、1、8</p>
+</blockquote>
+<p>时间复杂度 O(n2)</p>
+
+        <h3 id="选择排序">
+          <a href="#选择排序" class="heading-link"><i class="fas fa-link"></i></a>选择排序</h3>
+      
+        <h3 id="插入排序">
+          <a href="#插入排序" class="heading-link"><i class="fas fa-link"></i></a>插入排序</h3>
+      
+        <h1 id="排序">
+          <a href="#排序" class="heading-link"><i class="fas fa-link"></i></a>排序</h1>
+      <ul>
+<li><p>比大小</p>
+<blockquote>
+<ul>
+<li>交换（冒泡、快排）</li>
+<li>插入（）</li>
+<li>选择</li>
+<li>归并</li>
+</ul>
+</blockquote>
+</li>
+<li></li>
+</ul>
+
+        <h2 id="冒泡排序-1">
+          <a href="#冒泡排序-1" class="heading-link"><i class="fas fa-link"></i></a>冒泡排序</h2>
+      <blockquote>
+<ol>
+<li><p>比较相邻的元素，后一个大于前一个，两个元素交换</p>
+</li>
+<li><p>重复比较，从第一个开始到最后一个，两两比较，除了已经固定的元素。</p>
+</li>
+</ol>
+</blockquote>
+
+        <h2 id="选择排序-1">
+          <a href="#选择排序-1" class="heading-link"><i class="fas fa-link"></i></a>选择排序</h2>
+      <blockquote>
+<p>每次循环找本次循环最小的元素，把最小的元素放到固定的位置。（通过索引比较）</p>
+</blockquote>
+
+        <h2 id="插入排序-1">
+          <a href="#插入排序-1" class="heading-link"><i class="fas fa-link"></i></a>插入排序</h2>
+      <blockquote>
+<p>把无序的数据插入到有序的队列</p>
+</blockquote>
+
+        <h2 id="快速排序">
+          <a href="#快速排序" class="heading-link"><i class="fas fa-link"></i></a>快速排序</h2>
+      <blockquote>
+<p>o</p>
+</blockquote>
+</div></div></article><article class="postlist-item post"><header class="post-header"><h1 class="post-title"><a class="post-title__link" href="/2020/10/22/2020-B%E7%AB%99%E5%AD%A6%E4%B9%A0-%E5%A4%A7%E9%9D%A2%E8%AF%95%E6%80%BB%E7%BB%93/">2020前半年总结</a></h1><div class="post-meta"><span class="post-meta-item post-meta-item--createtime"><span class="post-meta-item__icon"><i class="far fa-calendar-plus"></i></span><span class="post-meta-item__info">发表于</span><span class="post-meta-item__value">2020-10-22</span></span><span class="post-meta-item post-meta-item--updatetime"><span class="post-meta-item__icon"><i class="far fa-calendar-check"></i></span><span class="post-meta-item__info">更新于</span><span class="post-meta-item__value">2020-11-23</span></span><span class="post-meta-item post-meta-item--wordcount"><span class="post-meta-item__icon"><i class="far fa-file-word"></i></span><span class="post-meta-item__info">字数统计</span><span class="post-meta-item__value">9</span></span><span class="post-meta-item post-meta-item--readtime"><span class="post-meta-item__icon"><i class="far fa-clock"></i></span><span class="post-meta-item__info">阅读时长</span><span class="post-meta-item__value">1分</span></span></div></header><div class="post-body"><div class="post-excerpt">有东西被加密了, 请输入密码查看.</div><div class="post-readmore"><a class="post-readmore__link" href="/2020/10/22/2020-B%E7%AB%99%E5%AD%A6%E4%B9%A0-%E5%A4%A7%E9%9D%A2%E8%AF%95%E6%80%BB%E7%BB%93/"><span class="post-readmore__text">阅读全文</span><span class="post-readmore__icon"><i class="fas fa-long-arrow-alt-right"></i></span></a></div></div></article><article class="postlist-item post"><header class="post-header"><h1 class="post-title"><a class="post-title__link" href="/2020/10/22/css-BFC%E6%98%AF%E4%BB%80%E4%B9%88/">css BFC是什么</a></h1><div class="post-meta"><span class="post-meta-item post-meta-item--createtime"><span class="post-meta-item__icon"><i class="far fa-calendar-plus"></i></span><span class="post-meta-item__info">发表于</span><span class="post-meta-item__value">2020-10-22</span></span><span class="post-meta-item post-meta-item--updatetime"><span class="post-meta-item__icon"><i class="far fa-calendar-check"></i></span><span class="post-meta-item__info">更新于</span><span class="post-meta-item__value">2020-11-23</span></span><span class="post-meta-item post-meta-item--wordcount"><span class="post-meta-item__icon"><i class="far fa-file-word"></i></span><span class="post-meta-item__info">字数统计</span><span class="post-meta-item__value">743</span></span><span class="post-meta-item post-meta-item--readtime"><span class="post-meta-item__icon"><i class="far fa-clock"></i></span><span class="post-meta-item__info">阅读时长</span><span class="post-meta-item__value">4分</span></span></div></header><div class="post-body"><div class="post-excerpt">
+        <h2 id="什么是BFC">
+          <a href="#什么是BFC" class="heading-link"><i class="fas fa-link"></i></a>什么是BFC</h2>
+      <p><strong>块格式化上下文（Block Formatting Context，BFC）</strong> 是Web页面的可视CSS渲染的一部分，是块盒子的布局过程发生的区域，也是浮动元素与其他元素交互的区域。</p>
+<p>创建块格式化上下文的几种方式：</p>
+<ul>
+<li>根元素（<code>&lt;html&gt;）</code></li>
+<li>浮动元素（元素的 <a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/CSS/float"><code>float</code></a> 不是 <code>none</code>）</li>
+<li>绝对定位元素（元素的 <a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/CSS/position"><code>position</code></a> 为 <code>absolute</code> 或 <code>fixed</code>）</li>
+<li><a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/CSS/overflow"><code>overflow</code></a> 值不为 <code>visible</code> 的块元素</li>
+<li>行内块元素（元素的 <a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/CSS/display"><code>display</code></a> 为 <code>inline-block</code>）</li>
+<li>表格单元格（元素的 <a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/CSS/display"><code>display</code></a> 为 <code>table-cell</code>，HTML表格单元格默认为该值）</li>
+<li>表格标题（元素的 <a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/CSS/display"><code>display</code></a> 为 <code>table-caption</code>，HTML表格标题默认为该值）</li>
+<li>匿名表格单元格元素（元素的 <a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/CSS/display"><code>display</code></a> 为 <code>table、table-row</code>、 <code>table-row-group</code>、<code>table-header-group</code>、<code>table-footer-group</code>（分别是HTML table、row、tbody、thead、tfoot 的默认属性）或 <code>inline-table</code>）</li>
+<li><a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/CSS/display"><code>display</code></a> 值为 <code>flow-root</code> 的元素</li>
+<li><a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/CSS/contain"><code>contain</code></a> 值为 <code>layout</code>、<code>content </code>或 paint 的元素</li>
+<li>弹性元素（<a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/CSS/display"><code>display</code></a> 为 <code>flex</code> 或 <code>inline-flex </code>元素的直接子元素）</li>
+<li>网格元素（<a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/CSS/display"><code>display</code></a> 为 <code>grid</code> 或 <code>inline-grid</code> 元素的直接子元素）</li>
+<li>多列容器（元素的 <a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/CSS/column-count"><code>column-count</code></a> 或 <a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/CSS/column-width"><code>column-width</code></a> 不为 <code>auto</code>，包括 <code>column-count</code> 为 <code>1</code>）</li>
+<li><code>column-span</code> 为 <code>all</code> 的元素始终会创建一个新的BFC，即使该元素没有包裹在一个多列容器中（<span class="exturl"><a class="exturl__link" target="_blank" rel="noopener" href="https://github.com/w3c/csswg-drafts/commit/a8634b96900279916bd6c505fda88dda71d8ec51">标准变更</a><span class="exturl__icon"><i class="fas fa-external-link-alt"></i></span></span>，<span class="exturl"><a class="exturl__link" target="_blank" rel="noopener" href="https://bugs.chromium.org/p/chromium/issues/detail?id=709362">Chrome bug</a><span class="exturl__icon"><i class="fas fa-external-link-alt"></i></span></span>）。</li>
+</ul>
+<p>总结一下就是：</p>
+<ul>
+<li>HTML 根元素</li>
+<li>float 不为 none</li>
+<li>overflow 不为 visible</li>
+<li>position 为 fixed 或者 absolute</li>
+<li>display 的值 为 inline-block,  flex相关属性, table以及table相关属性，grid相关属性</li>
+</ul>
+<p>可以理解块格式化上下文是一个独立的渲染区域，不继承父级的渲染区域，规定了元素内部如何进行布局。</p>
+<blockquote>
+<p><strong>FC</strong>是formatting context的首字母缩写，直译过来是格式化上下文，它<strong>是页面中的一块渲染区域</strong>，有一套渲染规则，决定了其子元素如何布局，以及和其他元素之间的关系和作用。常见的FC有BFC、IFC（行级格式化上下文），还有GFC（网格布局格式化上下文）和FFC（自适应格式化上下文）</p>
+</blockquote>
+<p>BFC 可以简单的理解为<strong>某个元素的一个 CSS 属性</strong>，只不过这个属性<strong>不能被开发者显式的修改</strong>，拥有这个属性的元素对内部元素和外部元素会表现出一些特性。</p>
+
+        <h2 id="BFC布局规则：">
+          <a href="#BFC布局规则：" class="heading-link"><i class="fas fa-link"></i></a>BFC布局规则：</h2>
+      <ol>
+<li><p>区域内部元素在垂直方向默认排列</p>
+</li>
+<li><p>同一个区域的 两个相邻元素的 margin会发生重叠，保留最大的</p>
+</li>
+</ol>
+<p>3.每个元素的margin box的左边， 与包含块border box的左边相接触(对于从左往右的格式化，否则相反)。即使存在浮动也是如此。</p>
+<p>4.BFC的区域不会与float box重叠。</p>
+<p>5.BFC就是页面上的一个隔离的独立容器，容器里面的子元素不会影响到外面的元素。反之也如此。</p>
+<p>6.计算BFC的高度时，浮动元素也参与计算</p>
+</div></div></article></section><nav class="paginator"><div class="paginator-inner"><a class="extend prev" rel="prev" href="/page/2/"><i class="fas fa-angle-left"></i></a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><span class="page-number current">3</span><a class="page-number" href="/page/4/">4</a><a class="page-number" href="/page/5/">5</a><a class="extend next" rel="next" href="/page/4/"><i class="fas fa-angle-right"></i></a></div></nav></div></div><div class="sidebar-wrap" id="sidebar-wrap"><aside class="sidebar" id="sidebar"><section class="sidebar-toc hide"></section><!-- ov = overview--><section class="sidebar-ov"><div class="sidebar-ov-author"><div class="sidebar-ov-author__avatar"><img class="sidebar-ov-author__avatar_img" src="/images/icons/stun-logo.svg" alt="avatar"></div><p class="sidebar-ov-author__text">是狐狸丫</p></div><div class="sidebar-ov-social"><a class="sidebar-ov-social-item" href="https://github.com/serahuli" target="_blank" rel="noopener" data-popover="Github" data-popover-pos="up"><span class="sidebar-ov-social-item__icon"><i class="fab fa-github"></i></span></a><a class="sidebar-ov-social-item" href="https://www.cnblogs.com/serahuli" target="_blank" rel="noopener" data-popover="博客园" data-popover-pos="up"><span class="sidebar-ov-social-item__icon"><i class="fab fa-pinterest"></i></span></a></div><div class="sidebar-ov-state"><a class="sidebar-ov-state-item sidebar-ov-state-item--posts" href="/archives/"><div class="sidebar-ov-state-item__count">44</div><div class="sidebar-ov-state-item__name">归档</div></a><a class="sidebar-ov-state-item sidebar-ov-state-item--categories" href="/categories/"><div class="sidebar-ov-state-item__count">10</div><div class="sidebar-ov-state-item__name">分类</div></a><a class="sidebar-ov-state-item sidebar-ov-state-item--tags" href="/tags/"><div class="sidebar-ov-state-item__count">18</div><div class="sidebar-ov-state-item__name">标签</div></a></div></section></aside></div><div class="clearfix"></div></div></main><footer class="footer" id="footer"><div class="footer-inner"><div><span>Copyright © 2019~2020</span><span class="footer__icon"><i class="fas fa-heart"></i></span><span>sera</span></div><div>🦋 你若盛开，蝴蝶自来 🦋</div></div></footer><div class="loading-bar" id="loading-bar"><div class="loading-bar__progress"></div></div><div class="back2top" id="back2top"><span class="back2top__icon"><i class="fas fa-rocket"></i></span></div></div><script src="https://cdn.jsdelivr.net/npm/jquery@v3.4.1/dist/jquery.min.js"></script><script src="https://cdn.jsdelivr.net/npm/velocity-animate@1.5.2/velocity.min.js"></script><script src="https://cdn.jsdelivr.net/npm/velocity-animate@1.5.2/velocity.ui.min.js"></script><script src="https://cdn.jsdelivr.net/npm/social-share.js@1.0.16/dist/js/social-share.min.js"></script><script src="/js/utils.js?v=2.1.1"></script><script src="/js/stun-boot.js?v=2.1.1"></script><script src="/js/scroll.js?v=2.1.1"></script><script src="/js/header.js?v=2.1.1"></script><script src="/js/sidebar.js?v=2.1.1"></script></body></html>

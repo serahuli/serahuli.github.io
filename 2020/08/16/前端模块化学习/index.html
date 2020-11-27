@@ -1,0 +1,159 @@
+<!DOCTYPE html><html lang="zh-CN"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="format-detection" content="telephone=no"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-status-bar-style" content="black"><link rel="icon" href="/images/icons/favicon-16%C3%9716.png?v=2.1.1" type="image/png" sizes="16x16"><link rel="icon" href="/images/icons/favicon-32%C3%9732.png?v=2.1.1" type="image/png" sizes="32x32"><meta name="description" content="模块       早起设计没有相关概念，模块是实现特定功能的文件 好处：  避免变量污染，命名冲突 提高代码复用率 提高可维护性 方便依赖关系管理  历程：  函数封装 123function fn1() &amp;#123;&amp;#125;function fn2() &amp;#123;&amp;#125;  缺点：存在变量冲突问题，也没有依赖关系  对象封装 123456var">
+<meta property="og:type" content="article">
+<meta property="og:title" content="前端模块化学习">
+<meta property="og:url" content="http://example.com/2020/08/16/%E5%89%8D%E7%AB%AF%E6%A8%A1%E5%9D%97%E5%8C%96%E5%AD%A6%E4%B9%A0/index.html">
+<meta property="og:site_name" content="小狐狸の个人博客">
+<meta property="og:description" content="模块       早起设计没有相关概念，模块是实现特定功能的文件 好处：  避免变量污染，命名冲突 提高代码复用率 提高可维护性 方便依赖关系管理  历程：  函数封装 123function fn1() &amp;#123;&amp;#125;function fn2() &amp;#123;&amp;#125;  缺点：存在变量冲突问题，也没有依赖关系  对象封装 123456var">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2020-08-16T05:55:56.000Z">
+<meta property="article:modified_time" content="2020-11-23T05:57:05.000Z">
+<meta property="article:author" content="sera">
+<meta property="article:tag" content="前端">
+<meta name="twitter:card" content="summary"><title>前端模块化学习 | 小狐狸の个人博客</title><link ref="canonical" href="http://example.com/2020/08/16/%E5%89%8D%E7%AB%AF%E6%A8%A1%E5%9D%97%E5%8C%96%E5%AD%A6%E4%B9%A0/"><link rel="dns-prefetch" href="https://cdn.jsdelivr.net"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.12.1/css/all.min.css" type="text/css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/social-share.js@1.0.16/dist/css/share.min.css" type="text/css"><link rel="stylesheet" href="/css/index.css?v=2.1.1"><script>var Stun = window.Stun || {};
+var CONFIG = {
+  root: '/',
+  algolia: undefined,
+  fontIcon: {"prompt":{"success":"fas fa-check-circle","info":"fas fa-arrow-circle-right","warning":"fas fa-exclamation-circle","error":"fas fa-times-circle"},"copyBtn":"fas fa-copy"},
+  sidebar: {"offsetTop":"20px","tocMaxDepth":6},
+  header: {"enable":true,"showOnPost":false,"scrollDownIcon":true},
+  postWidget: {"endText":true},
+  nightMode: {"enable":true},
+  back2top: {"enable":true},
+  codeblock: {"style":"carbon","highlight":"ocean","wordWrap":false},
+  reward: false,
+  fancybox: false,
+  zoomImage: {"gapAside":"20px"},
+  galleryWaterfall: undefined,
+  lazyload: false,
+  pjax: undefined,
+  externalLink: {"icon":{"enable":true,"name":"fas fa-external-link-alt"}},
+  shortcuts: undefined,
+  prompt: {"copyButton":"复制","copySuccess":"复制成功","copyError":"复制失败"},
+  sourcePath: {"js":"js","css":"css","images":"images"},
+};
+
+window.CONFIG = CONFIG;</script><meta name="generator" content="Hexo 5.2.0"></head><body><div class="container" id="container"><header class="header" id="header"><div class="header-inner header-inner--height header-inner--bgcolor"><nav class="header-nav header-nav--sticky"><div class="header-nav-inner"><div class="header-nav-menubtn"><i class="fas fa-bars"></i></div><div class="header-nav-menu"><div class="header-nav-menu-item"><a class="header-nav-menu-item__link" href="/"><span class="header-nav-menu-item__icon"><i class="fas fa-home"></i></span><span class="header-nav-menu-item__text">首页</span></a></div><div class="header-nav-menu-item"><a class="header-nav-menu-item__link" href="/archives/"><span class="header-nav-menu-item__icon"><i class="fas fa-folder-open"></i></span><span class="header-nav-menu-item__text">归档</span></a></div><div class="header-nav-menu-item"><a class="header-nav-menu-item__link" href="/categories/"><span class="header-nav-menu-item__icon"><i class="fas fa-layer-group"></i></span><span class="header-nav-menu-item__text">分类</span></a></div><div class="header-nav-menu-item"><a class="header-nav-menu-item__link" href="/tags/"><span class="header-nav-menu-item__icon"><i class="fas fa-tags"></i></span><span class="header-nav-menu-item__text">标签</span></a></div><div class="header-nav-menu-item"><a class="header-nav-menu-item__link" href="/about"><span class="header-nav-menu-item__icon"><i class="fas fa-address-card"></i></span><span class="header-nav-menu-item__text">关于</span></a></div></div><div class="header-nav-mode"><div class="mode"><div class="mode-track"><span class="mode-track-moon"></span><span class="mode-track-sun"></span></div><div class="mode-thumb"></div></div></div></div></nav></div></header><main class="main" id="main"><div class="main-inner"><div class="content-wrap" id="content-wrap"><div class="content" id="content"><!-- Just used to judge whether it is an article page--><div id="is-post"></div><div class="post"><header class="post-header"><h1 class="post-title">前端模块化学习</h1><div class="post-meta"><span class="post-meta-item post-meta-item--createtime"><span class="post-meta-item__icon"><i class="far fa-calendar-plus"></i></span><span class="post-meta-item__info">发表于</span><span class="post-meta-item__value">2020-08-16</span></span><span class="post-meta-item post-meta-item--updatetime"><span class="post-meta-item__icon"><i class="far fa-calendar-check"></i></span><span class="post-meta-item__info">更新于</span><span class="post-meta-item__value">2020-11-23</span></span><span class="post-meta-item post-meta-item--wordcount"><span class="post-meta-item__icon"><i class="far fa-file-word"></i></span><span class="post-meta-item__info">字数统计</span><span class="post-meta-item__value">1.1k</span></span><span class="post-meta-item post-meta-item--readtime"><span class="post-meta-item__icon"><i class="far fa-clock"></i></span><span class="post-meta-item__info">阅读时长</span><span class="post-meta-item__value">8分</span></span></div></header><div class="post-body">
+        <h2 id="模块">
+          <a href="#模块" class="heading-link"><i class="fas fa-link"></i></a>模块</h2>
+      <p>早起设计没有相关概念，模块是实现特定功能的文件</p>
+<p><strong>好处</strong>：</p>
+<ol>
+<li>避免变量污染，命名冲突</li>
+<li>提高代码复用率</li>
+<li>提高可维护性</li>
+<li>方便依赖关系管理</li>
+</ol>
+<p><strong>历程：</strong></p>
+<ol>
+<li><p>函数封装</p>
+<figure class="highlight js"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">fn1</span>(<span class="params"></span>) </span>&#123;&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">fn2</span>(<span class="params"></span>) </span>&#123;&#125;</span><br></pre></td></tr></table></div></figure>
+
+<p>缺点：存在变量冲突问题，也没有依赖关系</p>
+</li>
+<li><p>对象封装</p>
+<figure class="highlight js"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> moudle = &#123;</span><br><span class="line">  <span class="keyword">var</span> v1 = <span class="number">1</span>;</span><br><span class="line">  <span class="keyword">var</span> v2 = <span class="number">2</span>;</span><br><span class="line">  function1: <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;&#125;</span><br><span class="line">	function2: <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></div></figure>
+
+<p>缺点：暴露私有成员，外部可修改</p>
+</li>
+<li><p>立即执行函数（IIFE）</p>
+<figure class="highlight js"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> moudle = (<span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  &#123;</span><br><span class="line">    <span class="keyword">var</span> v1 = <span class="number">1</span>;</span><br><span class="line">    <span class="keyword">var</span> v2 = <span class="number">2</span>;</span><br><span class="line">    <span class="comment">// 函数级作用域，所以被保护</span></span><br><span class="line">    function1: <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;&#125;</span><br><span class="line">    function2: <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;&#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 内部函数引用外部成员 =&gt; 闭包</span></span><br><span class="line">    <span class="keyword">return</span> &#123;</span><br><span class="line">      function1: function1,</span><br><span class="line">      function2: function2</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;)()</span><br></pre></td></tr></table></div></figure>
+
+<p>缺点：闭包是有成本 =》更多内存，功能相对较弱</p>
+</li>
+<li><p>模块化</p>
+</li>
+</ol>
+
+        <h2 id="模块化">
+          <a href="#模块化" class="heading-link"><i class="fas fa-link"></i></a>模块化</h2>
+      <p>常见的模块化规范：CommonJS、AMD、CMD、UMD、原生模块化（ES6）</p>
+<p><strong>CommonJS</strong></p>
+<p>CommonJS是服务器端模块的规范，Node.js采用该规范</p>
+<p>CommonJS规定一个单独文件就是一个模块，加载模块使用 require 方法，这个方法读取一个文件并执行，最后返回文件内部的 exports对象</p>
+<figure class="highlight js"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// dog.js</span></span><br><span class="line"><span class="keyword">var</span> b1 = <span class="number">123</span>;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">Dog</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="built_in">this</span>.eat = <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">&#x27;eat&#x27;</span>)</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="built_in">this</span>.walk = <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">&#x27;walk&#x27;</span>)</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> dog = <span class="keyword">new</span> Dog()</span><br><span class="line"><span class="built_in">exports</span>.dog = dog</span><br><span class="line"></span><br><span class="line"><span class="comment">// test.js</span></span><br><span class="line"><span class="keyword">var</span> dog = <span class="built_in">require</span>(<span class="string">&#x27;./foo&#x27;</span>).dog</span><br><span class="line"></span><br><span class="line">dog.eat() <span class="comment">// eat	</span></span><br></pre></td></tr></table></div></figure>
+
+<p>CommonJS 加载模块是同步的，只有加载完才会执行后面的操作。像Node.js主要用于服务器的编程，加载的模块文件一般位于本地硬盘，所以不必考虑异步问题 =》 CommonJS规范。但是浏览器环境从服务端加载就必定是异步模式，不采用 CommonJS规范。</p>
+<p><strong>AMD( Asynchromous Moudle Definition )模块</strong></p>
+<p>Require.js 实现</p>
+<p>AMD 是 RequireJS 在推广过程中对模块定义的规范</p>
+<p>AMD 异步加载模块。支持对象，函数，构造器，字符串，JSON等各种类型的模块， 适用 define 方法定义模块</p>
+<p><strong>CMD( Common Moudle Definition )模块</strong></p>
+<p>Sea.js 实现</p>
+<p>AMD 与 CMD 区别：</p>
+<ol>
+<li>对于依赖的模式 AMD提前执行，CMD延迟执行</li>
+<li>CMD依赖就近， AMD 依赖前置</li>
+<li>AMD 的 api 一个当多个用，CMD 模块功能单一</li>
+</ol>
+<p><strong>UMD(universal Moudle Definition)</strong></p>
+<p>服务器端加客户端通用</p>
+<p><strong>原生js模块化</strong></p>
+
+        <h2 id="对模块的实现">
+          <a href="#对模块的实现" class="heading-link"><i class="fas fa-link"></i></a>对模块的实现</h2>
+      
+        <h3 id="Common-js">
+          <a href="#Common-js" class="heading-link"><i class="fas fa-link"></i></a>Common.js</h3>
+      <p>Common.js 核心思想就是通过 require 同步加载所要依赖的其他模块(文件)，然后通过 exports 或者 module.exports 导出需要暴露的接口。</p>
+<ul>
+<li>require 引入外部模块</li>
+<li>exports 导出当前模块的方法或者变量，唯一的导出口</li>
+<li>module.exports 模块本身</li>
+</ul>
+<p>特点：</p>
+<blockquote>
+<ul>
+<li>所有代码都运行在模块作用域，不会污染全局作用域</li>
+<li>模块可以多次加载，但是只会在第一次加载时运行一次，运行结果被缓存，只会加载直接读取缓存结果。</li>
+<li>模块加载的顺序按照在代码出现的顺序（同步加载）</li>
+</ul>
+</blockquote>
+
+        <h4 id="commonJS-在-Node-环境的实现">
+          <a href="#commonJS-在-Node-环境的实现" class="heading-link"><i class="fas fa-link"></i></a>commonJS  在 Node 环境的实现</h4>
+      <p>根据定义，一个文件是一个单独的模块，拥有独立的作用域，模块的出口: module.exports    </p>
+<figure class="highlight js"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// math.js</span></span><br><span class="line"><span class="keyword">var</span> PI = <span class="number">3.14</span>;</span><br><span class="line"><span class="built_in">module</span>.exports.PI = PI;</span><br><span class="line"><span class="built_in">module</span>.exports.add = <span class="function">(<span class="params">m, n</span>) =&gt;</span> m + n</span><br><span class="line"></span><br><span class="line"><span class="comment">// test.js</span></span><br><span class="line"><span class="keyword">var</span> math = <span class="built_in">require</span>(<span class="string">&#x27;./math&#x27;</span>)</span><br><span class="line"><span class="built_in">console</span>.log(math.PI); <span class="comment">// 3.14</span></span><br><span class="line"><span class="built_in">console</span>.log(math.add(<span class="number">1</span>, <span class="number">4</span>));  <span class="comment">// 5</span></span><br></pre></td></tr></table></div></figure>
+
+
+        <h4 id="commonJS-在-浏览器-环境的实现">
+          <a href="#commonJS-在-浏览器-环境的实现" class="heading-link"><i class="fas fa-link"></i></a>commonJS  在 浏览器 环境的实现</h4>
+      <p>直接运行报错</p>
+<p>![image-20201016152516526](require报错 commonjs.png)</p>
+<blockquote>
+<ul>
+<li><p>全局安装browserify</p>
+<figure class="highlight js"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install browserify -g</span><br></pre></td></tr></table></div></figure>
+
+<p>通过运行命令执行</p>
+<figure class="highlight js"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">browserify myApp.js</span><br><span class="line"></span><br><span class="line">browserify myApp.js -&gt; myApp_01.js  <span class="comment">// 转到合适的文件</span></span><br></pre></td></tr></table></div></figure>
+</li>
+</ul>
+</blockquote>
+
+        <h3 id="ES6-模块化">
+          <a href="#ES6-模块化" class="heading-link"><i class="fas fa-link"></i></a>ES6 模块化</h3>
+      <p>特点</p>
+<blockquote>
+<ul>
+<li>每个模块只加载一次，每个 js只执行一次，如果下次加载相同的就从内存中加载，一个模块就是一个单例或者对象</li>
+<li>每个模块内声明的变量都是局部变量</li>
+<li>模块内部的变量或者函数可以通过 export导出</li>
+<li>一个模块可以导入别的模块</li>
+</ul>
+</blockquote>
+<p>后端使用</p>
+<figure class="highlight js"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 定义</span></span><br><span class="line"><span class="built_in">module</span>.exports.Circle = <span class="keyword">new</span> Circle &#123;</span><br><span class="line">  <span class="function"><span class="title">constructor</span>(<span class="params">radius</span>)</span> &#123;</span><br><span class="line">    <span class="built_in">this</span>.radius = redius</span><br><span class="line">    <span class="built_in">this</span>.PI = <span class="number">3.14</span></span><br><span class="line">  &#125;</span><br><span class="line">  <span class="function"><span class="title">area</span>(<span class="params"></span>)</span> &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="built_in">this</span>.radius * <span class="built_in">this</span>.radius * <span class="built_in">this</span>.PI</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 默认 定义</span></span><br><span class="line"><span class="built_in">module</span>.exports = <span class="keyword">new</span> Circle &#123;</span><br><span class="line">  <span class="function"><span class="title">constructor</span>(<span class="params">radius</span>)</span> &#123;</span><br><span class="line">    <span class="built_in">this</span>.radius = redius</span><br><span class="line">    <span class="built_in">this</span>.PI = <span class="number">3.14</span></span><br><span class="line">  &#125;</span><br><span class="line">  <span class="function"><span class="title">area</span>(<span class="params"></span>)</span> &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="built_in">this</span>.radius * <span class="built_in">this</span>.radius * <span class="built_in">this</span>.PI</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 导入使用模块</span></span><br><span class="line"><span class="keyword">var</span> Circle = <span class="built_in">require</span>(<span class="string">&#x27;./lib.js&#x27;</span>)</span><br><span class="line"><span class="keyword">const</span> c10 = <span class="keyword">new</span> Circle.Circle(<span class="number">10</span>);</span><br><span class="line">c10.area()</span><br><span class="line"><span class="comment">// 导入默认模块</span></span><br><span class="line"><span class="keyword">var</span> Circle = <span class="built_in">require</span>(<span class="string">&#x27;./lib.js&#x27;</span>)</span><br><span class="line"><span class="keyword">const</span> c10 = <span class="keyword">new</span> Circle(<span class="number">10</span>);</span><br><span class="line">c10.area()</span><br></pre></td></tr></table></div></figure>
+
+
+
+<p>前端使用</p>
+<figure class="highlight js"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// test</span></span><br><span class="line"><span class="keyword">import</span> &#123; messgae, add &#125; <span class="keyword">from</span> <span class="string">&#x27;./js/lib.js&#x27;</span>;</span><br><span class="line"><span class="built_in">console</span>.log(messgae)</span><br><span class="line"><span class="built_in">console</span>.log(add(<span class="number">2</span>,<span class="number">3</span>))</span><br><span class="line"></span><br><span class="line"><span class="comment">// dog</span></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">let</span> message = <span class="string">&#x27;Hello&#x27;</span></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">let</span> add = <span class="function">(<span class="params">m, n</span>) =&gt;</span> m + n </span><br></pre></td></tr></table></div></figure>
+
+</div><footer class="post-footer"><div class="post-ending ending"><div class="ending__text">------ 本文结束，感谢您的阅读 ------</div></div><div class="post-tags"><span class="post-tags-item"><span class="post-tags-item__icon"><i class="fas fa-tag"></i></span><a class="post-tags-item__link" href="http://example.com/tags/%E5%89%8D%E7%AB%AF/">前端</a></span></div><div class="post-share"><div class="social-share" data-sites="qq, wechat, douban, google">分享至: </div></div><nav class="post-paginator paginator"><div class="paginator-prev"><a class="paginator-prev__link" href="/2020/09/28/%E5%9B%BE%E8%A7%A3%E3%80%8AHTTP%E3%80%8B%E5%AD%A6%E4%B9%A0/"><span class="paginator-prev__icon"><i class="fas fa-angle-left"></i></span><span class="paginator-prev__text">图解《HTTP》学习</span></a></div><div class="paginator-next"><a class="paginator-next__link" href="/2020/08/12/%E4%BB%8E%E5%A4%B4%E5%AD%A6%E4%B9%A0-javascript/"><span class="paginator-prev__text">从头学习 javascript</span><span class="paginator-next__icon"><i class="fas fa-angle-right"></i></span></a></div></nav></footer></div></div></div><div class="sidebar-wrap" id="sidebar-wrap"><aside class="sidebar" id="sidebar"><div class="sidebar-nav"><span class="sidebar-nav-toc current">文章目录</span><span class="sidebar-nav-ov">站点概览</span></div><section class="sidebar-toc"><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%A8%A1%E5%9D%97"><span class="toc-number">1.</span> <span class="toc-text">
+          模块</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%A8%A1%E5%9D%97%E5%8C%96"><span class="toc-number">2.</span> <span class="toc-text">
+          模块化</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%AF%B9%E6%A8%A1%E5%9D%97%E7%9A%84%E5%AE%9E%E7%8E%B0"><span class="toc-number">3.</span> <span class="toc-text">
+          对模块的实现</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Common-js"><span class="toc-number">3.1.</span> <span class="toc-text">
+          Common.js</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#commonJS-%E5%9C%A8-Node-%E7%8E%AF%E5%A2%83%E7%9A%84%E5%AE%9E%E7%8E%B0"><span class="toc-number">3.1.1.</span> <span class="toc-text">
+          commonJS  在 Node 环境的实现</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#commonJS-%E5%9C%A8-%E6%B5%8F%E8%A7%88%E5%99%A8-%E7%8E%AF%E5%A2%83%E7%9A%84%E5%AE%9E%E7%8E%B0"><span class="toc-number">3.1.2.</span> <span class="toc-text">
+          commonJS  在 浏览器 环境的实现</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#ES6-%E6%A8%A1%E5%9D%97%E5%8C%96"><span class="toc-number">3.2.</span> <span class="toc-text">
+          ES6 模块化</span></a></li></ol></li></ol></section><!-- ov = overview--><section class="sidebar-ov hide"><div class="sidebar-ov-author"><div class="sidebar-ov-author__avatar"><img class="sidebar-ov-author__avatar_img" src="/images/icons/stun-logo.svg" alt="avatar"></div><p class="sidebar-ov-author__text">是狐狸丫</p></div><div class="sidebar-ov-social"><a class="sidebar-ov-social-item" href="https://github.com/serahuli" target="_blank" rel="noopener" data-popover="Github" data-popover-pos="up"><span class="sidebar-ov-social-item__icon"><i class="fab fa-github"></i></span></a><a class="sidebar-ov-social-item" href="https://www.cnblogs.com/serahuli" target="_blank" rel="noopener" data-popover="博客园" data-popover-pos="up"><span class="sidebar-ov-social-item__icon"><i class="fab fa-pinterest"></i></span></a></div><div class="sidebar-ov-state"><a class="sidebar-ov-state-item sidebar-ov-state-item--posts" href="/archives/"><div class="sidebar-ov-state-item__count">44</div><div class="sidebar-ov-state-item__name">归档</div></a><a class="sidebar-ov-state-item sidebar-ov-state-item--categories" href="/categories/"><div class="sidebar-ov-state-item__count">10</div><div class="sidebar-ov-state-item__name">分类</div></a><a class="sidebar-ov-state-item sidebar-ov-state-item--tags" href="/tags/"><div class="sidebar-ov-state-item__count">18</div><div class="sidebar-ov-state-item__name">标签</div></a></div></section><div class="sidebar-reading"><div class="sidebar-reading-info"><span class="sidebar-reading-info__text">你已阅读了 </span><span class="sidebar-reading-info__num">0</span></div><div class="sidebar-reading-line"></div></div></aside></div><div class="clearfix"></div></div></main><footer class="footer" id="footer"><div class="footer-inner"><div><span>Copyright © 2019~2020</span><span class="footer__icon"><i class="fas fa-heart"></i></span><span>sera</span></div><div>🦋 你若盛开，蝴蝶自来 🦋</div></div></footer><div class="loading-bar" id="loading-bar"><div class="loading-bar__progress"></div></div><div class="back2top" id="back2top"><span class="back2top__icon"><i class="fas fa-rocket"></i></span></div></div><script src="https://cdn.jsdelivr.net/npm/jquery@v3.4.1/dist/jquery.min.js"></script><script src="https://cdn.jsdelivr.net/npm/velocity-animate@1.5.2/velocity.min.js"></script><script src="https://cdn.jsdelivr.net/npm/velocity-animate@1.5.2/velocity.ui.min.js"></script><script src="https://cdn.jsdelivr.net/npm/social-share.js@1.0.16/dist/js/social-share.min.js"></script><script src="/js/utils.js?v=2.1.1"></script><script src="/js/stun-boot.js?v=2.1.1"></script><script src="/js/scroll.js?v=2.1.1"></script><script src="/js/header.js?v=2.1.1"></script><script src="/js/sidebar.js?v=2.1.1"></script></body></html>

@@ -1,0 +1,983 @@
+<!DOCTYPE html><html lang="zh-CN"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="format-detection" content="telephone=no"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-status-bar-style" content="black"><link rel="icon" href="/images/icons/favicon-16%C3%9716.png?v=2.1.1" type="image/png" sizes="16x16"><link rel="icon" href="/images/icons/favicon-32%C3%9732.png?v=2.1.1" type="image/png" sizes="32x32"><meta name="description" content="Javascript 介绍        JavaScript 又叫 JS， 是一种具有函数优先的轻量级，解释型或即时编译型的编程语言。 JavaScript 是一种基于原型编程、多范式的动态脚本语言，并且支持面向对象、命令式和声明式（如函数式编程）风格。 JavaScript 的标准是 ECMAScript . JavaScript 内置了一些对象的标准库">
+<meta property="og:type" content="article">
+<meta property="og:title" content="从头学习 javascript">
+<meta property="og:url" content="http://example.com/2020/08/12/%E4%BB%8E%E5%A4%B4%E5%AD%A6%E4%B9%A0-javascript/index.html">
+<meta property="og:site_name" content="小狐狸の个人博客">
+<meta property="og:description" content="Javascript 介绍        JavaScript 又叫 JS， 是一种具有函数优先的轻量级，解释型或即时编译型的编程语言。 JavaScript 是一种基于原型编程、多范式的动态脚本语言，并且支持面向对象、命令式和声明式（如函数式编程）风格。 JavaScript 的标准是 ECMAScript . JavaScript 内置了一些对象的标准库">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2020-08-12T05:50:01.000Z">
+<meta property="article:modified_time" content="2020-11-23T05:57:05.000Z">
+<meta property="article:author" content="sera">
+<meta property="article:tag" content="前端">
+<meta name="twitter:card" content="summary"><title>从头学习 javascript | 小狐狸の个人博客</title><link ref="canonical" href="http://example.com/2020/08/12/%E4%BB%8E%E5%A4%B4%E5%AD%A6%E4%B9%A0-javascript/"><link rel="dns-prefetch" href="https://cdn.jsdelivr.net"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.12.1/css/all.min.css" type="text/css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/social-share.js@1.0.16/dist/css/share.min.css" type="text/css"><link rel="stylesheet" href="/css/index.css?v=2.1.1"><script>var Stun = window.Stun || {};
+var CONFIG = {
+  root: '/',
+  algolia: undefined,
+  fontIcon: {"prompt":{"success":"fas fa-check-circle","info":"fas fa-arrow-circle-right","warning":"fas fa-exclamation-circle","error":"fas fa-times-circle"},"copyBtn":"fas fa-copy"},
+  sidebar: {"offsetTop":"20px","tocMaxDepth":6},
+  header: {"enable":true,"showOnPost":false,"scrollDownIcon":true},
+  postWidget: {"endText":true},
+  nightMode: {"enable":true},
+  back2top: {"enable":true},
+  codeblock: {"style":"carbon","highlight":"ocean","wordWrap":false},
+  reward: false,
+  fancybox: false,
+  zoomImage: {"gapAside":"20px"},
+  galleryWaterfall: undefined,
+  lazyload: false,
+  pjax: undefined,
+  externalLink: {"icon":{"enable":true,"name":"fas fa-external-link-alt"}},
+  shortcuts: undefined,
+  prompt: {"copyButton":"复制","copySuccess":"复制成功","copyError":"复制失败"},
+  sourcePath: {"js":"js","css":"css","images":"images"},
+};
+
+window.CONFIG = CONFIG;</script><meta name="generator" content="Hexo 5.2.0"></head><body><div class="container" id="container"><header class="header" id="header"><div class="header-inner header-inner--height header-inner--bgcolor"><nav class="header-nav header-nav--sticky"><div class="header-nav-inner"><div class="header-nav-menubtn"><i class="fas fa-bars"></i></div><div class="header-nav-menu"><div class="header-nav-menu-item"><a class="header-nav-menu-item__link" href="/"><span class="header-nav-menu-item__icon"><i class="fas fa-home"></i></span><span class="header-nav-menu-item__text">首页</span></a></div><div class="header-nav-menu-item"><a class="header-nav-menu-item__link" href="/archives/"><span class="header-nav-menu-item__icon"><i class="fas fa-folder-open"></i></span><span class="header-nav-menu-item__text">归档</span></a></div><div class="header-nav-menu-item"><a class="header-nav-menu-item__link" href="/categories/"><span class="header-nav-menu-item__icon"><i class="fas fa-layer-group"></i></span><span class="header-nav-menu-item__text">分类</span></a></div><div class="header-nav-menu-item"><a class="header-nav-menu-item__link" href="/tags/"><span class="header-nav-menu-item__icon"><i class="fas fa-tags"></i></span><span class="header-nav-menu-item__text">标签</span></a></div><div class="header-nav-menu-item"><a class="header-nav-menu-item__link" href="/about"><span class="header-nav-menu-item__icon"><i class="fas fa-address-card"></i></span><span class="header-nav-menu-item__text">关于</span></a></div></div><div class="header-nav-mode"><div class="mode"><div class="mode-track"><span class="mode-track-moon"></span><span class="mode-track-sun"></span></div><div class="mode-thumb"></div></div></div></div></nav></div></header><main class="main" id="main"><div class="main-inner"><div class="content-wrap" id="content-wrap"><div class="content" id="content"><!-- Just used to judge whether it is an article page--><div id="is-post"></div><div class="post"><header class="post-header"><h1 class="post-title">从头学习 javascript</h1><div class="post-meta"><span class="post-meta-item post-meta-item--createtime"><span class="post-meta-item__icon"><i class="far fa-calendar-plus"></i></span><span class="post-meta-item__info">发表于</span><span class="post-meta-item__value">2020-08-12</span></span><span class="post-meta-item post-meta-item--updatetime"><span class="post-meta-item__icon"><i class="far fa-calendar-check"></i></span><span class="post-meta-item__info">更新于</span><span class="post-meta-item__value">2020-11-23</span></span><span class="post-meta-item post-meta-item--wordcount"><span class="post-meta-item__icon"><i class="far fa-file-word"></i></span><span class="post-meta-item__info">字数统计</span><span class="post-meta-item__value">8.4k</span></span><span class="post-meta-item post-meta-item--readtime"><span class="post-meta-item__icon"><i class="far fa-clock"></i></span><span class="post-meta-item__info">阅读时长</span><span class="post-meta-item__value">60分</span></span></div></header><div class="post-body">
+        <h2 id="Javascript-介绍">
+          <a href="#Javascript-介绍" class="heading-link"><i class="fas fa-link"></i></a>Javascript 介绍</h2>
+      <blockquote>
+<p><strong>JavaScript</strong> 又叫 <strong>JS</strong>， 是一种具有<span class="exturl"><a class="exturl__link" target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Glossary/First-class_Function">函数优先</a><span class="exturl__icon"><i class="fas fa-external-link-alt"></i></span></span>的轻量级，解释型或即时编译型的编程语言。</p>
+<p>JavaScript 是一种<span class="exturl"><a class="exturl__link" target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Glossary/Prototype-based_programming">基于原型编程</a><span class="exturl__icon"><i class="fas fa-external-link-alt"></i></span></span>、多范式的动态脚本语言，并且支持面向对象、命令式和声明式（如函数式编程）风格。</p>
+<p>JavaScript 的标准是 <span class="exturl"><a class="exturl__link" target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Language_Resources">ECMAScript</a><span class="exturl__icon"><i class="fas fa-external-link-alt"></i></span></span> .</p>
+<p>JavaScript 内置了一些对象的标准库，比如数组（<code>Array</code>），日期（<code>Date</code>），数学（<code>Math</code>）和一套核心语句，包括运算符、流程控制符以及声明方式等。</p>
+</blockquote>
+
+        <h2 id="基本语法">
+          <a href="#基本语法" class="heading-link"><i class="fas fa-link"></i></a>基本语法</h2>
+      
+        <h3 id="hello">
+          <a href="#hello" class="heading-link"><i class="fas fa-link"></i></a>hello</h3>
+      <figure class="highlight javascript"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">sayHi</span> (<span class="params">userName</span>) </span>&#123;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="string">`hi, <span class="subst">$&#123;userName&#125;</span>`</span>)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">sayHi(<span class="string">&#x27;sera&#x27;</span>) <span class="comment">//hi, sera</span></span><br></pre></td></tr></table></div></figure>
+
+<hr>
+
+        <h3 id="语法和数据类型">
+          <a href="#语法和数据类型" class="heading-link"><i class="fas fa-link"></i></a>语法和数据类型</h3>
+      
+        <h4 id="基本知识">
+          <a href="#基本知识" class="heading-link"><i class="fas fa-link"></i></a>基本知识</h4>
+      <blockquote>
+<ul>
+<li>JavaScript 是<strong>区分大小写</strong>的，并使用 <strong>Unicode</strong> 字符集。</li>
+<li>在 JavaScript 中，指令被称为语句 （<span class="exturl"><a class="exturl__link" target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Glossary/Statement">Statement</a><span class="exturl__icon"><i class="fas fa-external-link-alt"></i></span></span>），并用分号（;）进行分隔。如果一条语句独占一行的话，那么分号是可以省略的。（不建议）</li>
+<li>空白字符指的是空格、制表符和换行符等。</li>
+</ul>
+</blockquote>
+
+        <h4 id="注释">
+          <a href="#注释" class="heading-link"><i class="fas fa-link"></i></a>注释</h4>
+      <figure class="highlight javascript"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 单行注释</span></span><br><span class="line"></span><br><span class="line"><span class="comment">/* 这是一个更长的,</span></span><br><span class="line"><span class="comment">   多行注释</span></span><br><span class="line"><span class="comment">*/</span></span><br><span class="line"></span><br><span class="line"><span class="comment">/* 然而, 你不能, /* 嵌套注释 */</span> 语法错误 */</span><br></pre></td></tr></table></div></figure>
+
+
+        <h4 id="声明">
+          <a href="#声明" class="heading-link"><i class="fas fa-link"></i></a>声明</h4>
+      <p><code>var</code>: 声明一个变量，可选初始化一个值。</p>
+<p><code>let</code>: 声明一个块作用域的局部变量，可选初始化一个值。</p>
+<p><code>const</code>: 声明一个块作用域的只读常量。</p>
+<p><strong>变量（标识符）</strong>： 使用变量来作为值的符号名， 一个 JavaScript 标识符<strong>必须</strong>以字母、下划线（_）或者美元符号（$）开头；后续的字符也可以是数字（0-9）。</p>
+<p><strong>声明变量</strong>:</p>
+<blockquote>
+<ol>
+<li><code>var</code>: var x = 42, 用来声明局部变量和全局变量</li>
+<li>直接赋值： x = 42， 产生一个全局变量，严格模式报错</li>
+<li><code>let</code>: let y = 13， 声明块作用域的局部变量</li>
+</ol>
+</blockquote>
+<p><strong>变量求值</strong>:</p>
+<blockquote>
+<ol>
+<li><p>用 <code>var</code> 或 <code>let</code> 语句声明的变量，如果没有赋初始值，则其值为 <code>undefined</code> </p>
+</li>
+<li><p>如果访问一个未声明的变量会导致抛出一个引用错误（<code>ReferenceError</code>）异常</p>
+</li>
+<li><p>可以使用 <code>undefined</code> 来判断一个变量是否已赋值</p>
+</li>
+<li><p>数值类型环境中 <code>undefined</code> 值会被转换为 <code>NaN</code></p>
+<figure class="highlight javascript"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> a;</span><br><span class="line">a + <span class="number">2</span>;    <span class="comment">// NaN</span></span><br></pre></td></tr></table></div></figure>
+</li>
+<li><p>对一个 <code>null</code> 变量求值时，空值 <code>null</code> 在数值类型环境中会被当作0来对待，而布尔类型环境中会被当作 <code>false</code>。</p>
+<figure class="highlight javascript"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> n = <span class="literal">null</span>;</span><br><span class="line"><span class="built_in">console</span>.log(n * <span class="number">32</span>); <span class="comment">// 0</span></span><br></pre></td></tr></table></div></figure>
+</li>
+</ol>
+</blockquote>
+<p><strong>变量的作用域</strong></p>
+<blockquote>
+<p>在函数之外声明的变量，叫做<em>全局</em>变量，因为它可被当前文档中的任何其他代码所访问。在函数内部声明的变量，叫做<em>局部</em>变量，因为它只能在当前函数的内部访问。</p>
+<ul>
+<li>ECMAScript 6 之前的 JavaScript 没有 <span class="exturl"><a class="exturl__link" target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/JavaScript/Guide/Statements#Block_Statement">语句块</a><span class="exturl__icon"><i class="fas fa-external-link-alt"></i></span></span> 作用域；相反，语句块中声明的变量将成为语句块所在函数（或全局作用域）的局部变量。</li>
+</ul>
+</blockquote>
+<p><strong>变量提升</strong></p>
+<blockquote>
+<p>JavaScript 变量是被“提升”或移到了函数或语句的最前面。但是，提升后的变量将返回 undefined 值。因此在使用或引用某个变量之后进行声明和初始化操作，这个被提升的变量仍将返回 undefined 值。</p>
+</blockquote>
+<figure class="highlight javascript"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 例子1</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="built_in">console</span>.log(x === <span class="literal">undefined</span>); <span class="comment">// true</span></span><br><span class="line"><span class="keyword">var</span> x = <span class="number">3</span>;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 例子2</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="comment">// will return a value of undefined</span></span><br><span class="line"><span class="keyword">var</span> myvar = <span class="string">&quot;my value&quot;</span>;</span><br><span class="line"></span><br><span class="line">(<span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="built_in">console</span>.log(myvar); <span class="comment">// undefined</span></span><br><span class="line">  <span class="keyword">var</span> myvar = <span class="string">&quot;local value&quot;</span>;</span><br><span class="line">&#125;)();</span><br></pre></td></tr></table></div></figure>
+
+<p>由于存在变量提升，一个函数中所有的<code>var</code>语句应尽可能地放在接近函数顶部的地方。这个习惯将大大提升代码的清晰度。</p>
+<blockquote>
+<p> 在ES6+中，在变量声明之前引用这个变量，将抛出引用错误（ReferenceError）。这个变量将从代码块一开始的时候就处在一个“暂时性死区”，直到这个变量被声明为止。</p>
+<figure class="highlight js"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">console</span>.log(x); <span class="comment">// ReferenceError</span></span><br><span class="line"><span class="keyword">let</span> x = <span class="number">3</span>;</span><br></pre></td></tr></table></div></figure>
+</blockquote>
+<p>对于函数来说，只有函数声明会被提升到顶部，而函数表达式不会被提升。</p>
+<figure class="highlight javascript"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/* 函数声明 */</span></span><br><span class="line"></span><br><span class="line">foo(); <span class="comment">// &quot;bar&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">foo</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="string">&quot;bar&quot;</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment">/* 函数表达式 */</span></span><br><span class="line"></span><br><span class="line">baz(); <span class="comment">// 类型错误：baz 不是一个函数</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> baz = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="string">&quot;bar2&quot;</span>);</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></div></figure>
+
+<p><strong>全局变量</strong></p>
+<blockquote>
+<p>全局变量是<em>全局对象</em>的属性。在网页中，（缺省的）全局对象是 <code>window</code>。可以用形如 <code>window.</code><em><code>variable</code></em> 的语法来设置和访问全局变量</p>
+</blockquote>
+<p><strong>常量(Constants)</strong></p>
+<blockquote>
+<p>用关键字 <code>const</code> 创建一个只读的常量 。<code>const PI = 3.14;</code></p>
+<p>常量不可以通过重新赋值改变其值，也不可以在代码运行时重新声明。它必须被初始化为某个值。</p>
+<p>在同一作用域中，不能使用与变量名或函数名相同的名字来命名常量。</p>
+</blockquote>
+<figure class="highlight js"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 这会造成错误</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">f</span>(<span class="params"></span>) </span>&#123;&#125;;</span><br><span class="line"><span class="keyword">const</span> f = <span class="number">5</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 这也会造成错误</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">f</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="keyword">const</span> g = <span class="number">5</span>;</span><br><span class="line">  <span class="keyword">var</span> g;</span><br><span class="line"></span><br><span class="line">  <span class="comment">//语句</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></div></figure>
+
+<ul>
+<li>对象属性被赋值为常量是不受保护的,数组的被定义为常量也是不受保护的</li>
+</ul>
+<figure class="highlight js"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> MY_OBJECT = &#123;<span class="string">&quot;key&quot;</span>: <span class="string">&quot;value&quot;</span>&#125;;</span><br><span class="line">MY_OBJECT.key = <span class="string">&quot;otherValue&quot;</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> MY_ARRAY = [<span class="string">&#x27;HTML&#x27;</span>,<span class="string">&#x27;CSS&#x27;</span>];</span><br><span class="line">MY_ARRAY.push(<span class="string">&#x27;JAVASCRIPT&#x27;</span>);</span><br><span class="line"><span class="built_in">console</span>.log(MY_ARRAY); <span class="comment">//logs [&#x27;HTML&#x27;,&#x27;CSS&#x27;,&#x27;JAVASCRIPT&#x27;];</span></span><br></pre></td></tr></table></div></figure>
+
+<hr>
+
+        <h3 id="数据结构和类型">
+          <a href="#数据结构和类型" class="heading-link"><i class="fas fa-link"></i></a>数据结构和类型</h3>
+      <p>最新的 ECMAScript 标准定义了8种数据类型</p>
+<ul>
+<li>七种基本数据类型:<ul>
+<li>布尔值（Boolean），有2个值分别是：<code>true</code> 和 <code>false</code>.</li>
+<li>null ， 一个表明 null 值的特殊关键字。 JavaScript 是大小写敏感的，因此 <code>null</code> 与 <code>Null</code>、<code>NULL</code>或变体完全不同。</li>
+<li>undefined ，和 null 一样是一个特殊的关键字，undefined 表示变量未赋值时的属性。</li>
+<li>数字（Number），整数或浮点数，例如： <code>42</code> 或者 <code>3.14159</code>。</li>
+<li>任意精度的整数 (BigInt) ，可以安全地存储和操作大整数，甚至可以超过数字的安全整数限制。</li>
+<li>字符串（String），字符串是一串表示文本值的字符序列，例如：”Howdy” 。</li>
+<li>代表（Symbol） ( 在 ECMAScript 6 中新添加的类型).。一种实例是唯一且不可改变的数据类型。</li>
+</ul>
+</li>
+<li>以及对象（Object）。</li>
+</ul>
+<p><strong>数据类型的转换</strong></p>
+<blockquote>
+<p>JavaScript是一种动态类型语言(dynamically typed language)。这意味着你在声明变量时可以不必指定数据类型，而数据类型会在代码执行时会根据需要自动转换。</p>
+</blockquote>
+<ul>
+<li>在包含的数字和字符串的表达式中使用加法运算符（+），JavaScript 会把数字转换成字符串。</li>
+<li>在涉及其它运算符（如下面的减号’-‘）时，JavaScript语言不会把数字变为字符串。</li>
+</ul>
+<figure class="highlight javascript"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">&quot;37&quot;</span> - <span class="number">7</span> <span class="comment">// 30</span></span><br><span class="line"><span class="string">&quot;37&quot;</span> + <span class="number">7</span> <span class="comment">// &quot;377&quot;</span></span><br></pre></td></tr></table></div></figure>
+
+<p><strong>字符串转换为数字</strong></p>
+<ol>
+<li>**<code>parseInt()</code>**只能返回整数，会丢失小数部分。调用 parseInt 时最好总是带上进制(radix) 参数，这个参数用于指定使用哪一种进制。</li>
+<li><strong><code>parseFloat</code></strong></li>
+<li>一元<strong>加法运算符</strong></li>
+</ol>
+<figure class="highlight javascript"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">&quot;1.1&quot;</span> + <span class="string">&quot;1.1&quot;</span> = <span class="string">&quot;1.11.1&quot;</span></span><br><span class="line">(+<span class="string">&quot;1.1&quot;</span>) + (+<span class="string">&quot;1.1&quot;</span>) = <span class="number">2.2</span>   </span><br></pre></td></tr></table></div></figure>
+
+<hr>
+
+        <h3 id="字面量">
+          <a href="#字面量" class="heading-link"><i class="fas fa-link"></i></a>字面量</h3>
+      <p>字面量是由语法表达式定义的常量</p>
+<p><strong>数组字面量 (Array literals)</strong></p>
+<p>数组字面值是一个封闭在方括号对([])中的包含有零个或多个表达式的列表，其中每个表达式代表数组的一个元素。当你使用数组字面值创建一个数组时，该数组将会以指定的值作为其元素进行初始化，而其长度被设定为元素的个数。</p>
+<figure class="highlight js"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> coffees = [<span class="string">&quot;French Roast&quot;</span>, <span class="string">&quot;Colombian&quot;</span>, <span class="string">&quot;Kona&quot;</span>];</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> a=[<span class="number">3</span>];</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> fish = [<span class="string">&quot;Lion&quot;</span>, , <span class="string">&quot;Angel&quot;</span>]; <span class="comment">// Loin, undefined, Angel</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(a.length); <span class="comment">// 1</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(a[<span class="number">0</span>]); <span class="comment">// 3</span></span><br></pre></td></tr></table></div></figure>
+
+<p>数组字面值同时也是数组对象, 你在同一行中连写两个逗号（,），数组中就会产生一个没有被指定的元素，其初始值是<code>undefined</code>。</p>
+<p><strong>显式地将缺失的元素声明为<code>undefined</code>，将大大提高你的代码的清晰度和可维护性</strong>。</p>
+<p><strong>布尔字面量 (Boolean literals)</strong></p>
+<ul>
+<li>true</li>
+<li>false</li>
+</ul>
+<p><strong>整数 (Integers)</strong></p>
+<ul>
+<li>十进制整数字面量由一串数字序列组成，且没有前缀0。</li>
+<li>八进制的整数以 0（或0O、0o）开头，只能包括数字0-7。严格模式下，八进制整数字面量必须以0o或0O开头，而不能以0开头。</li>
+<li>十六进制整数以0x（或0X）开头，可以包含数字（0-9）和字母 a<del>f 或 A</del>F。</li>
+<li>二进制整数以0b（或0B）开头，只能包含数字0和1。</li>
+</ul>
+<p><strong>浮点数字面量 (Floating-point literals)</strong></p>
+<ul>
+<li>一个十进制整数，可以带正负号（即前缀“+”或“ - ”），</li>
+<li>小数点（“.”），</li>
+<li>小数部分（由一串十进制数表示），</li>
+<li>指数部分。</li>
+</ul>
+<blockquote>
+<p>指数部分以“e”或“E”开头，后面跟着一个整数，可以有正负号（即前缀“+”或“-”）。浮点数字面量至少有一位数字，而且必须带小数点或者“e”（大写“E”也可）。</p>
+</blockquote>
+<figure class="highlight js"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">3.14</span>      </span><br><span class="line">-<span class="number">.2345789</span> <span class="comment">// -0.23456789</span></span><br><span class="line">-<span class="number">3.12e+12</span>  <span class="comment">// -3.12*1012</span></span><br><span class="line"><span class="number">.1e-23</span>    <span class="comment">// 0.1*10-23=10-24=1e-24</span></span><br></pre></td></tr></table></div></figure>
+
+<p><strong>对象字面量 (Object literals)</strong></p>
+<p>对象字面值是封闭在花括号对({})中的一个对象的零个或多个”属性名-值”对的（元素）列表。你不能在一条语句的开头就使用对象字面值，这将导致错误或产生超出预料的行为， 因为此时左花括号（{）会被认为是一个语句块的起始符号。</p>
+<blockquote>
+<p>对象属性名字可以是任意字符串，包括空串。如果对象属性名字不是合法的javascript标识符，它必须用””包裹。属性的名字不合法，那么便不能用.访问属性值，而是通过类数组标记(“[]”)访问和赋值。</p>
+</blockquote>
+<p><strong>增强的对象字面量 (Enhanced Object literals)</strong></p>
+<p>对象字面值扩展支持在创建时设置原型，简写了 foo: foo 形式的属性赋值，方法定义，支持父方法调用，以及使用表达式动态计算属性名。</p>
+<figure class="highlight javascript"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> foo = &#123;<span class="attr">a</span>: <span class="string">&quot;alpha&quot;</span>, <span class="number">2</span>: <span class="string">&quot;two&quot;</span>&#125;;</span><br><span class="line"><span class="built_in">console</span>.log(foo.a);    <span class="comment">// alpha</span></span><br><span class="line"><span class="built_in">console</span>.log(foo[<span class="number">2</span>]);   <span class="comment">// two</span></span><br><span class="line"><span class="built_in">console</span>.log(foo<span class="number">.2</span>);  <span class="comment">// SyntaxError: missing ) after argument list</span></span><br><span class="line"><span class="built_in">console</span>.log(foo[a]); <span class="comment">// ReferenceError: a is not defined</span></span><br><span class="line"><span class="built_in">console</span>.log(foo[<span class="string">&quot;a&quot;</span>]); <span class="comment">// alpha</span></span><br><span class="line"><span class="built_in">console</span>.log(foo[<span class="string">&quot;2&quot;</span>]); <span class="comment">// two</span></span><br></pre></td></tr></table></div></figure>
+
+<p><strong>RegExp 字面值</strong></p>
+<figure class="highlight javascript"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> re = <span class="regexp">/ab+c/</span></span><br></pre></td></tr></table></div></figure>
+
+<p><strong>字符串字面量 (String literals)</strong></p>
+<figure class="highlight javascript"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">&quot;foo&quot;</span></span><br><span class="line"><span class="string">&#x27;bar&#x27;</span></span><br><span class="line"><span class="string">&quot;1234&quot;</span></span><br><span class="line"><span class="string">&quot;one line \n another line&quot;</span></span><br><span class="line"><span class="string">&quot;John&#x27;s cat&quot;</span></span><br><span class="line"><span class="string">`Hello <span class="subst">$&#123;name&#125;</span>, how are you <span class="subst">$&#123;time&#125;</span>?`</span>   <span class="comment">// ES6</span></span><br></pre></td></tr></table></div></figure>
+
+<blockquote>
+<p>可以在字符串字面值上使用字符串对象的所有方法——JavaScript会自动将字符串字面值转换为一个临时字符串对象，调用该方法，然后废弃掉那个临时的字符串对象。</p>
+</blockquote>
+<p><strong>在字符串中使用的特殊字符</strong></p>
+<figure class="highlight js"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">&quot;one line \n another line&quot;</span></span><br></pre></td></tr></table></div></figure>
+
+<div class="table-container"><table>
+<thead>
+<tr>
+<th align="left">字符</th>
+<th align="left">意思</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">\0</td>
+<td align="left">Null字节</td>
+</tr>
+<tr>
+<td align="left">\b</td>
+<td align="left">退格符</td>
+</tr>
+<tr>
+<td align="left">\f</td>
+<td align="left">换页符</td>
+</tr>
+<tr>
+<td align="left">\n</td>
+<td align="left">换行符</td>
+</tr>
+<tr>
+<td align="left">\r</td>
+<td align="left">回车符</td>
+</tr>
+<tr>
+<td align="left">\t</td>
+<td align="left">Tab (制表符)</td>
+</tr>
+<tr>
+<td align="left">\v</td>
+<td align="left">垂直制表符</td>
+</tr>
+<tr>
+<td align="left">&#39;</td>
+<td align="left">单引号</td>
+</tr>
+<tr>
+<td align="left">&quot;</td>
+<td align="left">双引号</td>
+</tr>
+<tr>
+<td align="left">\</td>
+<td align="left">反斜杠字符（\）</td>
+</tr>
+<tr>
+<td align="left">*XXX*</td>
+<td align="left">由从0到377最多三位八进制数<em>XXX</em>表示的 Latin-1 字符。例如，\251是版权符号的八进制序列。</td>
+</tr>
+<tr>
+<td align="left">\x<em>XX</em></td>
+<td align="left">由从00和FF的两位十六进制数字XX表示的Latin-1字符。例如，\ xA9是版权符号的十六进制序列。</td>
+</tr>
+<tr>
+<td align="left"><em>\uXXXX</em></td>
+<td align="left">由四位十六进制数字XXXX表示的Unicode字符。例如，\ u00A9是版权符号的Unicode序列。见<span class="exturl"><a class="exturl__link" target="_blank" rel="noopener" href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Lexical_grammar#String_literals">Unicode escape sequences</a><span class="exturl__icon"><i class="fas fa-external-link-alt"></i></span></span> (Unicode 转义字符).</td>
+</tr>
+<tr>
+<td align="left">\u*{XXXXX}*</td>
+<td align="left">Unicode代码点 (code point) 转义字符。例如，\u{2F804} 相当于Unicode转义字符 \uD87E\uDC04的简写。</td>
+</tr>
+</tbody></table></div>
+<p>严格模式下，不能使用八进制转义字符。</p>
+<hr>
+
+        <h2 id="流程控制与错误处理">
+          <a href="#流程控制与错误处理" class="heading-link"><i class="fas fa-link"></i></a>流程控制与错误处理</h2>
+      <ul>
+<li>在JavaScript中，任何表达式(expression)都可以看作一条语句(statement)</li>
+</ul>
+
+        <h3 id="语句块">
+          <a href="#语句块" class="heading-link"><i class="fas fa-link"></i></a>语句块</h3>
+      <figure class="highlight js"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">   statement_1;   </span><br><span class="line">   statement_2;</span><br><span class="line">   .</span><br><span class="line">   .</span><br><span class="line">   .</span><br><span class="line">   statement_n;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></div></figure>
+
+<p>语句块通常用于流程控制，如<code>if</code>，<code>for</code>，<code>while</code>等等。</p>
+<blockquote>
+<p>在ECMAScript 6标准之前，Javascript没有块作用域。在一个块中引入的变量的作用域是<code>包含函数或脚本</code>，并且设置它们的效果会延续到块之外。</p>
+<figure class="highlight js"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> x = <span class="number">1</span>;</span><br><span class="line">&#123;</span><br><span class="line">  <span class="keyword">var</span> x = <span class="number">2</span>;</span><br><span class="line">&#125;</span><br><span class="line">alert(x); <span class="comment">// 输出的结果为 2</span></span><br></pre></td></tr></table></div></figure>
+</blockquote>
+
+        <h3 id="条件判断语句">
+          <a href="#条件判断语句" class="heading-link"><i class="fas fa-link"></i></a>条件判断语句</h3>
+      <ul>
+<li><code>if…else…</code></li>
+<li><code>if…else if… else…</code></li>
+<li><code>switch</code></li>
+</ul>
+<p><strong>if…else…</strong></p>
+<figure class="highlight js"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span> (condition) &#123;</span><br><span class="line">  statement_1;</span><br><span class="line">&#125;<span class="keyword">else</span> &#123;</span><br><span class="line">  statement_2;</span><br><span class="line">&#125; </span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> (condition_1) &#123;</span><br><span class="line">  statement_1;</span><br><span class="line">&#125;<span class="keyword">else</span> <span class="keyword">if</span> (condition_2) &#123;</span><br><span class="line">  statement_2;</span><br><span class="line">&#125;<span class="keyword">else</span> <span class="keyword">if</span> (condition_n_1) &#123;</span><br><span class="line">  statement_n;</span><br><span class="line">&#125;<span class="keyword">else</span> &#123;</span><br><span class="line">  statement_last;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></div></figure>
+
+<p>判断是错误（false）的值</p>
+<ul>
+<li>false</li>
+<li>undefined</li>
+<li>null</li>
+<li>0</li>
+<li>NaN</li>
+<li>0</li>
+</ul>
+<blockquote>
+<p>当传递给条件语句所有其他的值，包括所有对象会被计算为真</p>
+</blockquote>
+<p>**重点注意，Boolean对象，Boolean对象的假在判断语句中也是真 **</p>
+<figure class="highlight js"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> b = <span class="keyword">new</span> <span class="built_in">Boolean</span>(<span class="literal">false</span>);</span><br><span class="line"><span class="keyword">if</span> (b) <span class="comment">//结果视为真</span></span><br><span class="line"><span class="keyword">if</span> (b == <span class="literal">true</span>) <span class="comment">// 结果视为假</span></span><br></pre></td></tr></table></div></figure>
+
+<p><strong>switch</strong></p>
+<figure class="highlight javascript"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">switch</span> (expression) &#123;</span><br><span class="line">   <span class="keyword">case</span> label_1:</span><br><span class="line">      statements_1</span><br><span class="line">      [<span class="keyword">break</span>;]</span><br><span class="line">   <span class="keyword">case</span> label_2:</span><br><span class="line">      statements_2</span><br><span class="line">      [<span class="keyword">break</span>;]</span><br><span class="line">   ...</span><br><span class="line">   <span class="keyword">default</span>:</span><br><span class="line">      statements_def</span><br><span class="line">      [<span class="keyword">break</span>;]</span><br><span class="line">&#125;</span><br></pre></td></tr></table></div></figure>
+
+<ul>
+<li>计算<code>expression</code>的 值，等于 case跟的值，执行该case下的语句，该case存在<code>break;</code>则执行完之后结束该程序。</li>
+<li>如果，没有匹配到case，执行<code>default</code>后面的语句</li>
+</ul>
+<hr>
+
+        <h3 id="异常处理语句">
+          <a href="#异常处理语句" class="heading-link"><i class="fas fa-link"></i></a>异常处理语句</h3>
+      <p>用 <code>throw</code> 语句抛出一个异常并且用 <code>try...catch</code> 语句捕获处理它</p>
+<p>**<code>throw</code>**可以抛出任意表达式而不是特定一种类型的表达式</p>
+<figure class="highlight js"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">throw</span> <span class="string">&quot;Error2&quot;</span>;   <span class="comment">// String type</span></span><br><span class="line"><span class="keyword">throw</span> <span class="number">42</span>;         <span class="comment">// Number type</span></span><br><span class="line"><span class="keyword">throw</span> <span class="literal">true</span>;       <span class="comment">// Boolean type</span></span><br><span class="line"><span class="keyword">throw</span> &#123;<span class="attr">toString</span>: <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123; <span class="keyword">return</span> <span class="string">&quot;I&#x27;m an object!&quot;</span>; &#125; &#125;;</span><br></pre></td></tr></table></div></figure>
+
+<p>例子</p>
+<figure class="highlight js"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">/ Create an object type UserException</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">UserException</span> (<span class="params">message</span>)</span>&#123;</span><br><span class="line">  <span class="built_in">this</span>.message=message;</span><br><span class="line">  <span class="built_in">this</span>.name=<span class="string">&quot;UserException&quot;</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// Make the exception convert to a pretty string when used as</span></span><br><span class="line"><span class="comment">// a string (e.g. by the error console)</span></span><br><span class="line">UserException.prototype.toString = <span class="function"><span class="keyword">function</span> (<span class="params"></span>)</span>&#123;</span><br><span class="line">  <span class="keyword">return</span> <span class="built_in">this</span>.name + <span class="string">&#x27;: &quot;&#x27;</span> + <span class="built_in">this</span>.message + <span class="string">&#x27;&quot;&#x27;</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// Create an instance of the object type and throw it</span></span><br><span class="line"><span class="keyword">throw</span> <span class="keyword">new</span> UserException(<span class="string">&quot;Value too high&quot;</span>);</span><br></pre></td></tr></table></div></figure>
+
+<p><strong><code>try...catch</code></strong></p>
+<blockquote>
+<p><code>try...catch</code> 语句标记一块待尝试的语句，并规定一个以上的响应应该有一个异常被抛出。如果我们抛出一个异常，<code>try...catch</code>语句就捕获它。</p>
+</blockquote>
+<p>先执行 try中的语句，如果try中语句抛出异常，则转到catch，否则执行 catch。<code>finally</code>，跟在 <code>try...catch</code> 之后，无论是否抛出异常，都会执行 <code>finally</code>语句.</p>
+<p>catch指定了一个标识符，来存放抛出语句指定的值</p>
+<figure class="highlight js"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">try</span> &#123;&#125;</span><br><span class="line"><span class="keyword">catch</span> (e) &#123;</span><br><span class="line">  <span class="built_in">console</span>.log(e)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></div></figure>
+
+
+        <h3 id="使用Error对象">
+          <a href="#使用Error对象" class="heading-link"><i class="fas fa-link"></i></a>使用Error对象</h3>
+      <figure class="highlight js"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">doSomethingErrorProne</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="keyword">if</span> (ourCodeMakesAMistake()) &#123;</span><br><span class="line">    <span class="keyword">throw</span> (<span class="keyword">new</span> <span class="built_in">Error</span>(<span class="string">&#x27;The message&#x27;</span>));</span><br><span class="line">  &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">    doSomethingToGetAJavascriptError();</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">try</span> &#123;</span><br><span class="line">  doSomethingErrorProne();</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">catch</span> (e) &#123;</span><br><span class="line">  <span class="built_in">console</span>.log(e.name); <span class="comment">// logs &#x27;Error&#x27;</span></span><br><span class="line">  <span class="built_in">console</span>.log(e.message); <span class="comment">// logs &#x27;The message&#x27; or a JavaScript error message)</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></div></figure>
+
+
+        <h3 id="Promises">
+          <a href="#Promises" class="heading-link"><i class="fas fa-link"></i></a>Promises</h3>
+      <p>允许你对延时和异步操作流进行控制。</p>
+<p><code>Promise</code> 对象有以下几种状态：</p>
+<ul>
+<li><em>pending：</em>初始的状态，即正在执行，不处于 fulfilled 或 rejected 状态。</li>
+<li><em>fulfilled：</em>成功的完成了操作。</li>
+<li><em>rejected：</em>失败，没有完成操作。</li>
+<li><em>settled：</em>Promise 处于 fulfilled 或 rejected 二者中的任意一个状态, 不会是 pending。</li>
+</ul>
+
+        <h1 id="循环与迭代">
+          <a href="#循环与迭代" class="heading-link"><i class="fas fa-link"></i></a>循环与迭代</h1>
+      
+        <h3 id="for">
+          <a href="#for" class="heading-link"><i class="fas fa-link"></i></a>for</h3>
+      <p>一个 <a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/statements/for"><code>for</code></a> 循环会一直重复执行，直到指定的循环条件为 false。</p>
+<figure class="highlight js"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span> ([initialExpression]; [condition]; [incrementExpression])</span><br><span class="line">  statement</span><br></pre></td></tr></table></div></figure>
+
+<figure class="highlight js"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span>(<span class="keyword">let</span> i = <span class="number">0</span>; i &lt; <span class="number">10</span>; i++) &#123;</span><br><span class="line">  <span class="built_in">console</span>.log(i) <span class="comment">// 0 1 2 3 4 5 6 7 8 9</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></div></figure>
+
+
+        <h3 id="do…while">
+          <a href="#do…while" class="heading-link"><i class="fas fa-link"></i></a>do…while</h3>
+      <p><a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/statements/do...while"><code>do...while</code></a> 语句一直重复直到指定的条件求值得到假值（false）,至少执行一次  statement</p>
+<figure class="highlight js"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">do</span></span><br><span class="line">  statement</span><br><span class="line"><span class="keyword">while</span> (condition);</span><br></pre></td></tr></table></div></figure>
+
+<figure class="highlight js"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> i = <span class="number">0</span>;</span><br><span class="line"><span class="keyword">do</span> &#123;</span><br><span class="line">  i += <span class="number">1</span>;</span><br><span class="line">  <span class="built_in">console</span>.log(i); <span class="comment">// 1 2 3 4 5 </span></span><br><span class="line">&#125; <span class="keyword">while</span> (i &lt; <span class="number">5</span>);</span><br></pre></td></tr></table></div></figure>
+
+
+        <h3 id="while">
+          <a href="#while" class="heading-link"><i class="fas fa-link"></i></a>while</h3>
+      <p>一个 <a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/statements/while"><code>while</code></a> 语句只要指定的条件求值为真（true）就会一直执行它的语句块，可能一次也不执行</p>
+<figure class="highlight js"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">while</span> (condition)</span><br><span class="line">  statement</span><br></pre></td></tr></table></div></figure>
+
+<figure class="highlight js"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> n = <span class="number">0</span>;</span><br><span class="line"><span class="keyword">var</span> x = <span class="number">0</span>;</span><br><span class="line"><span class="keyword">while</span> (n &lt; <span class="number">3</span>) &#123;</span><br><span class="line">  n++;</span><br><span class="line">  x += n;</span><br><span class="line">&#125;</span><br><span class="line"><span class="built_in">console</span>.log(x) <span class="comment">// 6</span></span><br></pre></td></tr></table></div></figure>
+
+<figure class="highlight js"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 无限循环</span></span><br><span class="line"><span class="keyword">while</span> (<span class="literal">true</span>) &#123;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="string">&quot;Hello, world&quot;</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></div></figure>
+
+
+        <h3 id="label">
+          <a href="#label" class="heading-link"><i class="fas fa-link"></i></a>label</h3>
+      <p>一个 <a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/statements/label"><code>label</code></a> 提供了一个让你在程序中其他位置引用它的标识符。</p>
+<blockquote>
+<p><code>label</code> 的值可以是任何的非保留字的 JavaScript 标识符， <code>statement</code> 可以是任意你想要标识的语句（块）。</p>
+</blockquote>
+<figure class="highlight js"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> num = <span class="number">0</span>;</span><br><span class="line"><span class="keyword">for</span> (<span class="keyword">var</span> i = <span class="number">0</span> ; i &lt; <span class="number">10</span> ; i++) &#123;   <span class="comment">// i 循环</span></span><br><span class="line">  <span class="keyword">for</span> (<span class="keyword">var</span> j = <span class="number">0</span> ; j &lt; <span class="number">10</span> ; j++) &#123; <span class="comment">// j 循环</span></span><br><span class="line">    <span class="keyword">if</span>( i == <span class="number">5</span> &amp;&amp; j == <span class="number">5</span> ) &#123;</span><br><span class="line">       <span class="keyword">break</span>; <span class="comment">// i = 5，j = 5 时，会跳出 j 循环</span></span><br><span class="line">    &#125; <span class="comment">// 但 i 循环会继续执行，等于跳出之后又继续执行更多次 j 循环</span></span><br><span class="line">  num++;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">alert(num); <span class="comment">// 输出 95</span></span><br></pre></td></tr></table></div></figure>
+
+<p>// label</p>
+<figure class="highlight js"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> num = <span class="number">0</span>;</span><br><span class="line">outPoint:</span><br><span class="line"><span class="keyword">for</span> (<span class="keyword">var</span> i = <span class="number">0</span> ; i &lt; <span class="number">10</span> ; i++)&#123;</span><br><span class="line">  <span class="keyword">for</span> (<span class="keyword">var</span> j = <span class="number">0</span> ; j &lt; <span class="number">10</span> ; j++)&#123;</span><br><span class="line">    <span class="keyword">if</span>( i == <span class="number">5</span> &amp;&amp; j == <span class="number">5</span> )&#123;</span><br><span class="line">      <span class="keyword">break</span> outPoint; <span class="comment">// 在 i = 5，j = 5 时，跳出所有循环，</span></span><br><span class="line">                      <span class="comment">// 返回到整个 outPoint 下方，继续执行</span></span><br><span class="line">    &#125;</span><br><span class="line">    num++;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">alert(num); <span class="comment">// 输出 55</span></span><br></pre></td></tr></table></div></figure>
+
+<figure class="highlight js"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> num = <span class="number">0</span>;</span><br><span class="line">outPoint:</span><br><span class="line"><span class="keyword">for</span>(<span class="keyword">var</span> i = <span class="number">0</span>; i &lt; <span class="number">10</span>; i++) &#123;</span><br><span class="line">  <span class="keyword">for</span>(<span class="keyword">var</span> j = <span class="number">0</span>; j &lt; <span class="number">10</span>; j++) &#123;</span><br><span class="line">    <span class="keyword">if</span>(i == <span class="number">5</span> &amp;&amp; j == <span class="number">5</span>) &#123;</span><br><span class="line">      <span class="keyword">continue</span> outPoint;</span><br><span class="line">    &#125;</span><br><span class="line">    num++;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line">alert(num);  <span class="comment">// 95</span></span><br></pre></td></tr></table></div></figure>
+
+
+        <h3 id="break">
+          <a href="#break" class="heading-link"><i class="fas fa-link"></i></a>break</h3>
+      <p>使用 <a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/statements/break"><code>break</code></a> 语句来终止循环，<code>switch</code>， 或者是链接到 label 语句</p>
+<ul>
+<li>当你使用不带 label 的 <code>break</code> 时， 它会立即终止当前所在的 <code>while</code>，<code>do-while</code>，<code>for</code>，或者 <code>switch</code> 并把控制权交回这些结构后面的语句。</li>
+<li>当你使用带 label 的 <code>break</code> 时，它会终止指定的带标记（label）的语句。</li>
+</ul>
+
+        <h3 id="continue">
+          <a href="#continue" class="heading-link"><i class="fas fa-link"></i></a>continue</h3>
+      <p><a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/statements/continue"><code>continue</code></a> 语句可以用来继续执行（跳过代码块的剩余部分并进入下一循环）一个 <code>while</code>、<code>do-while</code>、<code>for</code>，或者 <code>label</code> 语句。</p>
+<ul>
+<li>当你使用不带 label 的 <code>continue</code> 时， 它终止当前 <code>while</code>，<code>do-while</code>，或者 for 语句到结尾的这次的循环并且继续执行下一次循环。</li>
+<li>当你使用带 label 的 <code>continue</code> 时， 它会应用被 label 标识的循环语句。</li>
+</ul>
+
+        <h3 id="for…in">
+          <a href="#for…in" class="heading-link"><i class="fas fa-link"></i></a>for…in</h3>
+      <p><a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/statements/for...in"><code>for...in</code></a> 语句循环一个指定的变量来循环一个对象所有可枚举的属性。JavaScript 会为每一个不同的属性执行指定的语句。</p>
+
+        <h3 id="for…of">
+          <a href="#for…of" class="heading-link"><i class="fas fa-link"></i></a>for…of</h3>
+      <p><a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/statements/for...of"><code>for...of</code></a> 语句在<span class="exturl"><a class="exturl__link" target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Guide/iterable">可迭代对象</a><span class="exturl__icon"><i class="fas fa-external-link-alt"></i></span></span>（包括<a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Array"><code>Array</code></a>、<a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Map"><code>Map</code></a>、<a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Set"><code>Set</code></a>、<a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/functions/arguments"><code>arguments</code></a> 等等）上创建了一个循环，对值的每一个独特属性调用一次迭代。</p>
+<figure class="highlight js"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> arr = [<span class="number">3</span>, <span class="number">5</span>, <span class="number">7</span>];</span><br><span class="line">arr.foo = <span class="string">&quot;hello&quot;</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> (<span class="keyword">let</span> i <span class="keyword">in</span> arr) &#123;</span><br><span class="line">   <span class="built_in">console</span>.log(i); <span class="comment">// 输出 &quot;0&quot;, &quot;1&quot;, &quot;2&quot;, &quot;foo&quot;</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> (<span class="keyword">let</span> i <span class="keyword">of</span> arr) &#123;</span><br><span class="line">   <span class="built_in">console</span>.log(i); <span class="comment">// 输出 &quot;3&quot;, &quot;5&quot;, &quot;7&quot;</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></div></figure>
+
+<figure class="highlight js"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> obj = &#123;</span><br><span class="line">    a: <span class="number">12</span>,</span><br><span class="line">    b: <span class="number">13</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">for</span> (<span class="keyword">let</span> i <span class="keyword">in</span> obj) &#123;</span><br><span class="line">   <span class="built_in">console</span>.log(i); <span class="comment">// 输出 &quot;a&quot;, &quot;b&quot;</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">for</span> (<span class="keyword">let</span> i <span class="keyword">of</span> obj) &#123;</span><br><span class="line">   <span class="built_in">console</span>.log(i); <span class="comment">// Uncaught TypeError: obj is not iterable</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></div></figure>
+
+
+        <h2 id="函数">
+          <a href="#函数" class="heading-link"><i class="fas fa-link"></i></a>函数</h2>
+      <p>函数是 JavaScript 中的基本组件之一</p>
+
+        <h3 id="定义函数">
+          <a href="#定义函数" class="heading-link"><i class="fas fa-link"></i></a>定义函数</h3>
+      <p><strong>函数声明</strong></p>
+<blockquote>
+<p>一个<strong>函数定义</strong>（也称为<strong>函数声明</strong>，或<strong>函数语句</strong>）由一系列的<a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/JavaScript/Reference/Statements/function"><code>function</code></a>关键字组成，依次为：</p>
+<ul>
+<li>函数的名称。</li>
+<li>函数参数列表，包围在括号中并由逗号分隔。</li>
+<li>定义函数的 JavaScript 语句，用大括号<code>&#123;&#125;</code>括起来。</li>
+</ul>
+</blockquote>
+<figure class="highlight js"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">square</span>(<span class="params">number</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">return</span> number * number;  <span class="comment">// 函数体</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></div></figure>
+
+<blockquote>
+<p>关于参数：</p>
+<p>原始参数（比如一个具体的数字）被作为<strong>值</strong>传递给函数；值被传递给函数，如果被调用函数改变了这个参数的值，这样的改变不会影响到全局或调用函数。</p>
+<p>如果你传递一个对象（即一个非原始值，例如<a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Array"><code>Array</code></a>或用户自定义的对象）作为参数，而函数改变了这个对象的属性，这样的改变对函数外部是可见的</p>
+</blockquote>
+<p><strong>函数表达式</strong></p>
+<p>函数也可以由函数表达式创建。这样的函数可以是<strong>匿名</strong>的；</p>
+<figure class="highlight js"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> square = <span class="function"><span class="keyword">function</span>(<span class="params">number</span>) </span>&#123; <span class="keyword">return</span> number * number; &#125;;</span><br></pre></td></tr></table></div></figure>
+
+<p>函数表达式也可以提供函数名，并且可以用于在函数内部代指其本身，或者在调试器堆栈跟踪中识别该函数</p>
+<figure class="highlight js"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> factorial = <span class="function"><span class="keyword">function</span> <span class="title">fac</span>(<span class="params">n</span>) </span>&#123;<span class="keyword">return</span> n&lt;<span class="number">2</span> ? <span class="number">1</span> : n*fac(n-<span class="number">1</span>)&#125;;</span><br></pre></td></tr></table></div></figure>
+
+<p>当将函数作为参数传递给另一个函数时，函数表达式很方便。</p>
+<figure class="highlight js"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">map</span>(<span class="params">f, a</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">let</span> result = []; <span class="comment">// 创建一个数组</span></span><br><span class="line">  <span class="keyword">let</span> i; <span class="comment">// 声明一个值，用来循环</span></span><br><span class="line">  <span class="keyword">for</span> (i = <span class="number">0</span>; i != a.length; i++) </span><br><span class="line">    result[i] = f(a[i]);</span><br><span class="line">  <span class="keyword">return</span> result;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">const</span> f = <span class="function"><span class="keyword">function</span>(<span class="params">x</span>) </span>&#123;</span><br><span class="line">   <span class="keyword">return</span> x * x * x; </span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">let</span> numbers = [<span class="number">0</span>, <span class="number">1</span>, <span class="number">2</span>, <span class="number">5</span>,<span class="number">10</span>];</span><br><span class="line"><span class="keyword">let</span> cube = map(f,numbers);</span><br><span class="line"><span class="built_in">console</span>.log(cube);</span><br></pre></td></tr></table></div></figure>
+
+<p>根据条件来定义一个函数</p>
+<figure class="highlight js"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> myFunc;</span><br><span class="line"><span class="keyword">if</span> (num == <span class="number">0</span>)&#123;</span><br><span class="line">  myFunc = <span class="function"><span class="keyword">function</span>(<span class="params">theObject</span>) </span>&#123;</span><br><span class="line">    theObject.make = <span class="string">&quot;Toyota&quot;</span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></div></figure>
+
+<p>当一个函数是一个对象的属性时，称之为<strong>方法</strong>。</p>
+
+        <h3 id="调用函数">
+          <a href="#调用函数" class="heading-link"><i class="fas fa-link"></i></a>调用函数</h3>
+      <p>定义一个函数并不会自动的执行它。定义了函数仅仅是赋予函数以名称并明确函数被调用时该做些什么。<strong>调用</strong>函数才会以给定的参数真正执行这些动作。</p>
+<figure class="highlight js"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">square(<span class="number">5</span>);  <span class="comment">// 方法名字（[参数]）</span></span><br></pre></td></tr></table></div></figure>
+
+<p>函数域是指函数声明时的所在的地方，或者函数在顶层被声明时指整个程序。</p>
+<p>函数提升仅适用于函数声明，而不适用于函数表达式。</p>
+<p>函数可以被递归，就是说函数可以调用其本身。</p>
+
+        <h3 id="函数作用域">
+          <a href="#函数作用域" class="heading-link"><i class="fas fa-link"></i></a>函数作用域</h3>
+      <blockquote>
+<p>在函数内定义的变量不能在函数之外的任何地方访问，因为变量仅仅在该函数的域的内部有定义。相对应的，一个函数可以访问定义在其范围内的任何变量和函数。换言之，定义在全局域中的函数可以访问所有定义在全局域中的变量。在另一个函数中定义的函数也可以访问在其父函数中定义的所有变量和父函数有权访问的任何其他变量。</p>
+</blockquote>
+
+        <h3 id="作用域和函数堆栈">
+          <a href="#作用域和函数堆栈" class="heading-link"><i class="fas fa-link"></i></a>作用域和函数堆栈</h3>
+      <p><strong>递归</strong></p>
+<blockquote>
+<p>一个函数可以指向并调用自身。</p>
+<ol>
+<li>函数名</li>
+<li><code>arguments.callee</code></li>
+<li>作用域下的一个指向该函数的变量名</li>
+</ol>
+</blockquote>
+<figure class="highlight js"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> foo = <span class="function"><span class="keyword">function</span> <span class="title">bar</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">   bar()</span><br><span class="line">	 <span class="built_in">arguments</span>.callee() <span class="comment">//ES5禁止在严格模式下使用此属性</span></span><br><span class="line">	 foo()</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></div></figure>
+
+<figure class="highlight js"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">foo</span>(<span class="params">i</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">if</span> (i &lt; <span class="number">0</span>)</span><br><span class="line">    <span class="keyword">return</span>;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="string">&#x27;begin:&#x27;</span> + i);</span><br><span class="line">  foo(i - <span class="number">1</span>);</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="string">&#x27;end:&#x27;</span> + i);</span><br><span class="line">&#125;</span><br><span class="line">foo(<span class="number">3</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">// begin:3</span></span><br><span class="line"><span class="comment">// begin:2</span></span><br><span class="line"><span class="comment">// begin:1</span></span><br><span class="line"><span class="comment">// begin:0</span></span><br><span class="line"><span class="comment">// end:0</span></span><br><span class="line"><span class="comment">// end:1</span></span><br><span class="line"><span class="comment">// end:2</span></span><br><span class="line"><span class="comment">// end:3</span></span><br></pre></td></tr></table></div></figure>
+
+<p><strong>嵌套函数和闭包</strong></p>
+<blockquote>
+<p>可以在一个函数里面嵌套另外一个函数。嵌套（内部）函数对其容器（外部）函数是私有的。它自身也形成了一个闭包。一个闭包是一个可以自己拥有独立的环境与变量的表达式（通常是函数）。内部函数包含外部函数的作用域,，也就是通常说的继承</p>
+</blockquote>
+<ul>
+<li>内部函数只可以在外部函数中访问。</li>
+<li>内部函数形成了一个闭包：它可以访问外部函数的参数和变量，但是外部函数却不能使用它的参数和变量。</li>
+</ul>
+<blockquote>
+<p>函数可以被多层嵌套.因此，闭包可以包含多个作用域；他们递归式的包含了所有包含它的函数作用域。这个称之为作用<em>域链</em>。</p>
+</blockquote>
+<p><strong>命名冲突</strong></p>
+<blockquote>
+<p>当同一个闭包作用域下两个参数或者变量同名时，就会产生命名冲突。更近的作用域有更高的优先权，所以最近的优先级最高，最远的优先级最低。这就是作用域链。链的第一个元素就是最里面的作用域，最后一个元素便是最外层的作用域。</p>
+</blockquote>
+
+        <h3 id="闭包">
+          <a href="#闭包" class="heading-link"><i class="fas fa-link"></i></a>闭包</h3>
+      <blockquote>
+<p>闭包是 JavaScript 中最强大的特性之一。JavaScript 允许函数嵌套，并且内部函数可以访问定义在外部函数中的所有变量和函数，以及外部函数能访问的所有变量和函数。</p>
+</blockquote>
+<p>此外，由于内部函数可以访问外部函数的作用域，因此当内部函数生存周期大于外部函数时，外部函数中定义的变量和函数的生存周期将比内部函数执行时间长。当内部函数以某一种方式被任何一个外部函数作用域访问时，一个闭包就产生了。</p>
+<figure class="highlight js"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> createPet = <span class="function"><span class="keyword">function</span>(<span class="params">name</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">var</span> sex;</span><br><span class="line">  </span><br><span class="line">  <span class="keyword">return</span> &#123;</span><br><span class="line">    setName: <span class="function"><span class="keyword">function</span>(<span class="params">newName</span>) </span>&#123;</span><br><span class="line">      name = newName;</span><br><span class="line">    &#125;,</span><br><span class="line">    </span><br><span class="line">    getName: <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">      <span class="keyword">return</span> name;</span><br><span class="line">    &#125;,</span><br><span class="line">    </span><br><span class="line">    getSex: <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">      <span class="keyword">return</span> sex;</span><br><span class="line">    &#125;,</span><br><span class="line">    </span><br><span class="line">    setSex: <span class="function"><span class="keyword">function</span>(<span class="params">newSex</span>) </span>&#123;</span><br><span class="line">      <span class="keyword">if</span>(<span class="keyword">typeof</span> newSex == <span class="string">&quot;string&quot;</span> </span><br><span class="line">        &amp;&amp; (newSex.toLowerCase() == <span class="string">&quot;male&quot;</span> || newSex.toLowerCase() == <span class="string">&quot;female&quot;</span>)) &#123;</span><br><span class="line">        sex = newSex;</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> pet = createPet(<span class="string">&quot;Vivie&quot;</span>);</span><br><span class="line">pet.getName();                  <span class="comment">// Vivie</span></span><br><span class="line">pet.setName(<span class="string">&quot;Oliver&quot;</span>);</span><br><span class="line">pet.setSex(<span class="string">&quot;male&quot;</span>);</span><br><span class="line">pet.getSex();                   <span class="comment">// male</span></span><br><span class="line">pet.getName();                  <span class="comment">// Oliver</span></span><br></pre></td></tr></table></div></figure>
+
+<blockquote>
+<p>如果一个闭包的函数定义了一个和外部函数的某个变量名称相同的变量，那么这个闭包将无法引用外部函数的这个变量</p>
+<figure class="highlight js"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> createPet = <span class="function"><span class="keyword">function</span>(<span class="params">name</span>) </span>&#123;  <span class="comment">// Outer function defines a variable called &quot;name&quot;</span></span><br><span class="line">  <span class="keyword">return</span> &#123;</span><br><span class="line">    setName: <span class="function"><span class="keyword">function</span>(<span class="params">name</span>) </span>&#123;    <span class="comment">// Enclosed function also defines a variable called &quot;name&quot;</span></span><br><span class="line">      name = name;               <span class="comment">// ??? How do we access the &quot;name&quot; defined by the outer function ???</span></span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></div></figure>
+</blockquote>
+
+        <h3 id="arguments">
+          <a href="#arguments" class="heading-link"><i class="fas fa-link"></i></a>arguments</h3>
+      <p>函数的实际参数会被保存在一个类似数组的arguments对象中。</p>
+<p>得到传入的参数：<code>arguments[i]</code></p>
+<p>参数数量：<code>arguments.length</code></p>
+
+        <h3 id="函数参数">
+          <a href="#函数参数" class="heading-link"><i class="fas fa-link"></i></a>函数参数</h3>
+      <p>从ECMAScript 6开始，有两个新的类型的参数：默认参数，剩余参数。</p>
+<blockquote>
+<p>在JavaScript中，函数参数的默认值是<code>undefined</code>。</p>
+</blockquote>
+<figure class="highlight js"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 默认参数和ES6-的对比</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// ES6-</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">multiply</span>(<span class="params">a, b</span>) </span>&#123;</span><br><span class="line">  b = (<span class="keyword">typeof</span> b !== <span class="string">&#x27;undefined&#x27;</span>) ?  b : <span class="number">1</span>;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">return</span> a*b;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">multiply(<span class="number">5</span>); <span class="comment">// 5</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 默认参数</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">multiply</span>(<span class="params">a, b = <span class="number">1</span></span>) </span>&#123;</span><br><span class="line">  <span class="keyword">return</span> a*b;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">multiply(<span class="number">5</span>); <span class="comment">// 5</span></span><br></pre></td></tr></table></div></figure>
+
+<blockquote>
+<p><span class="exturl"><a class="exturl__link" target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Functions/rest_parameters">剩余参数</a><span class="exturl__icon"><i class="fas fa-external-link-alt"></i></span></span>语法允许将不确定数量的参数表示为数组</p>
+</blockquote>
+<figure class="highlight js"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">multiply</span>(<span class="params">multiplier, ...theArgs</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">return</span> theArgs.map(<span class="function"><span class="params">x</span> =&gt;</span> multiplier * x);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> arr = multiply(<span class="number">2</span>, <span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>);</span><br><span class="line"><span class="built_in">console</span>.log(arr); <span class="comment">// [2, 4, 6]</span></span><br></pre></td></tr></table></div></figure>
+
+
+        <h3 id="箭头函数">
+          <a href="#箭头函数" class="heading-link"><i class="fas fa-link"></i></a>箭头函数</h3>
+      <p>箭头函数总是匿名的</p>
+<figure class="highlight js"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> a = [</span><br><span class="line">  <span class="string">&quot;Hydrogen&quot;</span>,</span><br><span class="line">  <span class="string">&quot;Helium&quot;</span>,</span><br><span class="line">  <span class="string">&quot;Lithium&quot;</span>,</span><br><span class="line">  <span class="string">&quot;Beryllium&quot;</span></span><br><span class="line">];</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> a2 = a.map(<span class="function"><span class="keyword">function</span>(<span class="params">s</span>)</span>&#123; <span class="keyword">return</span> s.length &#125;);</span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(a2); <span class="comment">// logs [ 8, 6, 7, 9 ]</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> a3 = a.map( <span class="function"><span class="params">s</span> =&gt;</span> s.length );</span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(a3); <span class="comment">// logs [ 8, 6, 7, 9 ]</span></span><br></pre></td></tr></table></div></figure>
+
+<blockquote>
+<p>在箭头函数出现之前，每一个新函数都重新定义了自己的 <span class="exturl"><a class="exturl__link" target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Operators/this">this</a><span class="exturl__icon"><i class="fas fa-external-link-alt"></i></span></span> 值（在构造函数中是一个新的对象；在严格模式下是未定义的</p>
+</blockquote>
+<p>箭头函数捕捉闭包上下文的<code>this</code>值</p>
+<figure class="highlight js"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">Person</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">  <span class="built_in">this</span>.age = <span class="number">0</span>;</span><br><span class="line"></span><br><span class="line">  <span class="built_in">setInterval</span>(<span class="function">() =&gt;</span> &#123;</span><br><span class="line">    <span class="built_in">this</span>.age++; <span class="comment">// 这里的`this`正确地指向person对象</span></span><br><span class="line">  &#125;, <span class="number">1000</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> p = <span class="keyword">new</span> Person();</span><br></pre></td></tr></table></div></figure>
+
+
+        <h3 id="预定义函数">
+          <a href="#预定义函数" class="heading-link"><i class="fas fa-link"></i></a>预定义函数</h3>
+      <ul>
+<li><code>eval()</code>方法会对一串字符串形式的JavaScript代码字符求值。</li>
+<li><code>uneval()</code>方法创建的一个<a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Object"><code>Object</code></a>的源代码的字符串表示。  - 暂时不可以使用</li>
+<li><code>isFinite()</code>函数判断传入的值是否是有限的数值。 如果需要的话，其参数首先被转换为一个数值。</li>
+<li><code>isNaN()</code>函数判断一个值是否是<a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/NaN"><code>NaN</code></a>。 另一个可供选择的是ECMAScript 6 中定义<a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Number/isNaN"><code>Number.isNaN()</code></a> , 或者使用 <code>typeof</code>来判断数值类型。</li>
+<li><code>parseFloat()</code> 函数解析字符串参数，并返回一个浮点数。</li>
+<li><code>parseInt()</code> 函数解析字符串参数，并返回指定的基数（基础数学中的数制）的整数。</li>
+<li><code>decodeURI()</code> 函数对先前经过<a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/encodeURI"><code>encodeURI</code></a>函数或者其他类似方法编码过的字符串进行解码。</li>
+<li><code>decodeURIComponent()</code>方法对先前经过<a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/encodeURIComponent"><code>encodeURIComponent</code></a>函数或者其他类似方法编码过的字符串进行解码。</li>
+<li><code>encodeURI()</code>与<code>encodeURIComponent()</code>都是编码的</li>
+</ul>
+
+        <h1 id="表达式与运算符">
+          <a href="#表达式与运算符" class="heading-link"><i class="fas fa-link"></i></a>表达式与运算符</h1>
+      
+        <h3 id="运算符">
+          <a href="#运算符" class="heading-link"><i class="fas fa-link"></i></a>运算符</h3>
+      <ul>
+<li><span class="exturl"><a class="exturl__link" target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Guide/Expressions_and_Operators#%E8%B5%8B%E5%80%BC%E8%BF%90%E7%AE%97%E7%AC%A6">赋值运算符(Assignment operators)</a><span class="exturl__icon"><i class="fas fa-external-link-alt"></i></span></span></li>
+<li><span class="exturl"><a class="exturl__link" target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Guide/Expressions_and_Operators#%E6%AF%94%E8%BE%83%E8%BF%90%E7%AE%97%E7%AC%A6">比较运算符(Comparison operators)</a><span class="exturl__icon"><i class="fas fa-external-link-alt"></i></span></span></li>
+<li><span class="exturl"><a class="exturl__link" target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Guide/Expressions_and_Operators#%E7%AE%97%E6%9C%AF%E8%BF%90%E7%AE%97%E7%AC%A6">算数运算符(Arithmetic operators)</a><span class="exturl__icon"><i class="fas fa-external-link-alt"></i></span></span></li>
+<li><span class="exturl"><a class="exturl__link" target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Guide/Expressions_and_Operators#%E4%BD%8D%E8%BF%90%E7%AE%97%E7%AC%A6">位运算符(Bitwise operators)</a><span class="exturl__icon"><i class="fas fa-external-link-alt"></i></span></span></li>
+<li><span class="exturl"><a class="exturl__link" target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Guide/Expressions_and_Operators#%E9%80%BB%E8%BE%91%E8%BF%90%E7%AE%97%E7%AC%A6">逻辑运算符(Logical operators)</a><span class="exturl__icon"><i class="fas fa-external-link-alt"></i></span></span></li>
+<li><span class="exturl"><a class="exturl__link" target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Guide/Expressions_and_Operators#%E5%AD%97%E7%AC%A6%E4%B8%B2%E8%BF%90%E7%AE%97%E7%AC%A6">字符串运算符(String operators)</a><span class="exturl__icon"><i class="fas fa-external-link-alt"></i></span></span></li>
+<li><span class="exturl"><a class="exturl__link" target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Guide/Expressions_and_Operators#conditional_operator">条件（三元）运算符(Conditional operator)</a><span class="exturl__icon"><i class="fas fa-external-link-alt"></i></span></span></li>
+<li><span class="exturl"><a class="exturl__link" target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Guide/Expressions_and_Operators#comma_operator">逗号运算符(Comma operator)</a><span class="exturl__icon"><i class="fas fa-external-link-alt"></i></span></span></li>
+<li><span class="exturl"><a class="exturl__link" target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Guide/Expressions_and_Operators#delete">一元运算符(Unary operators)</a><span class="exturl__icon"><i class="fas fa-external-link-alt"></i></span></span></li>
+<li><span class="exturl"><a class="exturl__link" target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Guide/Expressions_and_Operators#%E5%85%B3%E7%B3%BB%E6%93%8D%E4%BD%9C%E7%AC%A6">关系运算符(Relational operator)</a><span class="exturl__icon"><i class="fas fa-external-link-alt"></i></span></span></li>
+</ul>
+
+        <h4 id="赋值运算符">
+          <a href="#赋值运算符" class="heading-link"><i class="fas fa-link"></i></a>赋值运算符</h4>
+      <div class="table-container"><table>
+<thead>
+<tr>
+<th align="left">名字</th>
+<th align="left">简写的操作符</th>
+<th align="left">含义</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left"><span class="exturl"><a class="exturl__link" target="_blank" rel="noopener" href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Assignment_Operators#Assignment">赋值(Assignment)</a><span class="exturl__icon"><i class="fas fa-external-link-alt"></i></span></span></td>
+<td align="left"><code>x = y</code></td>
+<td align="left"><code>x = y</code></td>
+</tr>
+<tr>
+<td align="left"><span class="exturl"><a class="exturl__link" target="_blank" rel="noopener" href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Assignment_Operators#Addition_assignment">加法赋值(Addition assignment)</a><span class="exturl__icon"><i class="fas fa-external-link-alt"></i></span></span></td>
+<td align="left"><code>x += y</code></td>
+<td align="left"><code>x = x + y</code></td>
+</tr>
+<tr>
+<td align="left"><span class="exturl"><a class="exturl__link" target="_blank" rel="noopener" href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Assignment_Operators#Subtraction_assignment">减法赋值(Subtraction assignment)</a><span class="exturl__icon"><i class="fas fa-external-link-alt"></i></span></span></td>
+<td align="left"><code>x -= y</code></td>
+<td align="left"><code>x = x - y</code></td>
+</tr>
+<tr>
+<td align="left"><span class="exturl"><a class="exturl__link" target="_blank" rel="noopener" href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Assignment_Operators#Multiplication_assignment">乘法赋值(Multiplication assignment)</a><span class="exturl__icon"><i class="fas fa-external-link-alt"></i></span></span></td>
+<td align="left"><code>x *= y</code></td>
+<td align="left"><code>x = x * y</code></td>
+</tr>
+<tr>
+<td align="left"><span class="exturl"><a class="exturl__link" target="_blank" rel="noopener" href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Assignment_Operators#Division_assignment">除法赋值(Division assignment)</a><span class="exturl__icon"><i class="fas fa-external-link-alt"></i></span></span></td>
+<td align="left"><code>x /= y</code></td>
+<td align="left"><code>x = x / y</code></td>
+</tr>
+<tr>
+<td align="left"><span class="exturl"><a class="exturl__link" target="_blank" rel="noopener" href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Assignment_Operators#Remainder_assignment">求余赋值(Remainder assignment)</a><span class="exturl__icon"><i class="fas fa-external-link-alt"></i></span></span></td>
+<td align="left"><code>x %= y</code></td>
+<td align="left"><code>x = x % y</code></td>
+</tr>
+<tr>
+<td align="left"><span class="exturl"><a class="exturl__link" target="_blank" rel="noopener" href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Assignment_Operators#Exponentiation_assignment">求幂赋值(Exponentiation assignment)</a><span class="exturl__icon"><i class="fas fa-external-link-alt"></i></span></span></td>
+<td align="left"><code>x **= y</code></td>
+<td align="left"><code>x = x ** y</code></td>
+</tr>
+<tr>
+<td align="left"><span class="exturl"><a class="exturl__link" target="_blank" rel="noopener" href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Assignment_Operators#Left_shift_assignment">左移位赋值(Left shift assignment)</a><span class="exturl__icon"><i class="fas fa-external-link-alt"></i></span></span></td>
+<td align="left"><code>x &lt;&lt;= y</code></td>
+<td align="left"><code>x = x &lt;&lt; y</code></td>
+</tr>
+<tr>
+<td align="left"><span class="exturl"><a class="exturl__link" target="_blank" rel="noopener" href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Assignment_Operators#Right_shift_assignment">右移位赋值(Right shift assignment)</a><span class="exturl__icon"><i class="fas fa-external-link-alt"></i></span></span></td>
+<td align="left"><code>x &gt;&gt;= y</code></td>
+<td align="left"><code>x = x &gt;&gt; y</code></td>
+</tr>
+<tr>
+<td align="left"><span class="exturl"><a class="exturl__link" target="_blank" rel="noopener" href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Assignment_Operators#Unsigned_right_shift_assignment">无符号右移位赋值(Unsigned right shift assignment)</a><span class="exturl__icon"><i class="fas fa-external-link-alt"></i></span></span></td>
+<td align="left"><code>x &gt;&gt;&gt;= y</code></td>
+<td align="left"><code>x = x &gt;&gt;&gt; y</code></td>
+</tr>
+<tr>
+<td align="left"><span class="exturl"><a class="exturl__link" target="_blank" rel="noopener" href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Assignment_Operators#Bitwise_AND_assignment">按位与赋值(Bitwise AND assignment)</a><span class="exturl__icon"><i class="fas fa-external-link-alt"></i></span></span></td>
+<td align="left"><code>x &amp;= y</code></td>
+<td align="left"><code>x = x &amp; y</code></td>
+</tr>
+<tr>
+<td align="left"><span class="exturl"><a class="exturl__link" target="_blank" rel="noopener" href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Assignment_Operators#Bitwise_XOR_assignment">按位异或赋值(Bitwise XOR assignment)</a><span class="exturl__icon"><i class="fas fa-external-link-alt"></i></span></span></td>
+<td align="left"><code>x ^= y</code></td>
+<td align="left"><code>x = x ^ y</code></td>
+</tr>
+<tr>
+<td align="left"><span class="exturl"><a class="exturl__link" target="_blank" rel="noopener" href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Assignment_Operators#Bitwise_OR_assignment">按位或赋值(Bitwise OR assignment)</a><span class="exturl__icon"><i class="fas fa-external-link-alt"></i></span></span></td>
+<td align="left">`x</td>
+<td align="left">= y`</td>
+</tr>
+</tbody></table></div>
+<p><span class="exturl"><a class="exturl__link" target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Operators/Destructuring_assignment">解构赋值</a><span class="exturl__icon"><i class="fas fa-external-link-alt"></i></span></span>语法是一个能从数组或对象对应的数组结构或对象字面量里提取数据的 Javascript 表达式。</p>
+<figure class="highlight js"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> foo = [<span class="string">&quot;one&quot;</span>, <span class="string">&quot;two&quot;</span>, <span class="string">&quot;three&quot;</span>];</span><br><span class="line"></span><br><span class="line"><span class="comment">// 不使用解构</span></span><br><span class="line"><span class="keyword">var</span> one   = foo[<span class="number">0</span>];</span><br><span class="line"><span class="keyword">var</span> two   = foo[<span class="number">1</span>];</span><br><span class="line"><span class="keyword">var</span> three = foo[<span class="number">2</span>];</span><br><span class="line"></span><br><span class="line"><span class="comment">// 使用解构</span></span><br><span class="line"><span class="keyword">var</span> [one, two, three] = foo;</span><br></pre></td></tr></table></div></figure>
+
+
+        <h4 id="比较运算符">
+          <a href="#比较运算符" class="heading-link"><i class="fas fa-link"></i></a>比较运算符</h4>
+      <div class="table-container"><table>
+<thead>
+<tr>
+<th align="left">运算符</th>
+<th align="left">描述</th>
+<th align="left">返回true的示例</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left"><span class="exturl"><a class="exturl__link" target="_blank" rel="noopener" href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Comparison_Operators#Equality">等于 Equal</a><span class="exturl__icon"><i class="fas fa-external-link-alt"></i></span></span> (<code>==</code>)</td>
+<td align="left">如果两边操作数相等时返回true。</td>
+<td align="left"><code>3 == var1``&quot;3&quot; == var1``3 == &#39;3&#39;</code></td>
+</tr>
+<tr>
+<td align="left"><span class="exturl"><a class="exturl__link" target="_blank" rel="noopener" href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Comparison_Operators#Inequality">不等于 Not equal</a><span class="exturl__icon"><i class="fas fa-external-link-alt"></i></span></span> (<code>!=</code>)</td>
+<td align="left">如果两边操作数不相等时返回true</td>
+<td align="left"><code>var1 != 4var2 != &quot;3&quot;</code></td>
+</tr>
+<tr>
+<td align="left"><span class="exturl"><a class="exturl__link" target="_blank" rel="noopener" href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Comparison_Operators#Identity">全等 Strict equal</a><span class="exturl__icon"><i class="fas fa-external-link-alt"></i></span></span> (<code>===</code>)</td>
+<td align="left">两边操作数相等且类型相同时返回true。 参见 <a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Object/is"><code>Object.is</code></a> and <span class="exturl"><a class="exturl__link" target="_blank" rel="noopener" href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Equality_comparisons_and_sameness">sameness in JS</a><span class="exturl__icon"><i class="fas fa-external-link-alt"></i></span></span>.</td>
+<td align="left"><code>3 === var1</code></td>
+</tr>
+<tr>
+<td align="left"><span class="exturl"><a class="exturl__link" target="_blank" rel="noopener" href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Comparison_Operators#Nonidentity">不全等 Strict not equal</a><span class="exturl__icon"><i class="fas fa-external-link-alt"></i></span></span> (<code>!==</code>)</td>
+<td align="left">两边操作数不相等或类型不同时返回true。</td>
+<td align="left"><code>var1 !== &quot;3&quot;3 !== &#39;3&#39;</code></td>
+</tr>
+<tr>
+<td align="left"><span class="exturl"><a class="exturl__link" target="_blank" rel="noopener" href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Comparison_Operators#Greater_than_operator">大于 Greater than</a><span class="exturl__icon"><i class="fas fa-external-link-alt"></i></span></span> (<code>&gt;</code>)</td>
+<td align="left">左边的操作数大于右边的操作数返回true</td>
+<td align="left"><code>var2 &gt; var1&quot;12&quot; &gt; 2</code></td>
+</tr>
+<tr>
+<td align="left"><span class="exturl"><a class="exturl__link" target="_blank" rel="noopener" href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Comparison_Operators#Greater_than_or_equal_operator">大于等于 Greater than or equal</a><span class="exturl__icon"><i class="fas fa-external-link-alt"></i></span></span> (<code>&gt;=</code>)</td>
+<td align="left">左边的操作数大于或等于右边的操作数返回true</td>
+<td align="left"><code>var2 &gt;= var1var1 &gt;= 3</code></td>
+</tr>
+<tr>
+<td align="left"><span class="exturl"><a class="exturl__link" target="_blank" rel="noopener" href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Comparison_Operators#Less_than_operator">小于 Less than</a><span class="exturl__icon"><i class="fas fa-external-link-alt"></i></span></span> (<code>&lt;</code>)</td>
+<td align="left">左边的操作数小于右边的操作数返回true</td>
+<td align="left"><code>var1 &lt; var2&quot;2&quot; &lt; 12</code></td>
+</tr>
+<tr>
+<td align="left"><span class="exturl"><a class="exturl__link" target="_blank" rel="noopener" href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Comparison_Operators#Less_than_or_equal_operator">小于等于 Less than or equal</a><span class="exturl__icon"><i class="fas fa-external-link-alt"></i></span></span> (<code>&lt;=</code>)</td>
+<td align="left">左边的操作数小于或等于右边的操作数返回true</td>
+<td align="left"><code>var1 &lt;= var2var2 &lt;= 5</code></td>
+</tr>
+</tbody></table></div>
+
+        <h4 id="算术运算符">
+          <a href="#算术运算符" class="heading-link"><i class="fas fa-link"></i></a>算术运算符</h4>
+      <div class="table-container"><table>
+<thead>
+<tr>
+<th align="left">Operator</th>
+<th align="left">Description</th>
+<th align="left">Example</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">求余(<code>%</code>)</td>
+<td align="left">二元运算符. 返回相除之后的余数.</td>
+<td align="left">12 % 5 返回 2。</td>
+</tr>
+<tr>
+<td align="left">自增(<code>++</code>)</td>
+<td align="left">一元运算符. 将操作数的值加一. 如果放在操作数前面 (<code>++x</code>), 则返回加一后的值; 如果放在操作数后面 (<code>x++</code>), 则返回操作数原值,然后再将操作数加一.</td>
+<td align="left"><code>var x=3;``console.log(++x); //4``console.log(x); //4``var y=3;``console.log(y++); //3``console.log(y); //4</code></td>
+</tr>
+<tr>
+<td align="left">自减(<code>--</code>)</td>
+<td align="left">一元运算符. 将操作数的值减一. 前后缀两种用法的返回值类似自增运算符.</td>
+<td align="left">var x=3; console.log(–x); //输入2,x=2var y=3;console.log(y–);//输出3,x=2;</td>
+</tr>
+<tr>
+<td align="left">一元负值符(<code>-</code>)</td>
+<td align="left">一元运算符,返回操作数的负值.</td>
+<td align="left">var x=3; console.log(-x); //输入-3</td>
+</tr>
+<tr>
+<td align="left">一元正值符(+)</td>
+<td align="left">一元运算符, 如果操作数在之前不是number，试图将其转换为number</td>
+<td align="left"><code>console.log( +&#39;3&#39; ); // 3``console.log( &#39;3&#39; ); // &#39;3&#39;</code>console.log(+true); // 1</td>
+</tr>
+<tr>
+<td align="left">指数运算符(**)</td>
+<td align="left">计算 <code>base(底数)</code> 的 <code>exponent(</code>指数<code>)次方</code>, 表示为<code>baseexponent</code></td>
+<td align="left"><code>2 ** 3</code> returns <code>8</code>. <code>10 ** -1</code> returns <code>0.1</code>.</td>
+</tr>
+</tbody></table></div>
+
+        <h4 id="位运算符">
+          <a href="#位运算符" class="heading-link"><i class="fas fa-link"></i></a>位运算符</h4>
+      <div class="table-container"><table>
+<thead>
+<tr>
+<th align="left">perator</th>
+<th align="left">Usage</th>
+<th align="left">Description</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">按位与<span class="exturl"><a class="exturl__link" target="_blank" rel="noopener" href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Bitwise_Operators#Bitwise_AND"> AND</a><span class="exturl__icon"><i class="fas fa-external-link-alt"></i></span></span></td>
+<td align="left"><code>a &amp; b</code></td>
+<td align="left">在a,b的位表示中，每一个对应的位都为1则返回1， 否则返回0.</td>
+</tr>
+<tr>
+<td align="left">按位或<span class="exturl"><a class="exturl__link" target="_blank" rel="noopener" href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Bitwise_Operators#Bitwise_OR"> OR</a><span class="exturl__icon"><i class="fas fa-external-link-alt"></i></span></span></td>
+<td align="left">`a</td>
+<td align="left">b`</td>
+</tr>
+<tr>
+<td align="left">按位异或<span class="exturl"><a class="exturl__link" target="_blank" rel="noopener" href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Bitwise_Operators#Bitwise_XOR"> XOR</a><span class="exturl__icon"><i class="fas fa-external-link-alt"></i></span></span></td>
+<td align="left"><code>a ^ b</code></td>
+<td align="left">在a,b的位表示中，每一个对应的位，两个不相同则返回1，相同则返回0.</td>
+</tr>
+<tr>
+<td align="left">按位非<span class="exturl"><a class="exturl__link" target="_blank" rel="noopener" href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Bitwise_Operators#Bitwise_NOT"> NOT</a><span class="exturl__icon"><i class="fas fa-external-link-alt"></i></span></span></td>
+<td align="left"><code>~ a</code></td>
+<td align="left">反转被操作数的位。</td>
+</tr>
+<tr>
+<td align="left">左移<span class="exturl"><a class="exturl__link" target="_blank" rel="noopener" href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Bitwise_Operators#Left_shift"> shift</a><span class="exturl__icon"><i class="fas fa-external-link-alt"></i></span></span></td>
+<td align="left"><code>a &lt;&lt; b</code></td>
+<td align="left">将a的二进制串向左移动b位,右边移入0.</td>
+</tr>
+<tr>
+<td align="left">算术右移</td>
+<td align="left"><code>a &gt;&gt; b</code></td>
+<td align="left">把a的二进制表示向右移动b位，丢弃被移出的所有位.(译注:算术右移左边空出的位是根据最高位是0和1来进行填充的)</td>
+</tr>
+<tr>
+<td align="left">无符号右移(左边空出位用0填充)</td>
+<td align="left"><code>a &gt;&gt;&gt; b</code></td>
+<td align="left">把a的二进制表示向右移动b位，丢弃被移出的所有位，并把左边空出的位都填充为0</td>
+</tr>
+</tbody></table></div>
+
+        <h4 id="逻辑运算符">
+          <a href="#逻辑运算符" class="heading-link"><i class="fas fa-link"></i></a>逻辑运算符</h4>
+      <div class="table-container"><table>
+<thead>
+<tr>
+<th align="left">运算符</th>
+<th align="left">范例</th>
+<th align="left">描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left"><span class="exturl"><a class="exturl__link" target="_blank" rel="noopener" href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Logical_Operators#Logical_AND">逻辑与</a><span class="exturl__icon"><i class="fas fa-external-link-alt"></i></span></span><code> (&amp;&amp;</code>)</td>
+<td align="left"><code>expr1 &amp;&amp; expr2</code></td>
+<td align="left">(逻辑与) 如果expr1能被转换为false，那么返回expr1；否则，返回<code>expr2</code>。因此<code>，&amp;&amp;</code>用于布尔值时，当操作数都为true时返回true；否则返回false.</td>
+</tr>
+<tr>
+<td align="left"><span class="exturl"><a class="exturl__link" target="_blank" rel="noopener" href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Logical_Operators#Logical_OR">逻辑或 </a><span class="exturl__icon"><i class="fas fa-external-link-alt"></i></span></span>(`</td>
+<td align="left"></td>
+<td align="left">`)</td>
+</tr>
+<tr>
+<td align="left"><span class="exturl"><a class="exturl__link" target="_blank" rel="noopener" href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Logical_Operators#Logical_NOT">逻辑非</a><span class="exturl__icon"><i class="fas fa-external-link-alt"></i></span></span><code> (!)</code></td>
+<td align="left"><code>!expr</code></td>
+<td align="left">(逻辑非) 如果操作数能够转换为true则返回false；否则返回true。</td>
+</tr>
+</tbody></table></div>
+
+        <h4 id="字符串运算符">
+          <a href="#字符串运算符" class="heading-link"><i class="fas fa-link"></i></a>字符串运算符</h4>
+      <figure class="highlight js"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">console</span>.log(<span class="string">&quot;my &quot;</span> + <span class="string">&quot;string&quot;</span>);</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> myString = <span class="string">&quot;alpha&quot;</span>;</span><br><span class="line">myString += <span class="string">&quot;bet&quot;</span>; <span class="comment">// 返回 &quot;alphabet&quot;</span></span><br></pre></td></tr></table></div></figure>
+
+
+        <h4 id="条件（三元）运算符">
+          <a href="#条件（三元）运算符" class="heading-link"><i class="fas fa-link"></i></a>条件（三元）运算符</h4>
+      <figure class="highlight js"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> status = (age &gt;= <span class="number">18</span>) ? <span class="string">&quot;adult&quot;</span> : <span class="string">&quot;minor&quot;</span>;</span><br></pre></td></tr></table></div></figure>
+
+
+        <h4 id="逗号操作符">
+          <a href="#逗号操作符" class="heading-link"><i class="fas fa-link"></i></a>逗号操作符</h4>
+      <figure class="highlight js"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> x = [<span class="number">0</span>,<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">5</span>,<span class="number">6</span>,<span class="number">7</span>,<span class="number">8</span>,<span class="number">9</span>]</span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> (<span class="keyword">var</span> i = <span class="number">0</span>, j = <span class="number">9</span>; i &lt;= j; i++, j--)</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="string">&#x27;a[&#x27;</span> + i + <span class="string">&#x27;][&#x27;</span> + j + <span class="string">&#x27;]= &#x27;</span> + a[i][j]);</span><br></pre></td></tr></table></div></figure>
+
+
+        <h4 id="一元操作符">
+          <a href="#一元操作符" class="heading-link"><i class="fas fa-link"></i></a>一元操作符</h4>
+      <p>一元操作符仅对应一个操作数。</p>
+<ul>
+<li><p><code>delete</code>操作符，删除一个对象或一个对象的属性或者一个数组中某一个键值。</p>
+<figure class="highlight js"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">delete</span> objectName;</span><br><span class="line"><span class="keyword">delete</span> objectName.property;</span><br><span class="line"><span class="keyword">delete</span> objectName[index];</span><br></pre></td></tr></table></div></figure>
+
+<p>能使用 <code>delete</code> 删除各种各样的隐式声明， 但是被<code>var</code>声明的除外。</p>
+<p>如果 <code>delete</code> 操作成功，属性或者元素会变成 <code>undefined</code>。如果 <code>delete</code>可行会返回<code>true</code>，如果不成功返回<code>false</code>。</p>
+<blockquote>
+<p>删除数组中的元素时，数组的长度是不变的</p>
+</blockquote>
+</li>
+</ul>
+
+        <h4 id="typeof操作符">
+          <a href="#typeof操作符" class="heading-link"><i class="fas fa-link"></i></a>typeof操作符</h4>
+      <figure class="highlight js"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> myFun = <span class="keyword">new</span> <span class="built_in">Function</span>(<span class="string">&quot;5 + 2&quot;</span>);</span><br><span class="line"><span class="keyword">var</span> shape = <span class="string">&quot;round&quot;</span>;</span><br><span class="line"><span class="keyword">var</span> size = <span class="number">1</span>;</span><br><span class="line"><span class="keyword">var</span> today = <span class="keyword">new</span> <span class="built_in">Date</span>();</span><br><span class="line"></span><br><span class="line"><span class="keyword">typeof</span> myFun;     <span class="comment">// returns &quot;function&quot;</span></span><br><span class="line"><span class="keyword">typeof</span> shape;     <span class="comment">// returns &quot;string&quot;</span></span><br><span class="line"><span class="keyword">typeof</span> size;      <span class="comment">// returns &quot;number&quot;</span></span><br><span class="line"><span class="keyword">typeof</span> today;     <span class="comment">// returns &quot;object&quot;</span></span><br><span class="line"><span class="keyword">typeof</span> dontExist; <span class="comment">// returns &quot;undefined&quot; =====</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">typeof</span> <span class="literal">true</span>; <span class="comment">// returns &quot;boolean&quot;</span></span><br><span class="line"><span class="keyword">typeof</span> <span class="literal">null</span>; <span class="comment">// returns &quot;object&quot;   ====== </span></span><br><span class="line"><span class="keyword">typeof</span> <span class="number">62</span>;    <span class="comment">// returns &quot;number&quot;</span></span><br><span class="line"><span class="keyword">typeof</span> <span class="string">&#x27;Hello world&#x27;</span>; <span class="comment">// returns &quot;string&quot;</span></span><br><span class="line"><span class="keyword">typeof</span> <span class="built_in">Date</span>;     <span class="comment">// returns &quot;function&quot;</span></span><br><span class="line"><span class="keyword">typeof</span> <span class="built_in">Function</span>; <span class="comment">// returns &quot;function&quot;</span></span><br><span class="line"><span class="keyword">typeof</span> <span class="built_in">Math</span>;     <span class="comment">// returns &quot;object&quot;</span></span><br><span class="line"><span class="keyword">typeof</span> Option;   <span class="comment">// returns &quot;function&quot;  ========</span></span><br><span class="line"><span class="keyword">typeof</span> <span class="built_in">String</span>;   <span class="comment">// returns &quot;function&quot;</span></span><br></pre></td></tr></table></div></figure>
+
+
+        <h4 id="void-运算符">
+          <a href="#void-运算符" class="heading-link"><i class="fas fa-link"></i></a>void 运算符</h4>
+      <p>void表明一个运算没有返回值, 可以使用void运算符指明一个超文本链接。该表达式是有效的，但是并不会在当前文档中进行加载。</p>
+<figure class="highlight html"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">&quot;javascript:void(0)&quot;</span>&gt;</span>Click here to do nothing<span class="tag">&lt;/<span class="name">a</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">&quot;javascript:void(document.form.submit())&quot;</span>&gt;</span></span><br><span class="line">Click here to submit<span class="tag">&lt;/<span class="name">a</span>&gt;</span></span><br></pre></td></tr></table></div></figure>
+
+
+        <h4 id="关系操作符">
+          <a href="#关系操作符" class="heading-link"><i class="fas fa-link"></i></a>关系操作符</h4>
+      <p>关系操作符对操作数进行比较，根据比较结果真或假，返回相应的布尔值。</p>
+<p><strong><code>in</code>**如果所指定的</strong>属性**确实存在于所指定的对象中，则会返回<code>true</code></p>
+<figure class="highlight js"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// Arrays</span></span><br><span class="line"><span class="keyword">var</span> trees = <span class="keyword">new</span> <span class="built_in">Array</span>(<span class="string">&quot;redwood&quot;</span>, <span class="string">&quot;bay&quot;</span>, <span class="string">&quot;cedar&quot;</span>, <span class="string">&quot;oak&quot;</span>, <span class="string">&quot;maple&quot;</span>);</span><br><span class="line"><span class="number">0</span> <span class="keyword">in</span> trees;        <span class="comment">// returns true</span></span><br><span class="line"><span class="number">3</span> <span class="keyword">in</span> trees;        <span class="comment">// returns true</span></span><br><span class="line"><span class="number">6</span> <span class="keyword">in</span> trees;        <span class="comment">// returns false</span></span><br><span class="line"><span class="string">&quot;bay&quot;</span> <span class="keyword">in</span> trees;    <span class="comment">// returns false (you must specify the index number,</span></span><br><span class="line">                   <span class="comment">// not the value at that index)</span></span><br><span class="line"><span class="string">&quot;length&quot;</span> <span class="keyword">in</span> trees; <span class="comment">// returns true (length is an Array property)</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// Predefined objects</span></span><br><span class="line"><span class="string">&quot;PI&quot;</span> <span class="keyword">in</span> <span class="built_in">Math</span>;          <span class="comment">// returns true</span></span><br><span class="line"><span class="keyword">var</span> myString = <span class="keyword">new</span> <span class="built_in">String</span>(<span class="string">&quot;coral&quot;</span>);</span><br><span class="line"><span class="string">&quot;length&quot;</span> <span class="keyword">in</span> myString;  <span class="comment">// returns true</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// Custom objects</span></span><br><span class="line"><span class="keyword">var</span> mycar = &#123;<span class="attr">make</span>: <span class="string">&quot;Honda&quot;</span>, <span class="attr">model</span>: <span class="string">&quot;Accord&quot;</span>, <span class="attr">year</span>: <span class="number">1998</span>&#125;;</span><br><span class="line"><span class="string">&quot;make&quot;</span> <span class="keyword">in</span> mycar;  <span class="comment">// returns true</span></span><br><span class="line"><span class="string">&quot;model&quot;</span> <span class="keyword">in</span> mycar; <span class="comment">// returns true</span></span><br></pre></td></tr></table></div></figure>
+
+
+        <h4 id="instanceof运算符">
+          <a href="#instanceof运算符" class="heading-link"><i class="fas fa-link"></i></a>instanceof运算符</h4>
+      <p>如果所判别的对象确实是所指定的类型，则返回<code>true</code>。</p>
+
+        <h3 id="表达式">
+          <a href="#表达式" class="heading-link"><i class="fas fa-link"></i></a>表达式</h3>
+      <p>JavaScript有以下表达式类型：</p>
+<ul>
+<li>算数: 得出一个数字, 例如 3.14159. (通常使用 <span class="exturl"><a class="exturl__link" target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Guide/Expressions_and_Operators#Arithmetic_operators">arithmetic operators</a><span class="exturl__icon"><i class="fas fa-external-link-alt"></i></span></span>.)</li>
+<li>字符串: 得出一个字符串, 例如, “Fred” 或 “234”. (通常使用 <span class="exturl"><a class="exturl__link" target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Guide/Expressions_and_Operators#String_operators">string operators</a><span class="exturl__icon"><i class="fas fa-external-link-alt"></i></span></span>.)</li>
+<li>逻辑值: 得出true或者false. (经常涉及到 <span class="exturl"><a class="exturl__link" target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Guide/Expressions_and_Operators#Logical_operators">logical operators</a><span class="exturl__icon"><i class="fas fa-external-link-alt"></i></span></span>.)</li>
+<li>基本表达式: javascript中基本的关键字和一般表达式。</li>
+<li>左值表达式: 分配给左值。</li>
+</ul>
+<blockquote>
+<p><a target="_blank" rel="noopener" href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/this"><code>this</code></a>关键字被用于指代当前的对象，通常，<code>this</code>指代的是方法中正在被调用的对象。</p>
+</blockquote>
+<figure class="highlight js"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">this</span>[<span class="string">&quot;propertyName&quot;</span>]</span><br><span class="line"><span class="built_in">this</span>.propertyName</span><br></pre></td></tr></table></div></figure>
+
+<p>扩展运算符</p>
+<figure class="highlight js"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">f</span>(<span class="params">x, y, z</span>) </span>&#123; &#125;</span><br><span class="line"><span class="keyword">var</span> args = [<span class="number">0</span>, <span class="number">1</span>, <span class="number">2</span>];</span><br><span class="line">f(...args);</span><br></pre></td></tr></table></div></figure>
+
+</div><footer class="post-footer"><div class="post-ending ending"><div class="ending__text">------ 本文结束，感谢您的阅读 ------</div></div><div class="post-tags"><span class="post-tags-item"><span class="post-tags-item__icon"><i class="fas fa-tag"></i></span><a class="post-tags-item__link" href="http://example.com/tags/%E5%89%8D%E7%AB%AF/">前端</a></span></div><div class="post-share"><div class="social-share" data-sites="qq, wechat, douban, google">分享至: </div></div><nav class="post-paginator paginator"><div class="paginator-prev"><a class="paginator-prev__link" href="/2020/08/16/%E5%89%8D%E7%AB%AF%E6%A8%A1%E5%9D%97%E5%8C%96%E5%AD%A6%E4%B9%A0/"><span class="paginator-prev__icon"><i class="fas fa-angle-left"></i></span><span class="paginator-prev__text">前端模块化学习</span></a></div><div class="paginator-next"><a class="paginator-next__link" href="/2020/06/30/%E5%8E%9F%E5%9E%8B%E9%93%BE%E5%AD%A6%E4%B9%A0/"><span class="paginator-prev__text">原型链学习</span><span class="paginator-next__icon"><i class="fas fa-angle-right"></i></span></a></div></nav></footer></div></div></div><div class="sidebar-wrap" id="sidebar-wrap"><aside class="sidebar" id="sidebar"><div class="sidebar-nav"><span class="sidebar-nav-toc current">文章目录</span><span class="sidebar-nav-ov">站点概览</span></div><section class="sidebar-toc"><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Javascript-%E4%BB%8B%E7%BB%8D"><span class="toc-number">1.</span> <span class="toc-text">
+          Javascript 介绍</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%9F%BA%E6%9C%AC%E8%AF%AD%E6%B3%95"><span class="toc-number">2.</span> <span class="toc-text">
+          基本语法</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#hello"><span class="toc-number">2.1.</span> <span class="toc-text">
+          hello</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%AF%AD%E6%B3%95%E5%92%8C%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B"><span class="toc-number">2.2.</span> <span class="toc-text">
+          语法和数据类型</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%9F%BA%E6%9C%AC%E7%9F%A5%E8%AF%86"><span class="toc-number">2.2.1.</span> <span class="toc-text">
+          基本知识</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%B3%A8%E9%87%8A"><span class="toc-number">2.2.2.</span> <span class="toc-text">
+          注释</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%A3%B0%E6%98%8E"><span class="toc-number">2.2.3.</span> <span class="toc-text">
+          声明</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E5%92%8C%E7%B1%BB%E5%9E%8B"><span class="toc-number">2.3.</span> <span class="toc-text">
+          数据结构和类型</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AD%97%E9%9D%A2%E9%87%8F"><span class="toc-number">2.4.</span> <span class="toc-text">
+          字面量</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%B5%81%E7%A8%8B%E6%8E%A7%E5%88%B6%E4%B8%8E%E9%94%99%E8%AF%AF%E5%A4%84%E7%90%86"><span class="toc-number">3.</span> <span class="toc-text">
+          流程控制与错误处理</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%AF%AD%E5%8F%A5%E5%9D%97"><span class="toc-number">3.1.</span> <span class="toc-text">
+          语句块</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%9D%A1%E4%BB%B6%E5%88%A4%E6%96%AD%E8%AF%AD%E5%8F%A5"><span class="toc-number">3.2.</span> <span class="toc-text">
+          条件判断语句</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%BC%82%E5%B8%B8%E5%A4%84%E7%90%86%E8%AF%AD%E5%8F%A5"><span class="toc-number">3.3.</span> <span class="toc-text">
+          异常处理语句</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BD%BF%E7%94%A8Error%E5%AF%B9%E8%B1%A1"><span class="toc-number">3.4.</span> <span class="toc-text">
+          使用Error对象</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Promises"><span class="toc-number">3.5.</span> <span class="toc-text">
+          Promises</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%BE%AA%E7%8E%AF%E4%B8%8E%E8%BF%AD%E4%BB%A3"><span class="toc-number"></span> <span class="toc-text">
+          循环与迭代</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#for"><span class="toc-number">0.1.</span> <span class="toc-text">
+          for</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#do%E2%80%A6while"><span class="toc-number">0.2.</span> <span class="toc-text">
+          do…while</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#while"><span class="toc-number">0.3.</span> <span class="toc-text">
+          while</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#label"><span class="toc-number">0.4.</span> <span class="toc-text">
+          label</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#break"><span class="toc-number">0.5.</span> <span class="toc-text">
+          break</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#continue"><span class="toc-number">0.6.</span> <span class="toc-text">
+          continue</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#for%E2%80%A6in"><span class="toc-number">0.7.</span> <span class="toc-text">
+          for…in</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#for%E2%80%A6of"><span class="toc-number">0.8.</span> <span class="toc-text">
+          for…of</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%87%BD%E6%95%B0"><span class="toc-number">1.</span> <span class="toc-text">
+          函数</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AE%9A%E4%B9%89%E5%87%BD%E6%95%B0"><span class="toc-number">1.1.</span> <span class="toc-text">
+          定义函数</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%B0%83%E7%94%A8%E5%87%BD%E6%95%B0"><span class="toc-number">1.2.</span> <span class="toc-text">
+          调用函数</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%87%BD%E6%95%B0%E4%BD%9C%E7%94%A8%E5%9F%9F"><span class="toc-number">1.3.</span> <span class="toc-text">
+          函数作用域</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BD%9C%E7%94%A8%E5%9F%9F%E5%92%8C%E5%87%BD%E6%95%B0%E5%A0%86%E6%A0%88"><span class="toc-number">1.4.</span> <span class="toc-text">
+          作用域和函数堆栈</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%97%AD%E5%8C%85"><span class="toc-number">1.5.</span> <span class="toc-text">
+          闭包</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#arguments"><span class="toc-number">1.6.</span> <span class="toc-text">
+          arguments</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%87%BD%E6%95%B0%E5%8F%82%E6%95%B0"><span class="toc-number">1.7.</span> <span class="toc-text">
+          函数参数</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%AE%AD%E5%A4%B4%E5%87%BD%E6%95%B0"><span class="toc-number">1.8.</span> <span class="toc-text">
+          箭头函数</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%A2%84%E5%AE%9A%E4%B9%89%E5%87%BD%E6%95%B0"><span class="toc-number">1.9.</span> <span class="toc-text">
+          预定义函数</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E8%A1%A8%E8%BE%BE%E5%BC%8F%E4%B8%8E%E8%BF%90%E7%AE%97%E7%AC%A6"><span class="toc-number"></span> <span class="toc-text">
+          表达式与运算符</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%BF%90%E7%AE%97%E7%AC%A6"><span class="toc-number">0.1.</span> <span class="toc-text">
+          运算符</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E8%B5%8B%E5%80%BC%E8%BF%90%E7%AE%97%E7%AC%A6"><span class="toc-number">0.1.1.</span> <span class="toc-text">
+          赋值运算符</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%AF%94%E8%BE%83%E8%BF%90%E7%AE%97%E7%AC%A6"><span class="toc-number">0.1.2.</span> <span class="toc-text">
+          比较运算符</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%AE%97%E6%9C%AF%E8%BF%90%E7%AE%97%E7%AC%A6"><span class="toc-number">0.1.3.</span> <span class="toc-text">
+          算术运算符</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%BD%8D%E8%BF%90%E7%AE%97%E7%AC%A6"><span class="toc-number">0.1.4.</span> <span class="toc-text">
+          位运算符</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E9%80%BB%E8%BE%91%E8%BF%90%E7%AE%97%E7%AC%A6"><span class="toc-number">0.1.5.</span> <span class="toc-text">
+          逻辑运算符</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%AD%97%E7%AC%A6%E4%B8%B2%E8%BF%90%E7%AE%97%E7%AC%A6"><span class="toc-number">0.1.6.</span> <span class="toc-text">
+          字符串运算符</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%9D%A1%E4%BB%B6%EF%BC%88%E4%B8%89%E5%85%83%EF%BC%89%E8%BF%90%E7%AE%97%E7%AC%A6"><span class="toc-number">0.1.7.</span> <span class="toc-text">
+          条件（三元）运算符</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E9%80%97%E5%8F%B7%E6%93%8D%E4%BD%9C%E7%AC%A6"><span class="toc-number">0.1.8.</span> <span class="toc-text">
+          逗号操作符</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%B8%80%E5%85%83%E6%93%8D%E4%BD%9C%E7%AC%A6"><span class="toc-number">0.1.9.</span> <span class="toc-text">
+          一元操作符</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#typeof%E6%93%8D%E4%BD%9C%E7%AC%A6"><span class="toc-number">0.1.10.</span> <span class="toc-text">
+          typeof操作符</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#void-%E8%BF%90%E7%AE%97%E7%AC%A6"><span class="toc-number">0.1.11.</span> <span class="toc-text">
+          void 运算符</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%85%B3%E7%B3%BB%E6%93%8D%E4%BD%9C%E7%AC%A6"><span class="toc-number">0.1.12.</span> <span class="toc-text">
+          关系操作符</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#instanceof%E8%BF%90%E7%AE%97%E7%AC%A6"><span class="toc-number">0.1.13.</span> <span class="toc-text">
+          instanceof运算符</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%A1%A8%E8%BE%BE%E5%BC%8F"><span class="toc-number">0.2.</span> <span class="toc-text">
+          表达式</span></a></li></ol></li></ol></section><!-- ov = overview--><section class="sidebar-ov hide"><div class="sidebar-ov-author"><div class="sidebar-ov-author__avatar"><img class="sidebar-ov-author__avatar_img" src="/images/icons/stun-logo.svg" alt="avatar"></div><p class="sidebar-ov-author__text">是狐狸丫</p></div><div class="sidebar-ov-social"><a class="sidebar-ov-social-item" href="https://github.com/serahuli" target="_blank" rel="noopener" data-popover="Github" data-popover-pos="up"><span class="sidebar-ov-social-item__icon"><i class="fab fa-github"></i></span></a><a class="sidebar-ov-social-item" href="https://www.cnblogs.com/serahuli" target="_blank" rel="noopener" data-popover="博客园" data-popover-pos="up"><span class="sidebar-ov-social-item__icon"><i class="fab fa-pinterest"></i></span></a></div><div class="sidebar-ov-state"><a class="sidebar-ov-state-item sidebar-ov-state-item--posts" href="/archives/"><div class="sidebar-ov-state-item__count">44</div><div class="sidebar-ov-state-item__name">归档</div></a><a class="sidebar-ov-state-item sidebar-ov-state-item--categories" href="/categories/"><div class="sidebar-ov-state-item__count">10</div><div class="sidebar-ov-state-item__name">分类</div></a><a class="sidebar-ov-state-item sidebar-ov-state-item--tags" href="/tags/"><div class="sidebar-ov-state-item__count">18</div><div class="sidebar-ov-state-item__name">标签</div></a></div></section><div class="sidebar-reading"><div class="sidebar-reading-info"><span class="sidebar-reading-info__text">你已阅读了 </span><span class="sidebar-reading-info__num">0</span></div><div class="sidebar-reading-line"></div></div></aside></div><div class="clearfix"></div></div></main><footer class="footer" id="footer"><div class="footer-inner"><div><span>Copyright © 2019~2020</span><span class="footer__icon"><i class="fas fa-heart"></i></span><span>sera</span></div><div>🦋 你若盛开，蝴蝶自来 🦋</div></div></footer><div class="loading-bar" id="loading-bar"><div class="loading-bar__progress"></div></div><div class="back2top" id="back2top"><span class="back2top__icon"><i class="fas fa-rocket"></i></span></div></div><script src="https://cdn.jsdelivr.net/npm/jquery@v3.4.1/dist/jquery.min.js"></script><script src="https://cdn.jsdelivr.net/npm/velocity-animate@1.5.2/velocity.min.js"></script><script src="https://cdn.jsdelivr.net/npm/velocity-animate@1.5.2/velocity.ui.min.js"></script><script src="https://cdn.jsdelivr.net/npm/social-share.js@1.0.16/dist/js/social-share.min.js"></script><script src="/js/utils.js?v=2.1.1"></script><script src="/js/stun-boot.js?v=2.1.1"></script><script src="/js/scroll.js?v=2.1.1"></script><script src="/js/header.js?v=2.1.1"></script><script src="/js/sidebar.js?v=2.1.1"></script></body></html>

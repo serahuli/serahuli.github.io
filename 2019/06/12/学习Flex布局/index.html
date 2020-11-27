@@ -1,0 +1,219 @@
+<!DOCTYPE html><html lang="zh-CN"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="format-detection" content="telephone=no"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-status-bar-style" content="black"><link rel="icon" href="/images/icons/favicon-16%C3%9716.png?v=2.1.1" type="image/png" sizes="16x16"><link rel="icon" href="/images/icons/favicon-32%C3%9732.png?v=2.1.1" type="image/png" sizes="32x32"><meta name="description" content="Flex布局       layout（布局）是 html + css 的重点应用 布局的传统解决方案，基于盒装模型：display + position + float                     Flex 布局基本概念       Flexible Box, 弹性布局, 是相当灵活的布局方式。 任何一种容器都可以指定 flex布局。Webki">
+<meta property="og:type" content="article">
+<meta property="og:title" content="学习Flex布局">
+<meta property="og:url" content="http://example.com/2019/06/12/%E5%AD%A6%E4%B9%A0Flex%E5%B8%83%E5%B1%80/index.html">
+<meta property="og:site_name" content="小狐狸の个人博客">
+<meta property="og:description" content="Flex布局       layout（布局）是 html + css 的重点应用 布局的传统解决方案，基于盒装模型：display + position + float                     Flex 布局基本概念       Flexible Box, 弹性布局, 是相当灵活的布局方式。 任何一种容器都可以指定 flex布局。Webki">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="http://example.com/2019/06/12/%E5%AD%A6%E4%B9%A0Flex%E5%B8%83%E5%B1%80/image-20201020141218865.png">
+<meta property="og:image" content="http://example.com/2019/06/12/%E5%AD%A6%E4%B9%A0Flex%E5%B8%83%E5%B1%80/bg2015071004.png">
+<meta property="og:image" content="http://example.com/2019/06/12/%E5%AD%A6%E4%B9%A0Flex%E5%B8%83%E5%B1%80/image-20201020141840357.png">
+<meta property="og:image" content="http://example.com/2019/06/12/%E5%AD%A6%E4%B9%A0Flex%E5%B8%83%E5%B1%80/bg2015071010.png">
+<meta property="og:image" content="http://example.com/2019/06/12/%E5%AD%A6%E4%B9%A0Flex%E5%B8%83%E5%B1%80/bg2015071011.png">
+<meta property="og:image" content="http://example.com/2019/06/12/%E5%AD%A6%E4%B9%A0Flex%E5%B8%83%E5%B1%80/bg2015071012.png">
+<meta property="og:image" content="http://example.com/2019/06/12/%E5%AD%A6%E4%B9%A0Flex%E5%B8%83%E5%B1%80/bg2015071014.png">
+<meta property="og:image" content="http://example.com/2019/06/12/%E5%AD%A6%E4%B9%A0Flex%E5%B8%83%E5%B1%80/bg2015071016.png">
+<meta property="article:published_time" content="2019-06-12T02:16:48.000Z">
+<meta property="article:modified_time" content="2020-11-23T05:57:05.000Z">
+<meta property="article:author" content="sera">
+<meta property="article:tag" content="前端">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://example.com/2019/06/12/%E5%AD%A6%E4%B9%A0Flex%E5%B8%83%E5%B1%80/image-20201020141218865.png"><title>学习Flex布局 | 小狐狸の个人博客</title><link ref="canonical" href="http://example.com/2019/06/12/%E5%AD%A6%E4%B9%A0Flex%E5%B8%83%E5%B1%80/"><link rel="dns-prefetch" href="https://cdn.jsdelivr.net"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.12.1/css/all.min.css" type="text/css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/social-share.js@1.0.16/dist/css/share.min.css" type="text/css"><link rel="stylesheet" href="/css/index.css?v=2.1.1"><script>var Stun = window.Stun || {};
+var CONFIG = {
+  root: '/',
+  algolia: undefined,
+  fontIcon: {"prompt":{"success":"fas fa-check-circle","info":"fas fa-arrow-circle-right","warning":"fas fa-exclamation-circle","error":"fas fa-times-circle"},"copyBtn":"fas fa-copy"},
+  sidebar: {"offsetTop":"20px","tocMaxDepth":6},
+  header: {"enable":true,"showOnPost":false,"scrollDownIcon":true},
+  postWidget: {"endText":true},
+  nightMode: {"enable":true},
+  back2top: {"enable":true},
+  codeblock: {"style":"carbon","highlight":"ocean","wordWrap":false},
+  reward: false,
+  fancybox: false,
+  zoomImage: {"gapAside":"20px"},
+  galleryWaterfall: undefined,
+  lazyload: false,
+  pjax: undefined,
+  externalLink: {"icon":{"enable":true,"name":"fas fa-external-link-alt"}},
+  shortcuts: undefined,
+  prompt: {"copyButton":"复制","copySuccess":"复制成功","copyError":"复制失败"},
+  sourcePath: {"js":"js","css":"css","images":"images"},
+};
+
+window.CONFIG = CONFIG;</script><meta name="generator" content="Hexo 5.2.0"></head><body><div class="container" id="container"><header class="header" id="header"><div class="header-inner header-inner--height header-inner--bgcolor"><nav class="header-nav header-nav--sticky"><div class="header-nav-inner"><div class="header-nav-menubtn"><i class="fas fa-bars"></i></div><div class="header-nav-menu"><div class="header-nav-menu-item"><a class="header-nav-menu-item__link" href="/"><span class="header-nav-menu-item__icon"><i class="fas fa-home"></i></span><span class="header-nav-menu-item__text">首页</span></a></div><div class="header-nav-menu-item"><a class="header-nav-menu-item__link" href="/archives/"><span class="header-nav-menu-item__icon"><i class="fas fa-folder-open"></i></span><span class="header-nav-menu-item__text">归档</span></a></div><div class="header-nav-menu-item"><a class="header-nav-menu-item__link" href="/categories/"><span class="header-nav-menu-item__icon"><i class="fas fa-layer-group"></i></span><span class="header-nav-menu-item__text">分类</span></a></div><div class="header-nav-menu-item"><a class="header-nav-menu-item__link" href="/tags/"><span class="header-nav-menu-item__icon"><i class="fas fa-tags"></i></span><span class="header-nav-menu-item__text">标签</span></a></div><div class="header-nav-menu-item"><a class="header-nav-menu-item__link" href="/about"><span class="header-nav-menu-item__icon"><i class="fas fa-address-card"></i></span><span class="header-nav-menu-item__text">关于</span></a></div></div><div class="header-nav-mode"><div class="mode"><div class="mode-track"><span class="mode-track-moon"></span><span class="mode-track-sun"></span></div><div class="mode-thumb"></div></div></div></div></nav></div></header><main class="main" id="main"><div class="main-inner"><div class="content-wrap" id="content-wrap"><div class="content" id="content"><!-- Just used to judge whether it is an article page--><div id="is-post"></div><div class="post"><header class="post-header"><h1 class="post-title">学习Flex布局</h1><div class="post-meta"><span class="post-meta-item post-meta-item--createtime"><span class="post-meta-item__icon"><i class="far fa-calendar-plus"></i></span><span class="post-meta-item__info">发表于</span><span class="post-meta-item__value">2019-06-12</span></span><span class="post-meta-item post-meta-item--updatetime"><span class="post-meta-item__icon"><i class="far fa-calendar-check"></i></span><span class="post-meta-item__info">更新于</span><span class="post-meta-item__value">2020-11-23</span></span><span class="post-meta-item post-meta-item--wordcount"><span class="post-meta-item__icon"><i class="far fa-file-word"></i></span><span class="post-meta-item__info">字数统计</span><span class="post-meta-item__value">1.3k</span></span><span class="post-meta-item post-meta-item--readtime"><span class="post-meta-item__icon"><i class="far fa-clock"></i></span><span class="post-meta-item__info">阅读时长</span><span class="post-meta-item__value">8分</span></span></div></header><div class="post-body">
+        <h1 id="Flex布局">
+          <a href="#Flex布局" class="heading-link"><i class="fas fa-link"></i></a>Flex布局</h1>
+      <p>layout（布局）是 html + css 的重点应用</p>
+<p>布局的传统解决方案，基于盒装模型：display + position + float</p>
+
+        <h2 id="Flex-布局基本概念">
+          <a href="#Flex-布局基本概念" class="heading-link"><i class="fas fa-link"></i></a>Flex 布局基本概念</h2>
+      <p><code>Flexible Box</code>, 弹性布局, 是相当灵活的布局方式。</p>
+<p>任何一种容器都可以指定 flex布局。Webkit 内核的浏览器，必须加上<code>-webkit</code>前缀</p>
+<figure class="highlight js"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">.box &#123;</span><br><span class="line">  display: -webkit-flex; <span class="comment">/* Safari */</span></span><br><span class="line">  display: flex;</span><br><span class="line">  </span><br><span class="line">  <span class="comment">/** 行内元素 */</span></span><br><span class="line">  display: inline-flex;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></div></figure>
+
+<p><strong>当设为 Flex布局之后，子元素的 <code>float</code>, <code>clear</code>, <code>vertical-align</code> 将会失效。</strong></p>
+<p><strong>容器</strong>：采用 Flex 布局的元素 =&gt; (flex container)，当一个元素成为容器之后，所有子元素都会成为 容器成员（flex item），也称为<code>项目</code></p>
+<p><img src="/2019/06/12/%E5%AD%A6%E4%B9%A0Flex%E5%B8%83%E5%B1%80/image-20201020141218865.png" alt="image-20201020141218865"></p>
+<p>容器存在两根轴，水平的主轴（main axis）和垂直的交叉轴（cross axis）。主轴的开始位置（与边框的交叉点）叫做<code>main start</code>，结束位置叫做<code>main end</code>；交叉轴的开始位置叫做<code>cross start</code>，结束位置叫做<code>cross end</code>。</p>
+<p><strong>项目默认沿主轴排列</strong>, 单个项目占据的主轴空间叫做<code>main size</code>，占据的交叉轴空间叫做<code>cross size</code>。</p>
+<p><img src="/2019/06/12/%E5%AD%A6%E4%B9%A0Flex%E5%B8%83%E5%B1%80/bg2015071004.png" alt="img"></p>
+
+        <h2 id="容器相关属性">
+          <a href="#容器相关属性" class="heading-link"><i class="fas fa-link"></i></a>容器相关属性</h2>
+      <blockquote>
+<ul>
+<li>flex-direction</li>
+<li>flex-wrap</li>
+<li>flex-flow</li>
+<li>justify-content</li>
+<li>align-items</li>
+<li>align-content</li>
+</ul>
+</blockquote>
+
+        <h3 id="flex-direction">
+          <a href="#flex-direction" class="heading-link"><i class="fas fa-link"></i></a>flex-direction</h3>
+      <p><code>flex-direction</code>决定主轴的方向，也就是项目的排列部署方向，有四个值可选</p>
+<blockquote>
+<ul>
+<li><code>row</code>（默认值）：主轴为水平方向，起点在左端。</li>
+<li><code>row-reverse</code>：主轴为水平方向，起点在右端。</li>
+<li><code>column</code>：主轴为垂直方向，起点在上沿。</li>
+<li><code>column-reverse</code>：主轴为垂直方向，起点在下沿。</li>
+</ul>
+</blockquote>
+<p><img src="/2019/06/12/%E5%AD%A6%E4%B9%A0Flex%E5%B8%83%E5%B1%80/image-20201020141840357.png" alt="image-20201020141840357"></p>
+<figure class="highlight css"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.box</span> &#123;</span><br><span class="line">  <span class="attribute">flex-direction</span>: column | column-reverse | row | row-reverse;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></div></figure>
+
+
+        <h3 id="flex-wrap">
+          <a href="#flex-wrap" class="heading-link"><i class="fas fa-link"></i></a>flex-wrap</h3>
+      <p><code>flex-wrap</code>属性定义，如果一条轴线排不下，如何换行, 默认在一行不换行，可选值有三个</p>
+<figure class="highlight css"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.box</span> &#123;</span><br><span class="line">  <span class="comment">/** 默认值，不换行 */</span></span><br><span class="line">  <span class="attribute">flex-wrap</span>: nowrap; </span><br><span class="line">  </span><br><span class="line">  <span class="comment">/** 换行，第一行在上方。 */</span></span><br><span class="line">  <span class="attribute">flex-wrap</span>: wrap; </span><br><span class="line">  </span><br><span class="line">  <span class="comment">/** 换行，第一行在下方 */</span></span><br><span class="line">  <span class="attribute">flex-wrap</span>: wrap-reverse;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></div></figure>
+
+
+        <h3 id="flex-flow">
+          <a href="#flex-flow" class="heading-link"><i class="fas fa-link"></i></a>flex-flow</h3>
+      <p><code>flex-flow</code> 是 <code>flex-direction </code>与<code>flex-wrap</code>的简写，默认值为<code>row nowrap</code>, 先设置<code>flex-direction </code></p>
+
+        <h3 id="justify-content">
+          <a href="#justify-content" class="heading-link"><i class="fas fa-link"></i></a>justify-content</h3>
+      <p><code>justify-content</code>属性定义了项目在主轴上的对齐方式，<code>flex-start</code>是默认值, 有五个值可选</p>
+<blockquote>
+<ul>
+<li>flex-start: 左对齐(所有项目靠左，即时右边空余还很多)</li>
+<li>flex-end： 右对齐</li>
+<li>center: 居中</li>
+<li>space-around: 两端对齐，项目之间的间隔都相等</li>
+<li>space-between: 每个项目两侧的间隔相等。所以，项目之间的间隔比项目与边框的间隔大一倍</li>
+</ul>
+</blockquote>
+<p><img src="/2019/06/12/%E5%AD%A6%E4%B9%A0Flex%E5%B8%83%E5%B1%80/bg2015071010.png" alt="img"></p>
+
+        <h3 id="align-items">
+          <a href="#align-items" class="heading-link"><i class="fas fa-link"></i></a>align-items</h3>
+      <p><code>align-items</code>属性定义项目在交叉轴上如何对齐, <code>stretch</code>是默认值, 有五个值可选</p>
+<blockquote>
+<ul>
+<li>flex-start: 交叉轴的起点对齐</li>
+<li>flex-end: 交叉轴的终点对齐。</li>
+<li>center: 交叉轴的中点对齐。</li>
+<li>baseline: 项目的第一行文字的基线对齐。</li>
+<li>stretch: 如果项目未设置高度或设为auto，将占满整个容器的高度。</li>
+</ul>
+</blockquote>
+<p><img src="/2019/06/12/%E5%AD%A6%E4%B9%A0Flex%E5%B8%83%E5%B1%80/bg2015071011.png" alt="img"></p>
+
+        <h3 id="align-content">
+          <a href="#align-content" class="heading-link"><i class="fas fa-link"></i></a>align-content</h3>
+      <p><code>align-content</code>属性定义了多根轴线的对齐方式。如果项目只有一根轴线，该属性不起作用。<code>stretch</code>是默认值</p>
+<blockquote>
+<ul>
+<li>flex-start：与交叉轴的起点对齐。</li>
+<li>flex-end: 与交叉轴的终点对齐。</li>
+<li>center: 与交叉轴的中点对齐。</li>
+<li>space-between:  与交叉轴两端对齐，轴线之间的间隔平均分布。</li>
+<li>space-around:  每根轴线两侧的间隔都相等。所以，轴线之间的间隔比轴线与边框的间隔大一倍。</li>
+<li>stretch: 轴线占满整个交叉轴。</li>
+</ul>
+</blockquote>
+<p><img src="/2019/06/12/%E5%AD%A6%E4%B9%A0Flex%E5%B8%83%E5%B1%80/bg2015071012.png" alt="img"></p>
+<hr>
+
+        <h2 id="项目相关属性">
+          <a href="#项目相关属性" class="heading-link"><i class="fas fa-link"></i></a>项目相关属性</h2>
+      <blockquote>
+<ul>
+<li>order:</li>
+<li>flex-grow</li>
+<li>flex-shrink</li>
+<li>flex-basis</li>
+<li>flex</li>
+<li>align-self</li>
+</ul>
+</blockquote>
+
+        <h3 id="order">
+          <a href="#order" class="heading-link"><i class="fas fa-link"></i></a>order</h3>
+      <p>定义项目的排列顺序。数值越小，排列越靠前，默认为0，可以是正数或者负数</p>
+
+        <h3 id="flex-grow">
+          <a href="#flex-grow" class="heading-link"><i class="fas fa-link"></i></a>flex-grow</h3>
+      <p><code>flex-grow</code>属性定义项目的放大比例，默认为<code>0</code>，即如果存在剩余空间，也不放大。</p>
+<p>如果所有项目的<code>flex-grow</code>属性都为1，则它们将等分剩余空间（如果有的话）。如果一个项目的<code>flex-grow</code>属性为2，其他项目都为1，则前者占据的剩余空间将比其他项多一倍。</p>
+<p><img src="/2019/06/12/%E5%AD%A6%E4%B9%A0Flex%E5%B8%83%E5%B1%80/bg2015071014.png" alt="img"></p>
+
+        <h3 id="flex-shrink">
+          <a href="#flex-shrink" class="heading-link"><i class="fas fa-link"></i></a>flex-shrink</h3>
+      <p><code>flex-shrink</code>属性定义了项目的缩小比例，默认为1，即如果空间不足，该项目将缩小。</p>
+<p>如果所有项目的<code>flex-shrink</code>属性都为1，当空间不足时，都将等比例缩小。如果一个项目的<code>flex-shrink</code>属性为0，其他项目都为1，则空间不足时，前者不缩小。</p>
+<p>负值对该属性无效。</p>
+
+        <h3 id="flex-basis">
+          <a href="#flex-basis" class="heading-link"><i class="fas fa-link"></i></a>flex-basis</h3>
+      <p><code>flex-basis</code>属性定义了在分配多余空间之前，项目占据的主轴空间（main size）。浏览器根据这个属性，计算主轴是否有多余空间。它的默认值为<code>auto</code>，即项目的本来大小。</p>
+<figure class="highlight js"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">.item &#123;</span><br><span class="line">  flex-basis: &lt;length&gt; | auto; <span class="comment">/* default auto */</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></div></figure>
+
+<p>设为跟<code>width</code>或<code>height</code>属性一样的值（比如350px），则项目将占据固定空间。</p>
+
+        <h3 id="flex">
+          <a href="#flex" class="heading-link"><i class="fas fa-link"></i></a>flex</h3>
+      <p><code>flex</code>属性是<code>flex-grow</code>, <code>flex-shrink</code> 和 <code>flex-basis</code>的简写，默认值为<code>0 1 auto</code>。后两个属性可选。</p>
+<figure class="highlight css"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.item</span> &#123;</span><br><span class="line">  <span class="attribute">flex</span>: none | [ &lt;<span class="string">&#x27;flex-grow&#x27;</span>&gt; &lt;<span class="string">&#x27;flex-shrink&#x27;</span>&gt;? || &lt;<span class="string">&#x27;flex-basis&#x27;</span>&gt; ]</span><br><span class="line">&#125;</span><br></pre></td></tr></table></div></figure>
+
+<p>该属性有两个快捷值：<code>auto</code> (<code>1 1 auto</code>) 和 none (<code>0 0 auto</code>)。</p>
+<p>建议优先使用这个属性，而不是单独写三个分离的属性，因为浏览器会推算相关值。</p>
+
+        <h3 id="align-self">
+          <a href="#align-self" class="heading-link"><i class="fas fa-link"></i></a>align-self</h3>
+      <p><code>align-self</code>属性允许单个项目有与其他项目不一样的对齐方式，可覆盖<code>align-items</code>属性。默认值为<code>auto</code>，表示继承父元素的<code>align-items</code>属性，如果没有父元素，则等同于<code>stretch</code>。</p>
+<blockquote>
+<ul>
+<li>auto</li>
+<li>flex-start</li>
+<li>flex-end</li>
+<li>center</li>
+<li>baseline</li>
+<li>stretch</li>
+</ul>
+</blockquote>
+<p><img src="/2019/06/12/%E5%AD%A6%E4%B9%A0Flex%E5%B8%83%E5%B1%80/bg2015071016.png" alt="img"></p>
+</div><footer class="post-footer"><div class="post-ending ending"><div class="ending__text">------ 本文结束，感谢您的阅读 ------</div></div><div class="post-tags"><span class="post-tags-item"><span class="post-tags-item__icon"><i class="fas fa-tag"></i></span><a class="post-tags-item__link" href="http://example.com/tags/%E5%89%8D%E7%AB%AF/">前端</a></span></div><div class="post-share"><div class="social-share" data-sites="qq, wechat, douban, google">分享至: </div></div><nav class="post-paginator paginator"><div class="paginator-prev"><a class="paginator-prev__link" href="/2019/06/27/hexo-github-%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2%E5%85%A5%E9%97%A8/"><span class="paginator-prev__icon"><i class="fas fa-angle-left"></i></span><span class="paginator-prev__text">hexo + github 搭建个人博客入门</span></a></div></nav></footer></div></div></div><div class="sidebar-wrap" id="sidebar-wrap"><aside class="sidebar" id="sidebar"><div class="sidebar-nav"><span class="sidebar-nav-toc current">文章目录</span><span class="sidebar-nav-ov">站点概览</span></div><section class="sidebar-toc"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#Flex%E5%B8%83%E5%B1%80"><span class="toc-number">1.</span> <span class="toc-text">
+          Flex布局</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#Flex-%E5%B8%83%E5%B1%80%E5%9F%BA%E6%9C%AC%E6%A6%82%E5%BF%B5"><span class="toc-number">1.1.</span> <span class="toc-text">
+          Flex 布局基本概念</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%AE%B9%E5%99%A8%E7%9B%B8%E5%85%B3%E5%B1%9E%E6%80%A7"><span class="toc-number">1.2.</span> <span class="toc-text">
+          容器相关属性</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#flex-direction"><span class="toc-number">1.2.1.</span> <span class="toc-text">
+          flex-direction</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#flex-wrap"><span class="toc-number">1.2.2.</span> <span class="toc-text">
+          flex-wrap</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#flex-flow"><span class="toc-number">1.2.3.</span> <span class="toc-text">
+          flex-flow</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#justify-content"><span class="toc-number">1.2.4.</span> <span class="toc-text">
+          justify-content</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#align-items"><span class="toc-number">1.2.5.</span> <span class="toc-text">
+          align-items</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#align-content"><span class="toc-number">1.2.6.</span> <span class="toc-text">
+          align-content</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%A1%B9%E7%9B%AE%E7%9B%B8%E5%85%B3%E5%B1%9E%E6%80%A7"><span class="toc-number">1.3.</span> <span class="toc-text">
+          项目相关属性</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#order"><span class="toc-number">1.3.1.</span> <span class="toc-text">
+          order</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#flex-grow"><span class="toc-number">1.3.2.</span> <span class="toc-text">
+          flex-grow</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#flex-shrink"><span class="toc-number">1.3.3.</span> <span class="toc-text">
+          flex-shrink</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#flex-basis"><span class="toc-number">1.3.4.</span> <span class="toc-text">
+          flex-basis</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#flex"><span class="toc-number">1.3.5.</span> <span class="toc-text">
+          flex</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#align-self"><span class="toc-number">1.3.6.</span> <span class="toc-text">
+          align-self</span></a></li></ol></li></ol></li></ol></section><!-- ov = overview--><section class="sidebar-ov hide"><div class="sidebar-ov-author"><div class="sidebar-ov-author__avatar"><img class="sidebar-ov-author__avatar_img" src="/images/icons/stun-logo.svg" alt="avatar"></div><p class="sidebar-ov-author__text">是狐狸丫</p></div><div class="sidebar-ov-social"><a class="sidebar-ov-social-item" href="https://github.com/serahuli" target="_blank" rel="noopener" data-popover="Github" data-popover-pos="up"><span class="sidebar-ov-social-item__icon"><i class="fab fa-github"></i></span></a><a class="sidebar-ov-social-item" href="https://www.cnblogs.com/serahuli" target="_blank" rel="noopener" data-popover="博客园" data-popover-pos="up"><span class="sidebar-ov-social-item__icon"><i class="fab fa-pinterest"></i></span></a></div><div class="sidebar-ov-state"><a class="sidebar-ov-state-item sidebar-ov-state-item--posts" href="/archives/"><div class="sidebar-ov-state-item__count">44</div><div class="sidebar-ov-state-item__name">归档</div></a><a class="sidebar-ov-state-item sidebar-ov-state-item--categories" href="/categories/"><div class="sidebar-ov-state-item__count">10</div><div class="sidebar-ov-state-item__name">分类</div></a><a class="sidebar-ov-state-item sidebar-ov-state-item--tags" href="/tags/"><div class="sidebar-ov-state-item__count">18</div><div class="sidebar-ov-state-item__name">标签</div></a></div></section><div class="sidebar-reading"><div class="sidebar-reading-info"><span class="sidebar-reading-info__text">你已阅读了 </span><span class="sidebar-reading-info__num">0</span></div><div class="sidebar-reading-line"></div></div></aside></div><div class="clearfix"></div></div></main><footer class="footer" id="footer"><div class="footer-inner"><div><span>Copyright © 2019~2020</span><span class="footer__icon"><i class="fas fa-heart"></i></span><span>sera</span></div><div>🦋 你若盛开，蝴蝶自来 🦋</div></div></footer><div class="loading-bar" id="loading-bar"><div class="loading-bar__progress"></div></div><div class="back2top" id="back2top"><span class="back2top__icon"><i class="fas fa-rocket"></i></span></div></div><script src="https://cdn.jsdelivr.net/npm/jquery@v3.4.1/dist/jquery.min.js"></script><script src="https://cdn.jsdelivr.net/npm/velocity-animate@1.5.2/velocity.min.js"></script><script src="https://cdn.jsdelivr.net/npm/velocity-animate@1.5.2/velocity.ui.min.js"></script><script src="https://cdn.jsdelivr.net/npm/social-share.js@1.0.16/dist/js/social-share.min.js"></script><script src="/js/utils.js?v=2.1.1"></script><script src="/js/stun-boot.js?v=2.1.1"></script><script src="/js/scroll.js?v=2.1.1"></script><script src="/js/header.js?v=2.1.1"></script><script src="/js/sidebar.js?v=2.1.1"></script></body></html>

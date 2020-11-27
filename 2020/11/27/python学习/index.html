@@ -1,0 +1,120 @@
+<!DOCTYPE html><html lang="zh-CN"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="format-detection" content="telephone=no"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-status-bar-style" content="black"><link rel="icon" href="/images/icons/favicon-16%C3%9716.png?v=2.1.1" type="image/png" sizes="16x16"><link rel="icon" href="/images/icons/favicon-32%C3%9732.png?v=2.1.1" type="image/png" sizes="32x32"><meta name="description" content="PY                           注释变量与数据类型       python 基本风格：   可以存在; 但是不推荐; 推荐单引号 使用缩进来表示代码块，不需要使用大括号 {}  **python注释： ** 12345678# 这是一个单行注释&amp;#x27;&amp;#x27;&amp;#x27;我说这是多行注释，你要信我&amp;#x27;&amp;#x27;&amp;">
+<meta property="og:type" content="article">
+<meta property="og:title" content="python学习">
+<meta property="og:url" content="http://example.com/2020/11/27/python%E5%AD%A6%E4%B9%A0/index.html">
+<meta property="og:site_name" content="小狐狸の个人博客">
+<meta property="og:description" content="PY                           注释变量与数据类型       python 基本风格：   可以存在; 但是不推荐; 推荐单引号 使用缩进来表示代码块，不需要使用大括号 {}  **python注释： ** 12345678# 这是一个单行注释&amp;#x27;&amp;#x27;&amp;#x27;我说这是多行注释，你要信我&amp;#x27;&amp;#x27;&amp;">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="http://example.com/2020/11/27/python%E5%AD%A6%E4%B9%A0/%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B.png">
+<meta property="article:published_time" content="2020-11-27T03:16:03.000Z">
+<meta property="article:modified_time" content="2020-11-27T04:56:38.382Z">
+<meta property="article:author" content="sera">
+<meta property="article:tag" content="python">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://example.com/2020/11/27/python%E5%AD%A6%E4%B9%A0/%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B.png"><title>python学习 | 小狐狸の个人博客</title><link ref="canonical" href="http://example.com/2020/11/27/python%E5%AD%A6%E4%B9%A0/"><link rel="dns-prefetch" href="https://cdn.jsdelivr.net"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.12.1/css/all.min.css" type="text/css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/social-share.js@1.0.16/dist/css/share.min.css" type="text/css"><link rel="stylesheet" href="/css/index.css?v=2.1.1"><script>var Stun = window.Stun || {};
+var CONFIG = {
+  root: '/',
+  algolia: undefined,
+  fontIcon: {"prompt":{"success":"fas fa-check-circle","info":"fas fa-arrow-circle-right","warning":"fas fa-exclamation-circle","error":"fas fa-times-circle"},"copyBtn":"fas fa-copy"},
+  sidebar: {"offsetTop":"20px","tocMaxDepth":6},
+  header: {"enable":true,"showOnPost":false,"scrollDownIcon":true},
+  postWidget: {"endText":true},
+  nightMode: {"enable":true},
+  back2top: {"enable":true},
+  codeblock: {"style":"carbon","highlight":"ocean","wordWrap":false},
+  reward: false,
+  fancybox: false,
+  zoomImage: {"gapAside":"20px"},
+  galleryWaterfall: undefined,
+  lazyload: false,
+  pjax: undefined,
+  externalLink: {"icon":{"enable":true,"name":"fas fa-external-link-alt"}},
+  shortcuts: undefined,
+  prompt: {"copyButton":"复制","copySuccess":"复制成功","copyError":"复制失败"},
+  sourcePath: {"js":"js","css":"css","images":"images"},
+};
+
+window.CONFIG = CONFIG;</script><meta name="generator" content="Hexo 5.2.0"></head><body><div class="container" id="container"><header class="header" id="header"><div class="header-inner header-inner--height header-inner--bgcolor"><nav class="header-nav header-nav--sticky"><div class="header-nav-inner"><div class="header-nav-menubtn"><i class="fas fa-bars"></i></div><div class="header-nav-menu"><div class="header-nav-menu-item"><a class="header-nav-menu-item__link" href="/"><span class="header-nav-menu-item__icon"><i class="fas fa-home"></i></span><span class="header-nav-menu-item__text">首页</span></a></div><div class="header-nav-menu-item"><a class="header-nav-menu-item__link" href="/archives/"><span class="header-nav-menu-item__icon"><i class="fas fa-folder-open"></i></span><span class="header-nav-menu-item__text">归档</span></a></div><div class="header-nav-menu-item"><a class="header-nav-menu-item__link" href="/categories/"><span class="header-nav-menu-item__icon"><i class="fas fa-layer-group"></i></span><span class="header-nav-menu-item__text">分类</span></a></div><div class="header-nav-menu-item"><a class="header-nav-menu-item__link" href="/tags/"><span class="header-nav-menu-item__icon"><i class="fas fa-tags"></i></span><span class="header-nav-menu-item__text">标签</span></a></div><div class="header-nav-menu-item"><a class="header-nav-menu-item__link" href="/about"><span class="header-nav-menu-item__icon"><i class="fas fa-address-card"></i></span><span class="header-nav-menu-item__text">关于</span></a></div></div><div class="header-nav-mode"><div class="mode"><div class="mode-track"><span class="mode-track-moon"></span><span class="mode-track-sun"></span></div><div class="mode-thumb"></div></div></div></div></nav></div></header><main class="main" id="main"><div class="main-inner"><div class="content-wrap" id="content-wrap"><div class="content" id="content"><!-- Just used to judge whether it is an article page--><div id="is-post"></div><div class="post"><header class="post-header"><h1 class="post-title">python学习</h1><div class="post-meta"><span class="post-meta-item post-meta-item--createtime"><span class="post-meta-item__icon"><i class="far fa-calendar-plus"></i></span><span class="post-meta-item__info">发表于</span><span class="post-meta-item__value">2020-11-27</span></span><span class="post-meta-item post-meta-item--updatetime"><span class="post-meta-item__icon"><i class="far fa-calendar-check"></i></span><span class="post-meta-item__info">更新于</span><span class="post-meta-item__value">2020-11-27</span></span><span class="post-meta-item post-meta-item--wordcount"><span class="post-meta-item__icon"><i class="far fa-file-word"></i></span><span class="post-meta-item__info">字数统计</span><span class="post-meta-item__value">614</span></span><span class="post-meta-item post-meta-item--readtime"><span class="post-meta-item__icon"><i class="far fa-clock"></i></span><span class="post-meta-item__info">阅读时长</span><span class="post-meta-item__value">4分</span></span></div></header><div class="post-body">
+        <h1 id="PY">
+          <a href="#PY" class="heading-link"><i class="fas fa-link"></i></a>PY</h1>
+      
+        <h2 id="注释变量与数据类型">
+          <a href="#注释变量与数据类型" class="heading-link"><i class="fas fa-link"></i></a>注释变量与数据类型</h2>
+      <p>python 基本风格： </p>
+<ul>
+<li>可以存在<code>;</code> 但是不推荐<code>;</code></li>
+<li>推荐单引号</li>
+<li>使用缩进来表示代码块，不需要使用大括号 <strong>{}</strong></li>
+</ul>
+<p>**python注释： **</p>
+<figure class="highlight python"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 这是一个单行注释</span></span><br><span class="line"></span><br><span class="line"><span class="string">&#x27;&#x27;&#x27;</span></span><br><span class="line"><span class="string">我说这是多行注释，你要信我</span></span><br><span class="line"><span class="string">&#x27;&#x27;&#x27;</span></span><br><span class="line"><span class="string">&quot;&quot;&quot;</span></span><br><span class="line"><span class="string">如果你信我，这也是多行注释</span></span><br><span class="line"><span class="string">&quot;&quot;&quot;</span></span><br></pre></td></tr></table></div></figure>
+
+<p><strong>python 定义变量</strong></p>
+<p>标识符（变量、模块名、函数名、类名等自己命名的）</p>
+<p>规则</p>
+<blockquote>
+<ul>
+<li>有数字、字母、下划线组成，不可以数字开头</li>
+<li>标识符对大小写敏感。</li>
+<li>不能使用关键字</li>
+</ul>
+</blockquote>
+<p>规范</p>
+<blockquote>
+<ul>
+<li>见名知意</li>
+<li>大驼峰 or  小驼峰 or 下划线_</li>
+<li>变量、函数、模块名使用下划线连接</li>
+<li>类名大驼峰</li>
+</ul>
+</blockquote>
+<figure class="highlight python"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">a = <span class="string">&quot;str&quot;</span></span><br><span class="line">b = <span class="number">12</span></span><br></pre></td></tr></table></div></figure>
+
+<p><strong>python 数据类型</strong></p>
+<p><img src="/2020/11/27/python%E5%AD%A6%E4%B9%A0/%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B.png" alt="image-20201127114319002"></p>
+<p>查看数据类型</p>
+<figure class="highlight python"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">a = <span class="number">120</span></span><br><span class="line">b = <span class="string">&#x27;str&#x27;</span></span><br><span class="line">c = <span class="literal">True</span></span><br><span class="line">d = [<span class="string">&#x27;a&#x27;</span>, <span class="string">&#x27;b&#x27;</span>, <span class="string">&#x27;c&#x27;</span>]</span><br><span class="line">print(<span class="built_in">type</span>(a))  <span class="comment"># &lt;class &#x27;int&#x27;&gt;</span></span><br><span class="line">print(<span class="built_in">type</span>(b))  <span class="comment"># &lt;class &#x27;str&#x27;&gt;</span></span><br><span class="line">print(<span class="built_in">type</span>(c))  <span class="comment"># &lt;class &#x27;bool&#x27;&gt;</span></span><br><span class="line">print(<span class="built_in">type</span>(d))  <span class="comment"># &lt;class &#x27;list&#x27;&gt;</span></span><br></pre></td></tr></table></div></figure>
+
+<p>在 <strong>python</strong>中， 变量是没有数据类型的，我们所查看的数据类型是说变量所保存的值得数据类型</p>
+<p><em>进制：</em></p>
+<figure class="highlight python"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># # 二进制 八进制 十六进制 十进制   表示</span></span><br><span class="line"><span class="comment">#</span></span><br><span class="line">a = <span class="number">98</span>  <span class="comment"># 十进制(默认)  ====== print 默认是十进制</span></span><br><span class="line">b = <span class="number">0b10101100</span>  <span class="comment"># 二进制(0b开头)</span></span><br><span class="line">c = <span class="number">0o755402</span>  <span class="comment"># 八进制(0o开头)</span></span><br><span class="line">d = <span class="number">0xadf888</span>  <span class="comment"># 十六进制(0x开头)</span></span><br><span class="line"></span><br><span class="line">print(a, b, c, d)  <span class="comment"># 98 172 252674 11401352</span></span><br></pre></td></tr></table></div></figure>
+
+<p><em>内置函数进制转换</em></p>
+<figure class="highlight python"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">aa = <span class="number">12</span></span><br><span class="line">print(<span class="built_in">bin</span>(aa))   <span class="comment"># 二进制 0b1100</span></span><br><span class="line">print(<span class="built_in">oct</span>(aa))   <span class="comment"># 八进制 0o14</span></span><br><span class="line">print(<span class="built_in">hex</span>(aa))   <span class="comment"># 十六进制 0xc</span></span><br></pre></td></tr></table></div></figure>
+
+<p><em>类型转换</em></p>
+<blockquote>
+<p>不同数据类型，转换的规则不一样</p>
+</blockquote>
+<ul>
+<li>接收到的用户输入，都是 str类型</li>
+<li>字符串与数字 做加法运算会报错</li>
+<li>使用 int转成 数字<code>new_age = int(age)</code></li>
+</ul>
+<p>==to number==</p>
+<blockquote>
+<p>如果字符串不是合法数字会报错</p>
+</blockquote>
+<figure class="highlight python"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">x = <span class="string">&#x27;1a2c&#x27;</span>  <span class="comment"># 转成整数会报错 === 非合法</span></span><br><span class="line"><span class="comment"># 标识进制</span></span><br><span class="line">new_x = <span class="built_in">int</span>(x, <span class="number">16</span>)</span><br></pre></td></tr></table></div></figure>
+
+<p>==to float==</p>
+<blockquote>
+<p>如果字符串不是合法数字会报错</p>
+</blockquote>
+<figure class="highlight python"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">a = <span class="string">&#x27;12.34&#x27;</span></span><br><span class="line">b = <span class="built_in">float</span>(a)  <span class="comment"># 浮点数</span></span><br></pre></td></tr></table></div></figure>
+
+<p>==to str==</p>
+<figure class="highlight python"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">a = <span class="number">12.34</span></span><br><span class="line">b = <span class="built_in">str</span>(a)  <span class="comment"># 字符串</span></span><br><span class="line">print(<span class="built_in">type</span>(a))</span><br><span class="line">print(<span class="built_in">type</span>(b))</span><br></pre></td></tr></table></div></figure>
+
+
+
+<p><strong>输入输出</strong></p>
+<figure class="highlight python"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># print内置函数输出内容</span></span><br><span class="line"><span class="comment"># print(value, ..., sep=&#x27; &#x27;, end=&#x27;\n&#x27;, file=sys.stdout, flush=False)</span></span><br><span class="line"><span class="comment"># sep： 分隔符， 默认空格</span></span><br><span class="line"><span class="comment"># end： 执行完一个 print 要输出的字符。</span></span><br><span class="line">print(<span class="string">&#x27;lol&#x27;</span>)</span><br><span class="line"></span><br><span class="line">print(<span class="string">&#x27;sera&#x27;</span>, <span class="string">&#x27;love&#x27;</span>, <span class="string">&#x27;G&#x27;</span>, sep=<span class="string">&#x27;----&#x27;</span>)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">a = <span class="built_in">input</span>(<span class="string">&#x27;请输入信息：&#x27;</span>)</span><br><span class="line"></span><br><span class="line">print(a) <span class="comment"># a接收了输入的信息</span></span><br></pre></td></tr></table></div></figure>
+
+
+
+
+
+</div><footer class="post-footer"><div class="post-ending ending"><div class="ending__text">------ 本文结束，感谢您的阅读 ------</div></div><div class="post-tags"><span class="post-tags-item"><span class="post-tags-item__icon"><i class="fas fa-tag"></i></span><a class="post-tags-item__link" href="http://example.com/tags/python/">python</a></span></div><div class="post-share"><div class="social-share" data-sites="qq, wechat, douban, google">分享至: </div></div><nav class="post-paginator paginator"><div class="paginator-prev"><a class="paginator-prev__link" href="/2020/11/27/%E6%B7%BB%E5%8A%A0%E9%81%AE%E7%BD%A9%E5%B1%82/"><span class="paginator-prev__icon"><i class="fas fa-angle-left"></i></span><span class="paginator-prev__text">当 hover 时添加遮罩层</span></a></div><div class="paginator-next"><a class="paginator-next__link" href="/2020/11/17/%E5%AD%A6%E4%B9%A0-git/"><span class="paginator-prev__text">学习 git</span><span class="paginator-next__icon"><i class="fas fa-angle-right"></i></span></a></div></nav></footer></div></div></div><div class="sidebar-wrap" id="sidebar-wrap"><aside class="sidebar" id="sidebar"><div class="sidebar-nav"><span class="sidebar-nav-toc current">文章目录</span><span class="sidebar-nav-ov">站点概览</span></div><section class="sidebar-toc"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#PY"><span class="toc-number">1.</span> <span class="toc-text">
+          PY</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%B3%A8%E9%87%8A%E5%8F%98%E9%87%8F%E4%B8%8E%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B"><span class="toc-number">1.1.</span> <span class="toc-text">
+          注释变量与数据类型</span></a></li></ol></li></ol></section><!-- ov = overview--><section class="sidebar-ov hide"><div class="sidebar-ov-author"><div class="sidebar-ov-author__avatar"><img class="sidebar-ov-author__avatar_img" src="/images/icons/stun-logo.svg" alt="avatar"></div><p class="sidebar-ov-author__text">是狐狸丫</p></div><div class="sidebar-ov-social"><a class="sidebar-ov-social-item" href="https://github.com/serahuli" target="_blank" rel="noopener" data-popover="Github" data-popover-pos="up"><span class="sidebar-ov-social-item__icon"><i class="fab fa-github"></i></span></a><a class="sidebar-ov-social-item" href="https://www.cnblogs.com/serahuli" target="_blank" rel="noopener" data-popover="博客园" data-popover-pos="up"><span class="sidebar-ov-social-item__icon"><i class="fab fa-pinterest"></i></span></a></div><div class="sidebar-ov-state"><a class="sidebar-ov-state-item sidebar-ov-state-item--posts" href="/archives/"><div class="sidebar-ov-state-item__count">44</div><div class="sidebar-ov-state-item__name">归档</div></a><a class="sidebar-ov-state-item sidebar-ov-state-item--categories" href="/categories/"><div class="sidebar-ov-state-item__count">10</div><div class="sidebar-ov-state-item__name">分类</div></a><a class="sidebar-ov-state-item sidebar-ov-state-item--tags" href="/tags/"><div class="sidebar-ov-state-item__count">18</div><div class="sidebar-ov-state-item__name">标签</div></a></div></section><div class="sidebar-reading"><div class="sidebar-reading-info"><span class="sidebar-reading-info__text">你已阅读了 </span><span class="sidebar-reading-info__num">0</span></div><div class="sidebar-reading-line"></div></div></aside></div><div class="clearfix"></div></div></main><footer class="footer" id="footer"><div class="footer-inner"><div><span>Copyright © 2019~2020</span><span class="footer__icon"><i class="fas fa-heart"></i></span><span>sera</span></div><div>🦋 你若盛开，蝴蝶自来 🦋</div></div></footer><div class="loading-bar" id="loading-bar"><div class="loading-bar__progress"></div></div><div class="back2top" id="back2top"><span class="back2top__icon"><i class="fas fa-rocket"></i></span></div></div><script src="https://cdn.jsdelivr.net/npm/jquery@v3.4.1/dist/jquery.min.js"></script><script src="https://cdn.jsdelivr.net/npm/velocity-animate@1.5.2/velocity.min.js"></script><script src="https://cdn.jsdelivr.net/npm/velocity-animate@1.5.2/velocity.ui.min.js"></script><script src="https://cdn.jsdelivr.net/npm/social-share.js@1.0.16/dist/js/social-share.min.js"></script><script src="/js/utils.js?v=2.1.1"></script><script src="/js/stun-boot.js?v=2.1.1"></script><script src="/js/scroll.js?v=2.1.1"></script><script src="/js/header.js?v=2.1.1"></script><script src="/js/sidebar.js?v=2.1.1"></script></body></html>
