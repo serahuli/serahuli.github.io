@@ -1,0 +1,73 @@
+<!DOCTYPE html><html lang="zh-CN"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="format-detection" content="telephone=no"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-status-bar-style" content="black"><link rel="icon" href="/images/icons/favicon-16%C3%9716.png?v=2.1.1" type="image/png" sizes="16x16"><link rel="icon" href="/images/icons/favicon-32%C3%9732.png?v=2.1.1" type="image/png" sizes="32x32"><meta name="description" content="学习TypeScript        微软开发，开源，是js的超集，会被编译为js代码    Typescript 特点  始于js，归于js 强大的类型系统 先进的js   TypeScript 安装 1npm install -g typescript  检查： tsc -V  TypeScript编译      在html直接引入ts文件，浏览器会报">
+<meta property="og:type" content="article">
+<meta property="og:title" content="学习TypeScript">
+<meta property="og:url" content="http://example.com/2020/12/28/%E5%AD%A6%E4%B9%A0TypeScript/index.html">
+<meta property="og:site_name" content="小狐狸の个人博客">
+<meta property="og:description" content="学习TypeScript        微软开发，开源，是js的超集，会被编译为js代码    Typescript 特点  始于js，归于js 强大的类型系统 先进的js   TypeScript 安装 1npm install -g typescript  检查： tsc -V  TypeScript编译      在html直接引入ts文件，浏览器会报">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="http://example.com/2020/12/28/%E5%AD%A6%E4%B9%A0TypeScript/Ts%E4%B8%8Ejs.png">
+<meta property="og:image" content="http://example.com/2020/12/28/%E5%AD%A6%E4%B9%A0TypeScript/1.png">
+<meta property="og:image" content="http://example.com/2020/12/28/%E5%AD%A6%E4%B9%A0TypeScript/2.png">
+<meta property="og:image" content="http://example.com/2020/12/28/%E5%AD%A6%E4%B9%A0TypeScript/3.png">
+<meta property="og:image" content="http://example.com/2020/12/28/%E5%AD%A6%E4%B9%A0TypeScript/4.png">
+<meta property="article:published_time" content="2020-12-28T12:13:22.000Z">
+<meta property="article:modified_time" content="2020-12-28T12:37:19.118Z">
+<meta property="article:author" content="sera">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://example.com/2020/12/28/%E5%AD%A6%E4%B9%A0TypeScript/Ts%E4%B8%8Ejs.png"><title>学习TypeScript | 小狐狸の个人博客</title><link ref="canonical" href="http://example.com/2020/12/28/%E5%AD%A6%E4%B9%A0TypeScript/"><link rel="dns-prefetch" href="https://cdn.jsdelivr.net"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.12.1/css/all.min.css" type="text/css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/social-share.js@1.0.16/dist/css/share.min.css" type="text/css"><link rel="stylesheet" href="/css/index.css?v=2.1.1"><script>var Stun = window.Stun || {};
+var CONFIG = {
+  root: '/',
+  algolia: undefined,
+  fontIcon: {"prompt":{"success":"fas fa-check-circle","info":"fas fa-arrow-circle-right","warning":"fas fa-exclamation-circle","error":"fas fa-times-circle"},"copyBtn":"fas fa-copy"},
+  sidebar: {"offsetTop":"20px","tocMaxDepth":6},
+  header: {"enable":true,"showOnPost":false,"scrollDownIcon":true},
+  postWidget: {"endText":true},
+  nightMode: {"enable":true},
+  back2top: {"enable":true},
+  codeblock: {"style":"carbon","highlight":"ocean","wordWrap":false},
+  reward: false,
+  fancybox: false,
+  zoomImage: {"gapAside":"20px"},
+  galleryWaterfall: undefined,
+  lazyload: false,
+  pjax: undefined,
+  externalLink: {"icon":{"enable":true,"name":"fas fa-external-link-alt"}},
+  shortcuts: undefined,
+  prompt: {"copyButton":"复制","copySuccess":"复制成功","copyError":"复制失败"},
+  sourcePath: {"js":"js","css":"css","images":"images"},
+};
+
+window.CONFIG = CONFIG;</script><meta name="generator" content="Hexo 5.2.0"></head><body><div class="container" id="container"><header class="header" id="header"><div class="header-inner header-inner--height header-inner--bgcolor"><nav class="header-nav header-nav--sticky"><div class="header-nav-inner"><div class="header-nav-menubtn"><i class="fas fa-bars"></i></div><div class="header-nav-menu"><div class="header-nav-menu-item"><a class="header-nav-menu-item__link" href="/"><span class="header-nav-menu-item__icon"><i class="fas fa-home"></i></span><span class="header-nav-menu-item__text">首页</span></a></div><div class="header-nav-menu-item"><a class="header-nav-menu-item__link" href="/archives/"><span class="header-nav-menu-item__icon"><i class="fas fa-folder-open"></i></span><span class="header-nav-menu-item__text">归档</span></a></div><div class="header-nav-menu-item"><a class="header-nav-menu-item__link" href="/categories/"><span class="header-nav-menu-item__icon"><i class="fas fa-layer-group"></i></span><span class="header-nav-menu-item__text">分类</span></a></div><div class="header-nav-menu-item"><a class="header-nav-menu-item__link" href="/tags/"><span class="header-nav-menu-item__icon"><i class="fas fa-tags"></i></span><span class="header-nav-menu-item__text">标签</span></a></div><div class="header-nav-menu-item"><a class="header-nav-menu-item__link" href="/about"><span class="header-nav-menu-item__icon"><i class="fas fa-address-card"></i></span><span class="header-nav-menu-item__text">关于</span></a></div></div><div class="header-nav-mode"><div class="mode"><div class="mode-track"><span class="mode-track-moon"></span><span class="mode-track-sun"></span></div><div class="mode-thumb"></div></div></div></div></nav></div></header><main class="main" id="main"><div class="main-inner"><div class="content-wrap" id="content-wrap"><div class="content" id="content"><!-- Just used to judge whether it is an article page--><div id="is-post"></div><div class="post"><header class="post-header"><h1 class="post-title">学习TypeScript</h1><div class="post-meta"><span class="post-meta-item post-meta-item--createtime"><span class="post-meta-item__icon"><i class="far fa-calendar-plus"></i></span><span class="post-meta-item__info">发表于</span><span class="post-meta-item__value">2020-12-28</span></span><span class="post-meta-item post-meta-item--updatetime"><span class="post-meta-item__icon"><i class="far fa-calendar-check"></i></span><span class="post-meta-item__info">更新于</span><span class="post-meta-item__value">2020-12-28</span></span><span class="post-meta-item post-meta-item--wordcount"><span class="post-meta-item__icon"><i class="far fa-file-word"></i></span><span class="post-meta-item__info">字数统计</span><span class="post-meta-item__value">164</span></span><span class="post-meta-item post-meta-item--readtime"><span class="post-meta-item__icon"><i class="far fa-clock"></i></span><span class="post-meta-item__info">阅读时长</span><span class="post-meta-item__value">1分</span></span></div></header><div class="post-body">
+        <h1 id="学习TypeScript">
+          <a href="#学习TypeScript" class="heading-link"><i class="fas fa-link"></i></a>学习TypeScript</h1>
+      <blockquote>
+<p>微软开发，开源，是js的超集，会被编译为js代码</p>
+</blockquote>
+<p><img src="/2020/12/28/%E5%AD%A6%E4%B9%A0TypeScript/Ts%E4%B8%8Ejs.png" alt="image-20201228201630241"></p>
+<ul>
+<li><p>Typescript 特点</p>
+<ul>
+<li>始于js，归于js</li>
+<li>强大的类型系统</li>
+<li>先进的js</li>
+</ul>
+</li>
+<li><p>TypeScript 安装</p>
+<figure class="highlight bash"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install -g typescript</span><br></pre></td></tr></table></div></figure>
+
+<p>检查： <code>tsc -V</code></p>
+</li>
+<li><p>TypeScript编译</p>
+<p><img src="/2020/12/28/%E5%AD%A6%E4%B9%A0TypeScript/1.png" alt="image-20201228203052541"></p>
+<p><img src="/2020/12/28/%E5%AD%A6%E4%B9%A0TypeScript/2.png" alt="image-20201228203122717"></p>
+<p><img src="/2020/12/28/%E5%AD%A6%E4%B9%A0TypeScript/3.png" alt="image-20201228203202221"></p>
+<p><img src="/2020/12/28/%E5%AD%A6%E4%B9%A0TypeScript/4.png" alt="image-20201228203242617"></p>
+<blockquote>
+<p>在html直接引入ts文件，浏览器会报错（如果ts文件中只有js代码，可以正常使用）；如果包括ts代码，需要编译成js文件后才可以使用， ts中 let -&gt; js var</p>
+</blockquote>
+</li>
+<li><p>vscode自动编译</p>
+<figure class="highlight txt"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">1). 生成配置文件tsconfig.json</span><br><span class="line">    tsc --init</span><br><span class="line">2). 修改tsconfig.json配置</span><br><span class="line">    &quot;outDir&quot;: &quot;./js&quot;,</span><br><span class="line">    &quot;strict&quot;: false,    </span><br><span class="line">3). 启动监视任务: </span><br><span class="line">    终端 -&gt; 运行任务 -&gt; 监视tsconfig.json</span><br></pre></td></tr></table></div></figure></li>
+</ul>
+</div><footer class="post-footer"><div class="post-ending ending"><div class="ending__text">------ 本文结束，感谢您的阅读 ------</div></div><div class="post-share"><div class="social-share" data-sites="qq, wechat, douban, google">分享至: </div></div><nav class="post-paginator paginator"><div class="paginator-prev"><a class="paginator-prev__link" href="/2021/01/12/%E6%96%87%E6%9C%AC%E8%B6%85%E5%87%BA%E4%BB%A5%E7%9C%81%E7%95%A5%E5%8F%B7%E6%98%BE%E7%A4%BA/"><span class="paginator-prev__icon"><i class="fas fa-angle-left"></i></span><span class="paginator-prev__text">[ 文章无标题 ]</span></a></div><div class="paginator-next"><a class="paginator-next__link" href="/2020/12/14/%E5%89%8D%E7%AB%AF%E5%B8%B8%E7%94%A8%E8%A7%84%E8%8C%83/"><span class="paginator-prev__text">前端常用规范</span><span class="paginator-next__icon"><i class="fas fa-angle-right"></i></span></a></div></nav></footer></div></div></div><div class="sidebar-wrap" id="sidebar-wrap"><aside class="sidebar" id="sidebar"><div class="sidebar-nav"><span class="sidebar-nav-toc current">文章目录</span><span class="sidebar-nav-ov">站点概览</span></div><section class="sidebar-toc"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%AD%A6%E4%B9%A0TypeScript"><span class="toc-number">1.</span> <span class="toc-text">
+          学习TypeScript</span></a></li></ol></section><!-- ov = overview--><section class="sidebar-ov hide"><div class="sidebar-ov-author"><div class="sidebar-ov-author__avatar"><img class="sidebar-ov-author__avatar_img" src="/images/icons/stun-logo.svg" alt="avatar"></div><p class="sidebar-ov-author__text">是狐狸丫</p></div><div class="sidebar-ov-social"><a class="sidebar-ov-social-item" href="https://github.com/serahuli" target="_blank" rel="noopener" data-popover="Github" data-popover-pos="up"><span class="sidebar-ov-social-item__icon"><i class="fab fa-github"></i></span></a><a class="sidebar-ov-social-item" href="https://www.cnblogs.com/serahuli" target="_blank" rel="noopener" data-popover="博客园" data-popover-pos="up"><span class="sidebar-ov-social-item__icon"><i class="fab fa-pinterest"></i></span></a></div><div class="sidebar-ov-state"><a class="sidebar-ov-state-item sidebar-ov-state-item--posts" href="/archives/"><div class="sidebar-ov-state-item__count">47</div><div class="sidebar-ov-state-item__name">归档</div></a><a class="sidebar-ov-state-item sidebar-ov-state-item--categories" href="/categories/"><div class="sidebar-ov-state-item__count">10</div><div class="sidebar-ov-state-item__name">分类</div></a><a class="sidebar-ov-state-item sidebar-ov-state-item--tags" href="/tags/"><div class="sidebar-ov-state-item__count">18</div><div class="sidebar-ov-state-item__name">标签</div></a></div></section><div class="sidebar-reading"><div class="sidebar-reading-info"><span class="sidebar-reading-info__text">你已阅读了 </span><span class="sidebar-reading-info__num">0</span></div><div class="sidebar-reading-line"></div></div></aside></div><div class="clearfix"></div></div></main><footer class="footer" id="footer"><div class="footer-inner"><div><span>Copyright © 2019~2021</span><span class="footer__icon"><i class="fas fa-heart"></i></span><span>sera</span></div><div>🦋 你若盛开，蝴蝶自来 🦋</div></div></footer><div class="loading-bar" id="loading-bar"><div class="loading-bar__progress"></div></div><div class="back2top" id="back2top"><span class="back2top__icon"><i class="fas fa-rocket"></i></span></div></div><script src="https://cdn.jsdelivr.net/npm/jquery@v3.4.1/dist/jquery.min.js"></script><script src="https://cdn.jsdelivr.net/npm/velocity-animate@1.5.2/velocity.min.js"></script><script src="https://cdn.jsdelivr.net/npm/velocity-animate@1.5.2/velocity.ui.min.js"></script><script src="https://cdn.jsdelivr.net/npm/social-share.js@1.0.16/dist/js/social-share.min.js"></script><script src="/js/utils.js?v=2.1.1"></script><script src="/js/stun-boot.js?v=2.1.1"></script><script src="/js/scroll.js?v=2.1.1"></script><script src="/js/header.js?v=2.1.1"></script><script src="/js/sidebar.js?v=2.1.1"></script></body></html>
